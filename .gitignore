@@ -1,0 +1,42 @@
+# Editor directories and files
+.vscode/
+.vs/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.slnx
+*.sw?
+
+# Node modules
+node_modules/
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.cache
+
+# Build outputs
+dist/
+build/
+*.min.js
+*.min.css
+
+# Backup files
+*.bak
+*~
+
+# PowerShell script outputs
+blog-data.txt

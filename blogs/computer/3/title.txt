@@ -1,0 +1,69 @@
+topic: "Diagnosing .NET Container Crashes in Kubernetes: From Logs to Liveness Probes"
+description: "Walk through real-world debugging of .NET apps in Kubernetes, covering container lifecycle, health probes, and crash loop troubleshooting."
+
+contents:
+
+Blog Structure: Diagnosing .NET Container Crashes in Kubernetes
+1. Introduction
+- Brief overview of the problem: .NET containers crashing silently in Kubernetes
+- Why traditional logging isn’t enough
+- What the reader will learn: end-to-end diagnosis from logs to probes
+
+2. Common Crash Scenarios in .NET Containers
+- Native library mismatches (e.g., missing .so files or incorrect RID targeting)
+- Startup exceptions (e.g., misconfigured environment variables, missing secrets)
+- Memory leaks or OOMKilled events
+- Readiness/Liveness probe misconfigurations
+- DNS or network failures during service bootstrapping
+
+3. Initial Triage: Kubernetes Events and Pod Status
+- kubectl describe pod <pod-name>: look for State, Last State, Exit Code, Reason
+- kubectl get events --sort-by=.metadata.creationTimestamp: timeline of pod lifecycle
+- Audit tip: pipe output to timestamped logs for postmortem analysis
+
+4. Deep Dive into Container Logs
+- kubectl logs <pod-name> vs kubectl logs <pod-name> -c <container-name>
+- Handling multi-container pods
+- Using .NET structured logging (Serilog, Microsoft.Extensions.Logging)
+- Example: decoding System.TypeLoadException or DllNotFoundException
+
+5. Probes: Readiness vs Liveness
+- Definitions and differences
+- How misconfigured probes cause restarts or block traffic
+- YAML examples:
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 5
+- Audit strategy: log probe responses and status codes
+
+6. CrashLoopBackOff: Root Cause and Recovery
+- What it means and how to interpret backoff timings
+- Strategies:
+- Increase initialDelaySeconds
+- Add retry logic in app startup
+- Use postStart lifecycle hooks
+- Script snippet: auto-detect CrashLoopBackOff pods
+kubectl get pods --all-namespaces | grep CrashLoopBackOff
+ 
+
+ 
+7. Advanced Diagnostics
+- Using kubectl exec for live inspection
+- Mounting debug sidecars (e.g., BusyBox or Alpine)
+- Inspecting /proc, /var/log, and environment variables
+- .NET-specific: dotnet-dump, dotnet-trace, dotnet-counters in container
+
+8. Preventive Measures and Best Practices
+- Use health check endpoints in .NET (MapHealthChecks)
+- Validate native dependencies during CI
+- Container startup smoke tests
+- Terraform/Kubernetes integration: inject probe configs via Helm values or Terraform templates
+
+9. Conclusion
+- Recap of diagnostic flow
+- Encourage proactive probe design and structured logging
+- Link to GitHub repo or diagnostic script (if available)
+

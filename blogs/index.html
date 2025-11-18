@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Index - All Articles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .stat-box .number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .stat-box .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        main {
+            padding: 3rem 2rem;
+        }
+        
+        .category-section {
+            margin-bottom: 3rem;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .category-header h2 {
+            font-size: 2rem;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .category-badge {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+        
+        .blog-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .blog-title {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .blog-card:hover .blog-title {
+            color: #667eea;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        
+        .category-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .category-tag.health {
+            background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            font-weight: 500;
+            margin-top: 1rem;
+        }
+        
+        .blog-card:hover .read-more {
+            gap: 0.75rem;
+        }
+        
+        footer {
+            background: #f5f5f5;
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            main {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blog Index</h1>
+            <p>Explore our comprehensive collection of articles on technology and health</p>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="number">20</div>
+                    <div class="label">Total Articles</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">2</div>
+                    <div class="label">Categories</div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Computer Category -->
+            <section class="category-section">
+                <div class="category-header computer">
+                    <h2>💻 Computer & Technology</h2>
+                    <span class="category-badge">9 Articles</span>
+                </div>
+                
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <a href="computer/1/csharp14.html">
+                            <h3 class="blog-title">C# 14 Feature Guide - Blogger Version</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/2/dotnet9.html">
+                            <h3 class="blog-title">.NET 9 Feature Guide - A Leap Toward Cloud-Native Excellence</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/3/diagnosing-net-container-crashes.html">
+                            <h3 class="blog-title">Diagnosing .NET Container Crashes in Kubernetes: From Logs to Liveness Probes</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/4/what-is-hardware.html">
+                            <h3 class="blog-title">What is Hardware? - A Complete Beginner's Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/5/what-is-software.html">
+                            <h3 class="blog-title">What Is Software? - A Complete Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/6/what-is-an-os.html">
+                            <h3 class="blog-title">What Is an Operating System?</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/7/what-is-a-cpu.html">
+                            <h3 class="blog-title">What Is a CPU?</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/8/what-is-ram.html">
+                            <h3 class="blog-title">What Is RAM?</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="computer/9/what-is-the-internet.html">
+                            <h3 class="blog-title">What Is the Internet?</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag">Computer</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Health Category -->
+            <section class="category-section">
+                <div class="category-header health">
+                    <h2>🏥 Health & Wellness</h2>
+                    <span class="category-badge">11 Articles</span>
+                </div>
+                
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <a href="health/10/weight-loss-diet-plans.html">
+                            <h3 class="blog-title">Weight Loss & Diet Plans - Your Complete Guide to Healthy Living</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/11/exercise-routines-workouts.html">
+                            <h3 class="blog-title">Exercise Routines & Workouts - Energize Your Fitness Journey</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/12/healthy-eating-nutrition.html">
+                            <h3 class="blog-title">Healthy Eating & Nutrition - A Complete Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/13/mental-health-stress-reduction.html">
+                            <h3 class="blog-title">Mental Health & Stress Reduction - A Complete Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/14/sleep-improvement.html">
+                            <h3 class="blog-title">Sleep Improvement - Restorative Sleep Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/15/specific-health-conditions.html">
+                            <h3 class="blog-title">Understanding Health Symptoms & Conditions</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/16/supplements-vitamins.html">
+                            <h3 class="blog-title">Supplements & Vitamins - Evidence-Based Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/17/body-pain-management.html">
+                            <h3 class="blog-title">Body Pain Management - Relief & Recovery Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/18/heart-health.html">
+                            <h3 class="blog-title">Heart Health - Prevention & Vitality Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/19/hydration.html">
+                            <h3 class="blog-title">Hydration Essentials - Stay Refreshed & Energized</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                    
+                    <div class="blog-card">
+                        <a href="health/20/intermittent-fasting-guide.html">
+                            <h3 class="blog-title">Intermittent Fasting - Personal Journey & Guide</h3>
+                            <div class="blog-meta">
+                                <span class="category-tag health">Health</span>
+                            </div>
+                            <div class="read-more">Read Article →</div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 Blog Collection. All articles are for educational purposes.</p>
+        </footer>
+    </div>
+</body>
+</html>

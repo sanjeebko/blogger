@@ -1,0 +1,2 @@
+topic: "What is a CPU?"
+keywords: "CPU basics, processor architecture, cores and threads, clock speed, CPU cache, arithmetic logic unit, control unit, chiplet design, heterogeneous computing, quantum processors"

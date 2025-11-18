@@ -1,0 +1,3 @@
+topic: "Specific Health Conditions / Symptoms"
+description: "People frequently use Google to research symptoms they are experiencing or to learn more about diagnosed conditions. Examples include 'headache causes,' 'symptoms of diabetes,' 'back pain relief,' 'what is high blood pressure,' and 'cold and flu remedies.'"
+keywords: "health symptoms, symptom checker, headache causes, diabetes warning signs, high blood pressure, cold and flu remedies, back pain relief, medical diagnosis tips, when to see a doctor, digital health tools"

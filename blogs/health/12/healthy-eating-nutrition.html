@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A comprehensive guide to healthy eating and nutrition. Learn about macronutrients, micronutrients, balanced meals, gut health, plant-based eating, and the future of personalized nutrition." />
+    <title>Healthy Eating & Nutrition - A Complete Guide</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #2F3E46;
+        background: linear-gradient(135deg, #FEE9AE 0%, #F5F7A1 40%, #C4E6B8 100%);
+        min-height: 100vh;
+        padding: 2rem 1rem;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 18px 40px rgba(47, 62, 70, 0.18);
+        overflow: hidden;
+      }
+      header {
+        background: linear-gradient(135deg, #F57C00 0%, #FFB74D 40%, #81C784 100%);
+        color: white;
+        padding: 3.5rem 2.5rem;
+        text-align: center;
+        position: relative;
+      }
+      header h1 {
+        font-size: 2.6rem;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+      }
+      header p {
+        font-size: 1.15rem;
+        max-width: 700px;
+        margin: 0 auto;
+        opacity: 0.95;
+      }
+      .header-image {
+        display: block;
+        margin: 200px auto 2rem auto;
+        width: 460px;
+        height: 460px;
+        border-radius: 24px;
+        border: 10px solid rgba(255, 255, 255, 0.85);
+        object-fit: cover;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+      }
+      .section-image {
+        display: block;
+        margin: 2.5rem auto;
+        width: 520px;
+        height: 520px;
+        border-radius: 24px;
+        border: 10px solid rgba(255, 255, 255, 0.85);
+        object-fit: cover;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+      }
+      main {
+        padding: 3rem;
+      }
+      h2 {
+        color: #2F3E46;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid #81C784;
+        padding-bottom: 0.6rem;
+        margin-top: 2.8rem;
+      }
+      h3 {
+        color: #388E3C;
+        font-size: 1.45rem;
+        margin: 1.8rem 0 1rem;
+      }
+      h4 {
+        color: #00897B;
+        font-size: 1.2rem;
+        margin: 1.2rem 0 0.6rem;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+      ul, ol {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      }
+      li {
+        margin-bottom: 0.7rem;
+      }
+      li strong {
+        color: #2F7160;
+      }
+      .emoji {
+        font-size: 1.2em;
+        margin-right: 0.4rem;
+      }
+      .intro-box {
+        background: linear-gradient(135deg, rgba(255, 183, 77, 0.18) 0%, rgba(129, 199, 132, 0.24) 100%);
+        border-radius: 18px;
+        padding: 2.2rem;
+        border-left: 6px solid #FFB74D;
+        margin: 1.5rem 0 2rem;
+        box-shadow: 0 12px 30px rgba(129, 199, 132, 0.18);
+      }
+      .highlight-box {
+        background: #E8F5E9;
+        border-left: 5px solid #66BB6A;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .info-box {
+        background: #FFF3E0;
+        border-left: 5px solid #FFB74D;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .science-box {
+        background: #E0F7FA;
+        border-left: 5px solid #00ACC1;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .tip-box {
+        background: #F3E5F5;
+        border-left: 5px solid #9C27B0;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+      .card {
+        background: white;
+        border: 1px solid rgba(129, 199, 132, 0.25);
+        border-radius: 14px;
+        padding: 1.6rem;
+        box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.8rem 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+      }
+      th, td {
+        border: 1px solid rgba(47, 62, 70, 0.1);
+        padding: 0.9rem 1rem;
+        text-align: left;
+      }
+      th {
+        background: #66BB6A;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      tr:nth-child(even) {
+        background: rgba(255, 243, 224, 0.6);
+      }
+      tr:hover {
+        background: rgba(129, 199, 132, 0.18);
+      }
+      .pill {
+        display: inline-block;
+        background: #00897B;
+        color: white;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        margin: 0.2rem;
+      }
+      .macro-pill {
+        background: #FF7043;
+      }
+      .micro-pill {
+        background: #7E57C2;
+      }
+      @media (max-width: 900px) {
+        main {
+          padding: 2rem 1.5rem;
+        }
+        header h1 {
+          font-size: 2.1rem;
+        }
+        .header-image {
+          width: 320px;
+          height: 320px;
+        }
+        .section-image {
+          width: 360px;
+          height: 360px;
+        }
+      }
+      @media (max-width: 600px) {
+        header {
+          padding: 2.5rem 1.7rem;
+        }
+        header h1 {
+          font-size: 1.85rem;
+        }
+        header p {
+          font-size: 1rem;
+        }
+        .header-image {
+          width: 240px;
+          height: 240px;
+          border-radius: 20px;
+        }
+        .section-image {
+          width: 260px;
+          height: 260px;
+          border-radius: 20px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="healthy.png" alt="Healthy Eating Nutrition" class="header-image">
+            <h1>Healthy Eating & Nutrition</h1>
+            <p>Build vibrant health with balanced meals, smart planning, and science-based strategies. From macronutrients to microbiomes, discover everything you need to fuel your body.</p>
+        </header>
+        <main>
+            <article>
+                <div class="intro-box">
+                    <p><strong>Healthy eating</strong> is about more than dieting. It's the art and science of choosing foods that nourish your body, support your goals, and fit your lifestyle. The internet is overflowing with nutrition advice—some reliable, some questionable. This guide clarifies the essentials, explores popular approaches, and shows how emerging science will shape the future of food.</p>
+                    <p>Whether you're asking, "What foods are healthy?", looking for the benefits of specific ingredients, searching for high-quality protein sources, or planning smarter snacks, you'll find practical answers here. You'll also learn how to build balanced plates, harness gut health, and personalize your nutrition using data and technology.</p>
+                </div>
+            </article>
+
+            <section>
+                <h2><span class="emoji">🍽️</span> 1. Nutrition Foundations</h2>
+
+                <h3><span class="emoji">🔬</span> Why Nutrition Matters</h3>
+                <p>Food is fuel, information, and medicine. It provides energy, supplies building blocks for tissues, regulates hormones, and influences immunity, cognition, and mood. Consistent healthy eating reduces the risk of chronic conditions such as heart disease, type 2 diabetes, and certain cancers.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Core Principles:</strong></p>
+                    <ul>
+                        <li>Prioritize whole, minimally processed foods.</li>
+                        <li>Balance macronutrients: carbohydrates, protein, and fat.</li>
+                        <li>Eat a color spectrum of fruits and vegetables for micronutrients and phytonutrients.</li>
+                        <li>Stay hydrated—water drives every metabolic process.</li>
+                        <li>Consistency beats perfection. Small, sustainable habits compound over time.</li>
+                    </ul>
+                </div>
+
+                <h3><span class="emoji">📏</span> Determining Calorie Needs</h3>
+                <p>Calorie requirements depend on basal metabolic rate (BMR), activity level, age, sex, body composition, and goals.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Goal</th>
+                            <th>Typical Strategy</th>
+                            <th>Calorie Adjustment</th>
+                            <th>Key Considerations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maintenance</td>
+                            <td>Match intake to expenditure</td>
+                            <td>0% (TDEE)</td>
+                            <td>Monitor weight and energy. Adjust as activity changes.</td>
+                        </tr>
+                        <tr>
+                            <td>Fat Loss</td>
+                            <td>Caloric deficit via food and activity</td>
+                            <td>-10% to -25%</td>
+                            <td>Aim for 0.5–1 kg per week. Prioritize protein and nutrient density.</td>
+                        </tr>
+                        <tr>
+                            <td>Muscle Gain</td>
+                            <td>Caloric surplus with strength training</td>
+                            <td>+5% to +15%</td>
+                            <td>Progressive overload workouts, adequate sleep, higher protein.</td>
+                        </tr>
+                        <tr>
+                            <td>Performance</td>
+                            <td>Fuel for sport-specific demands</td>
+                            <td>Adjust daily</td>
+                            <td>Time carbs around training, emphasize hydration and recovery.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <p><strong>Tools:</strong> Use equations (Mifflin-St Jeor, Harris-Benedict) or smart wearables for a starting estimate. Reassess every 4–6 weeks based on results.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🥑</span> 2. Macronutrients Explained</h2>
+
+                <img src="micro.png" alt="Macronutrients balanced plate" class="section-image">
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h3><span class="macro-pill">Carbohydrates</span></h3>
+                        <p>Main energy source. Include complex carbs for sustained fuel and fiber.</p>
+                        <ul>
+                            <li><strong>Sources:</strong> Whole grains, legumes, fruits, starchy vegetables.</li>
+                            <li><strong>Daily target:</strong> 45–65% of calories (adjust for activity).</li>
+                            <li><strong>Fiber goal:</strong> 25–38 g per day.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3><span class="macro-pill">Protein</span></h3>
+                        <p>Builds tissues, enzymes, hormones, and immune cells.</p>
+                        <ul>
+                            <li><strong>Sources:</strong> Lean meats, fish, eggs, dairy, soy, legumes.</li>
+                            <li><strong>Daily target:</strong> 1.2–2.0 g per kg of body weight (higher for athletes).</li>
+                            <li><strong>Distribution:</strong> Include 20–40 g protein at each meal.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h3><span class="macro-pill">Fats</span></h3>
+                        <p>Support hormone production, brain health, vitamin absorption.</p>
+                        <ul>
+                            <li><strong>Sources:</strong> Avocado, nuts, seeds, olive oil, fatty fish.</li>
+                            <li><strong>Daily target:</strong> 20–35% of calories.</li>
+                            <li><strong>Focus:</strong> Prioritize unsaturated fats; limit trans fats.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="science-box">
+                    <p><strong>Glycemic Load vs. Glycemic Index:</strong> GI measures how quickly a carbohydrate raises blood sugar. GL accounts for serving size. Choose low-to-moderate GI foods combined with fiber, protein, and fat to stabilize energy.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🥕</span> 3. Micronutrients &amp; Phytonutrients</h2>
+
+                <h3><span class="emoji">🍊</span> Vitamins &amp; Minerals</h3>
+                <p>Micronutrients support enzyme reactions, immunity, bone health, and energy metabolism.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nutrient</th>
+                            <th>Primary Benefits</th>
+                            <th>Food Sources</th>
+                            <th>Daily Reference Intake*</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vitamin C</td>
+                            <td>Collagen synthesis, antioxidant, immune support</td>
+                            <td>Citrus, strawberries, bell peppers, broccoli</td>
+                            <td>75–90 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Vitamin D</td>
+                            <td>Bone health, immune modulation, mood regulation</td>
+                            <td>Sunlight, fortified dairy, salmon, mushrooms</td>
+                            <td>600–800 IU</td>
+                        </tr>
+                        <tr>
+                            <td>Magnesium</td>
+                            <td>Energy production, muscle relaxation, nerve function</td>
+                            <td>Leafy greens, nuts, seeds, whole grains</td>
+                            <td>310–420 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Iron</td>
+                            <td>Oxygen transport, energy metabolism</td>
+                            <td>Red meat, lentils, spinach, fortified cereals</td>
+                            <td>8–18 mg</td>
+                        </tr>
+                        <tr>
+                            <td>Omega-3 (EPA/DHA)</td>
+                            <td>Heart, brain, anti-inflammatory</td>
+                            <td>Salmon, sardines, algae oil, walnuts (ALA)</td>
+                            <td>250–500 mg EPA+DHA</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="micro-pill">*Values vary by age, sex, and life stage. Consult national dietary guidelines for specifics.</p>
+
+                <div class="highlight-box">
+                    <p><strong>Phytonutrient Color Code:</strong></p>
+                    <ul>
+                        <li><span class="pill">Red</span> Lycopene, anthocyanins for heart health (tomatoes, berries).</li>
+                        <li><span class="pill">Orange</span> Beta-carotene for eye and immune support (carrots, sweet potatoes).</li>
+                        <li><span class="pill">Green</span> Chlorophyll, folate for detoxification and cell health (leafy greens).</li>
+                        <li><span class="pill">Blue/Purple</span> Resveratrol, flavonoids for brain health (blueberries, purple cabbage).</li>
+                        <li><span class="pill">White</span> Allicin and quercetin for anti-microbial effects (garlic, onions).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🥗</span> 4. Building Balanced Meals</h2>
+
+                <h3><span class="emoji">🍽️</span> The Healthy Plate Framework</h3>
+                <p>Aim for a mix that keeps you full, energized, and nourished:</p>
+                <ul>
+                    <li><strong>Half the plate:</strong> Colorful vegetables and fruit.</li>
+                    <li><strong>Quarter of the plate:</strong> Lean protein or plant protein.</li>
+                    <li><strong>Quarter of the plate:</strong> Whole grains or starchy vegetables.</li>
+                    <li><strong>Extras:</strong> Healthy fats, herbs, spices, fermented foods.</li>
+                </ul>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Breakfast Ideas</h4>
+                        <ul>
+                            <li>Greek yogurt parfait with berries, chia, and almonds.</li>
+                            <li>Veggie omelet with whole grain toast and avocado.</li>
+                            <li>Overnight oats with flaxseed, banana, and peanut butter.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Lunch Ideas</h4>
+                        <ul>
+                            <li>Quinoa bowl with roasted vegetables, chickpeas, and tahini.</li>
+                            <li>Salmon salad with leafy greens, edamame, and citrus dressing.</li>
+                            <li>Whole grain wrap with turkey, hummus, and sprouts.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Dinner Ideas</h4>
+                        <ul>
+                            <li>Grilled chicken, brown rice, and sautéed broccoli.</li>
+                            <li>Lentil curry with basmati rice and cucumber raita.</li>
+                            <li>Baked tofu, sweet potatoes, and roasted Brussels sprouts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <p><strong>Meal Prep Tips:</strong></p>
+                    <ul>
+                        <li>Batch cook proteins and grains; store in airtight containers.</li>
+                        <li>Pre-chop vegetables and wash greens for quick salads.</li>
+                        <li>Use compartment containers to keep components crisp.</li>
+                        <li>Label meals with date and contents to maintain freshness.</li>
+                        <li>Create theme nights (Mediterranean Monday, Taco Tuesday) to keep variety.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🍎</span> 5. Smart Snacking &amp; Protein Sources</h2>
+
+                <h3><span class="emoji">🥬</span> Nutrient-Dense Snacks</h3>
+                <ul>
+                    <li>Sliced vegetables with hummus or Greek yogurt dip.</li>
+                    <li>Apple slices with almond butter and cinnamon.</li>
+                    <li>Trail mix (unsweetened dried fruit, nuts, seeds).</li>
+                    <li>Whole grain crackers with cottage cheese and tomatoes.</li>
+                    <li>Edamame or roasted chickpeas with sea salt.</li>
+                </ul>
+
+                <h3><span class="emoji">🥚</span> Protein Diversity</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Animal-Based</h4>
+                        <ul>
+                            <li>Skinless poultry, lean beef, pork tenderloin.</li>
+                            <li>Fish and seafood (salmon, tuna, shrimp).</li>
+                            <li>Eggs, Greek yogurt, cottage cheese.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Plant-Based</h4>
+                        <ul>
+                            <li>Legumes: lentils, black beans, chickpeas.</li>
+                            <li>Soy foods: tofu, tempeh, edamame.</li>
+                            <li>Whole grains: quinoa, farro, amaranth.</li>
+                            <li>Nuts and seeds: hemp, chia, pumpkin seeds.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Protein Optimization</h4>
+                        <ul>
+                            <li>Combine plant proteins (beans + grains) for complete amino acids.</li>
+                            <li>Use protein powders (whey, pea, soy) when convenient.</li>
+                            <li>Distribute protein evenly across meals to maximize muscle protein synthesis.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🧠</span> 6. Gut Health &amp; Metabolic Wellness</h2>
+
+                <img src="gut.png" alt="Gut health and nutrition" class="section-image">
+
+                <p>Gut microbes impact digestion, immunity, neurotransmitters, and weight regulation. A diverse microbiome thrives on fiber, fermented foods, and polyphenols.</p>
+
+                <div class="science-box">
+                    <p><strong>Feed Your Microbiome:</strong></p>
+                    <ul>
+                        <li><strong>Prebiotics:</strong> Fibers that feed beneficial bacteria (onions, garlic, oats, green banana).
+                        <li><strong>Probiotics:</strong> Live microbes that colonize the gut (kombucha, kefir, yogurt, kimchi).
+                        <li><strong>Synbiotics:</strong> Combine prebiotics and probiotics for synergistic effects.</li>
+                    </ul>
+                </div>
+
+                <h3><span class="emoji">💤</span> Metabolic Factors</h3>
+                <ul>
+                    <li>Sleep 7–9 hours; poor sleep alters hunger hormones (ghrelin/leptin).</li>
+                    <li>Manage stress; chronic cortisol spikes increase cravings and abdominal fat.</li>
+                    <li>Stay active; muscle tissue improves insulin sensitivity and glucose uptake.</li>
+                    <li>Hydrate; even mild dehydration impairs metabolism and cognition.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🌱</span> 7. Dietary Styles &amp; Trends</h2>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Mediterranean</h4>
+                        <p>Rich in olive oil, fish, legumes, vegetables. Supports heart health and longevity.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Plant-Based / Vegan</h4>
+                        <p>Emphasizes plant proteins, whole grains, vegetables. Watch B12, iron, omega-3.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Flexitarian</h4>
+                        <p>Mostly plant-focused with occasional animal products. Highly sustainable.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Low-Carb / Keto</h4>
+                        <p>Focuses on fats and proteins, minimal carbs. Useful for specific goals, requires monitoring.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Intermittent Fasting</h4>
+                        <p>Cycles eating and fasting windows. Helps appetite control and insulin sensitivity for many.</p>
+                    </div>
+                    <div class="card">
+                        <h4>DASH / Low-Sodium</h4>
+                        <p>Designed to lower blood pressure with fruits, vegetables, and low-fat dairy.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Choosing a Style:</strong> Align with your culture, preferences, health needs, and sustainability goals. The best plan is the one you can follow long-term while meeting nutrient requirements.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🧪</span> 8. Supplements &amp; Lab Testing</h2>
+
+                <img src="lab.png" alt="Nutrition lab testing" class="section-image">
+
+                <p>Supplements fill gaps but should complement—not replace—whole foods.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supplement</th>
+                            <th>When to Consider</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Multivitamin</td>
+                            <td>Restrictive diets, busy lifestyle</td>
+                            <td>Look for third-party testing and appropriate doses.</td>
+                        </tr>
+                        <tr>
+                            <td>Vitamin D3</td>
+                            <td>Limited sun exposure, darker skin tones, indoor lifestyle</td>
+                            <td>Test blood levels (25(OH)D) to personalize dosage.</td>
+                        </tr>
+                        <tr>
+                            <td>Omega-3 (EPA/DHA)</td>
+                            <td>Low fish intake, inflammation, heart health goals</td>
+                            <td>Choose high-quality, IFOS-certified fish or algae oils.</td>
+                        </tr>
+                        <tr>
+                            <td>Probiotics</td>
+                            <td>Digestive issues, antibiotic recovery</td>
+                            <td>Select strains with research for your condition.</td>
+                        </tr>
+                        <tr>
+                            <td>Protein Powder</td>
+                            <td>Convenience, athletes, higher protein needs</td>
+                            <td>Check for minimal added sugars/artificial ingredients.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip-box">
+                    <p><strong>Testing Insights:</strong> Annual blood work (CBC, CMP, lipid profile, A1c, vitamin D, B12, iron panels) plus GI mapping or food sensitivity tests when medically indicated provide data to tailor nutrition.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🚀</span> 9. Future of Nutrition</h2>
+
+                <h3><span class="emoji">🧬</span> Personalized Nutrition</h3>
+                <ul>
+                    <li><strong>Genetics:</strong> DNA-based plans suggest macronutrient ratios, caffeine tolerance, nutrient needs.</li>
+                    <li><strong>Microbiome sequencing:</strong> Gut tests offer food recommendations to foster beneficial bacteria.</li>
+                    <li><strong>Continuous glucose monitoring (CGM):</strong> Provides real-time data on how foods affect blood sugar.</li>
+                    <li><strong>Wearables &amp; AI:</strong> Integrate activity, sleep, stress, and food logging to deliver adaptive meal plans.</li>
+                </ul>
+
+                <div class="science-box">
+                    <p><strong>Emerging Tech:</strong> Smart kitchen devices scan pantry items, suggest recipes, and automate grocery lists. AI-powered nutrition coaches analyze your diary and recommend adjustments instantly.</p>
+                </div>
+
+                <h3><span class="emoji">♻️</span> Sustainable Eating</h3>
+                <ul>
+                    <li>Prioritize plants, legumes, seasonal produce, and regenerative agriculture products.</li>
+                    <li>Reduce food waste: plan meals, store properly, repurpose leftovers.</li>
+                    <li>Support local farmers and community-supported agriculture (CSA) programs.</li>
+                    <li>Experiment with climate-friendly proteins (lentils, insect protein, lab-grown meat).</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><span class="emoji">📚</span> Conclusion &amp; Next Steps</h2>
+
+                <img src="conclusion.png" alt="Healthy eating journey" class="section-image">
+
+                <div class="intro-box">
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ul>
+                        <li>Healthy eating blends science with personal preference—balance macros, focus on micronutrients, and enjoy diverse foods.</li>
+                        <li>Plan meals ahead, prepare nutritious snacks, and align your plate with your goals.</li>
+                        <li>Cultivate gut health, manage stress, and sleep well for metabolic resilience.</li>
+                        <li>Explore dietary styles thoughtfully; sustainability and enjoyment matter.</li>
+                        <li>Use data (labs, wearables, apps) to personalize nutrition as technology evolves.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Action Plan:</strong></p>
+                    <ol>
+                        <li>Audit your current diet—note strengths and gaps.</li>
+                        <li>Set SMART goals (e.g., add two cups of vegetables daily, cook at home 5 nights).</li>
+                        <li>Create a weekly meal plan with balanced macros and colorful produce.</li>
+                        <li>Experiment with one new healthy recipe or ingredient each week.</li>
+                        <li>Track energy, mood, and performance to refine your approach.</li>
+                    </ol>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>Medical Disclaimer:</strong> This guide provides educational information and is not medical advice. Consult a registered dietitian or healthcare provider for personalized nutrition plans, especially if you have medical conditions or take medications.</p>
+                </div>
+
+                <p>Healthy eating is an ongoing journey. Celebrate progress, stay curious, and enjoy the flavors, colors, and cultures that food offers. Nourish your body, honor your preferences, and let nutrition empower every aspect of your life.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

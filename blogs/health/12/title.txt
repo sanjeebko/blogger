@@ -1,0 +1,2 @@
+topic: "Healthy Eating / Nutrition"
+description: "Beyond just weight loss diets, people search for general healthy eating advice, 'what foods are healthy,' 'benefits of [specific food],' 'meal prep ideas,' 'protein sources,' 'healthy snacks,' and nutritional information."

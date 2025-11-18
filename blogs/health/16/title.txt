@@ -1,0 +1,3 @@
+topic: "Supplements / Vitamins"
+description: "Queries include 'best vitamin D supplement,' 'creatine benefits,' 'fish oil for heart health,' 'should I take multivitamins,' and 'protein powder reviews.'"
+keywords: "supplements guide, vitamins and minerals, vitamin D benefits, creatine usage, omega-3 fish oil, multivitamin advice, protein powder, supplement safety, lab testing, personalized nutrition"

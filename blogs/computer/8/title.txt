@@ -1,0 +1,2 @@
+topic: "What is RAM?"
+keywords: "RAM basics, memory types, DDR5, SDRAM, virtual memory, cache vs RAM, memory overclocking, dual channel memory, persistent memory, future memory technology"

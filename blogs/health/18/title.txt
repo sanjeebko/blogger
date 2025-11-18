@@ -1,0 +1,3 @@
+topic: "Heart Health"
+description: "People often search for 'foods good for heart health,' 'how to lower cholesterol,' 'signs of a heart attack,' 'blood pressure monitoring,' and 'cardio exercises.'"
+keywords: "heart health, cardiovascular wellness, lower cholesterol, blood pressure monitoring, heart attack signs, cardio exercise, heart healthy diet, cholesterol management, stroke prevention, cardiac screening"

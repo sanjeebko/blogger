@@ -1,0 +1,2 @@
+topic: "What is the internet?"
+keywords: "internet basics, TCP/IP, packet switching, DNS, web services, cloud infrastructure, cybersecurity, internet governance, edge computing, future internet technologies"

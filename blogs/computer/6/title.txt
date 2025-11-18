@@ -1,0 +1,2 @@
+topic: "What is an operating system (or "what is an OS")?"
+keywords: "operating system, OS functions, process management, memory management, device drivers, system software, mobile OS, cloud platforms, OS architecture, quantum computing OS"

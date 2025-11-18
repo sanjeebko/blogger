@@ -1,0 +1,3 @@
+topic: "Mental Health / Stress Reduction"
+description: "Increasingly, people are searching for topics like 'how to reduce stress,' 'anxiety symptoms,' 'mindfulness exercises,' 'meditation for beginners,' 'how to improve sleep,' and 'signs of depression.'"
+keywords: "mental health, stress reduction, anxiety management, mindfulness meditation, sleep hygiene, coping strategies, depression warning signs, therapy options, workplace wellbeing, digital mental health"

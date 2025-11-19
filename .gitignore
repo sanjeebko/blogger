@@ -40,3 +40,13 @@ build/
 
 # PowerShell script outputs
 blog-data.txt
+
+# Git credentials (if using credential store method)
+.git-credentials
+
+# Personal configuration scripts (with tokens)
+*-with-token.ps1
+my-token.ps1
+
+# Local token file (keep your token here, don't push)
+SETUP-TOKEN-LOCAL.ps1

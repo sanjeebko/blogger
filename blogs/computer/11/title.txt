@@ -1,0 +1,11 @@
+topic: "RAG 2.0: Building Production-Ready Retrieval Pipelines"
+keywords: "rag 2.0, vector database, embeddings, hybrid search, llmops"
+
+content_headlines:
+1. From demo RAG to production RAG architecture
+2. Chunking, reranking, and hybrid retrieval strategies
+3. Evaluating answer quality with grounded metrics
+4. Security and data governance for enterprise RAG
+5. Cost and latency tuning for real-world workloads
+
+gemini_image_prompt: "Design a technical infographic hero image for a Retrieval-Augmented Generation pipeline: data sources, embedding layer, vector database, reranker, and LLM response stage connected by flow arrows. Modern SaaS style, dark theme with neon accents, 16:9, high clarity, no text labels."

@@ -1,0 +1,11 @@
+topic: "Green Software Engineering for High-Scale Systems"
+keywords: "green software, sustainable computing, carbon aware computing, efficient algorithms, cloud sustainability"
+
+content_headlines:
+1. Why carbon-aware engineering is now a business metric
+2. Measuring software emissions and energy consumption
+3. Architecture patterns that lower compute waste
+4. Efficient coding and workload scheduling techniques
+5. Building a practical sustainability scorecard for teams
+
+gemini_image_prompt: "Design a modern sustainability-tech hero image featuring energy-efficient data centers, carbon metrics dashboards, and optimized cloud workloads with eco indicators. Blend clean green and digital blue aesthetics, 16:9, high detail, no text."

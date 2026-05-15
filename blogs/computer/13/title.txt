@@ -1,0 +1,11 @@
+topic: "Platform Engineering with Internal Developer Portals"
+keywords: "platform engineering, internal developer portal, developer experience, golden paths, backstage"
+
+content_headlines:
+1. Why platform engineering is replacing ad-hoc DevOps
+2. Designing golden paths for faster service delivery
+3. Service catalogs, templates, and self-service workflows
+4. Governance without slowing developer velocity
+5. Measuring developer experience and platform adoption
+
+gemini_image_prompt: "Generate a futuristic enterprise illustration of an internal developer portal with service catalog cards, deployment pipelines, and self-service templates. Show happy developer workflows and streamlined architecture. Minimal modern UI style, 16:9, no text."

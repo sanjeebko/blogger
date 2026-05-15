@@ -1,0 +1,11 @@
+topic: "Zero Trust Security for Cloud-Native Applications"
+keywords: "zero trust, cloud native security, service mesh, identity aware access, devsecops"
+
+content_headlines:
+1. Zero Trust fundamentals for modern distributed apps
+2. Identity-first access between users, services, and APIs
+3. Policy enforcement with service mesh and mTLS
+4. Securing CI/CD pipelines and software supply chain
+5. Practical rollout plan for engineering organizations
+
+gemini_image_prompt: "Design a cybersecurity hero image depicting Zero Trust architecture with identity verification checkpoints, encrypted service-to-service traffic, and policy shields around cloud workloads. High-tech blueprint style, dark background, 16:9, no text."

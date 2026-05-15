@@ -1,0 +1,11 @@
+topic: "GitHub Actions at Scale: Faster and Safer CI/CD"
+keywords: "github actions, ci cd optimization, pipeline security, reusable workflows, devops automation"
+
+content_headlines:
+1. Common bottlenecks in growing CI/CD pipelines
+2. Reusable workflows and matrix builds for scale
+3. Secrets management and hardened runners
+4. Caching and parallelization for faster delivery
+5. Governance patterns for multi-repo organizations
+
+gemini_image_prompt: "Create a CI/CD operations illustration with GitHub-style workflow graphs, parallel job lanes, secure secrets vault, and deployment stages from commit to production. Clean isometric design, blue and black palette, 16:9, no text."

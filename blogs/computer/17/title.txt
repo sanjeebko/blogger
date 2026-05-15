@@ -1,0 +1,11 @@
+topic: "Observability 2.0 with OpenTelemetry and eBPF"
+keywords: "observability, opentelemetry, ebpf, distributed tracing, sre"
+
+content_headlines:
+1. Why logs alone are not enough in 2026
+2. Unified metrics, traces, and logs with OpenTelemetry
+3. eBPF for low-overhead deep system visibility
+4. Incident response workflows for faster MTTR
+5. Building actionable dashboards engineers actually use
+
+gemini_image_prompt: "Generate an advanced observability dashboard concept image showing distributed traces, system metrics, and service dependency maps powered by OpenTelemetry and eBPF signals. Dark mode, neon data lines, cinematic depth, 16:9, no text."

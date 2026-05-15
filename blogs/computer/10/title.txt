@@ -1,0 +1,11 @@
+topic: "Agentic AI Coding Assistants in 2026"
+keywords: "agentic ai, coding copilots, developer productivity, ai pair programming, llm workflows"
+
+content_headlines:
+1. Why agentic coding assistants are trending now
+2. Copilot vs autonomous coding agents: core differences
+3. Safe guardrails for code generation in teams
+4. Best practices for review, testing, and rollout
+5. 2026 roadmap: where AI developer tools are heading
+
+gemini_image_prompt: "Create a modern blog hero image showing a software engineer collaborating with multiple AI coding agents on a holographic IDE dashboard. Include code snippets, terminal panels, and productivity graphs. Style: clean tech illustration, cinematic lighting, blue-purple gradient, 16:9, high detail, no text."

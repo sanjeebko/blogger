@@ -41,7 +41,7 @@ blogger/
 
 ## ?? Blog Collection
 
-### ?? Computer & Technology (9 Articles)
+### ?? Computer & Technology (19 Articles)
 Comprehensive guides on programming languages, system architecture, and technical concepts:
 - **C# 14** - Latest features and improvements
 - **.NET 9** - Cloud-native excellence
@@ -136,5 +136,5 @@ For questions or suggestions, please open an issue on GitHub.
 ---
 
 **Last Updated:** January 2024  
-**Total Articles:** 20  
-**Categories:** Technology (9), Health (11)
+**Total Articles:** 30  
+**Categories:** Technology (19), Health (11)

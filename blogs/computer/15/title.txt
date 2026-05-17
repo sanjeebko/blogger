@@ -1,0 +1,3 @@
+Title: The Full Stack Guide: Connecting Angular with a .NET Backend
+Keywords: Full Stack, Angular, .NET, Web Development, Integration, C#, TypeScript
+Image Prompt: split screen concept, left side angular red shield code, right side dot net purple code, merging in the center into a glowing portal, harmonious, tech

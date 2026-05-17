@@ -1,0 +1,193 @@
+<style>
+    /* Inline styles for Blogger */
+    .blog-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .blog-header {
+        background: linear-gradient(90deg, #dd0031 0%, #512da8 100%);
+        /* Angular Red to .NET Purple gradient */
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+    }
+
+    .blog-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .blog-content {
+        padding: 2.5rem;
+        line-height: 1.7;
+    }
+
+    .blog-content section {
+        margin-bottom: 3rem;
+    }
+
+    .blog-content h2 {
+        color: #512da8;
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #dd0031;
+    }
+
+    .blog-content p {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .intro-box {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-left: 4px solid #512da8;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    .blog-content pre {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border-left: 4px solid #dd0031;
+    }
+
+    .blog-content code {
+        font-family: 'Courier New', Consolas, monospace;
+    }
+</style>
+
+<div class="blog-container">
+    <div class="blog-header">
+        <h1>
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="Full Stack Banner"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiyeVHBtEWw6VC7u_HrNV8Qb-sZXDMKuDr_6iesTNjb_S4fFZnOyv1zQI_zHLBKHofodbsSxejkWyh0hph_5oEog5l8HYprfgp9S71jwTlLoXe9EWJi1Gsuwn9hosgscC91Bm1v8zHhJ4PgeunvUfXS1d7n0IIY_gG8DG-mTFkpFPO7huBnxmGplffhcCQ/s1024/fullstack_main.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+            </div>
+            The Full Stack Guide: Connecting Angular with .NET
+        </h1>
+        <p>Bridging the frontend and backend for a seamless application</p>
+    </div>
+
+    <div class="blog-content">
+        <section>
+            <div class="intro-box">
+                <p>The combination of <strong>Angular</strong> on the frontend and <strong>ASP.NET Core</strong> on the
+                    backend is a classic enterprise stack. It offers type safety across the board (TypeScript & C#),
+                    high performance, and robust tooling. But how do you connect them effectively beyond a simple "Hello
+                    World"?</p>
+                <p>In this guide, we will walk through the full lifecycle: Authentication, CRUD operations, and Handling
+                    Errors gracefully.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>1. Secure Communication: JWT Authentication</h2>
+            <p>Stateful sessions are out; Stateless Tokens are in. <strong>JSON Web Tokens (JWT)</strong> are the
+                standard for securing Single Page Applications (SPAs).</p>
+
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="JWT Flow Diagram"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEisriy3ypsaSBLh1ruWc15AS0MThQ1jq_BJXaYLV4wG8zyar359pHOGnK7tGKQSEXgsvqj6J5ESDDcs4oy9eM89nCow1jWUsg3MBjJDtK9V9dApyNerVChyUP8v1242YOysn2u0er7ADxSLr_gW4po0UXP2ZFH8MNuG9HqjY1IWRJT1KdYZ74w1EXthGCQ/s1024/fullstack_jwt_flow.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+                <p><em>The Handshake: Login once, access everywhere.</em></p>
+            </div>
+
+            <h3>The Interceptor Pattern</h3>
+            <p>Instead of manually adding the `Authorization` header to every single HTTP request, use an Angular
+                Interceptor to attach the token automatically.</p>
+
+            <pre><code>// auth.interceptor.ts
+export const authInterceptor: HttpInterceptorFn = (req, next) => {
+  const token = localStorage.getItem('auth_token');
+  
+  if (token) {
+    const cloned = req.clone({
+      setHeaders: { Authorization: `Bearer ${token}` }
+    });
+    return next(cloned);
+  }
+  
+  return next(req);
+};</code></pre>
+        </section>
+
+        <section>
+            <h2>2. Sending Data: The POST Request</h2>
+            <p>Fetching data is easy, but sending it requires validation. Here is how to handle a form submission with
+                error handling.</p>
+
+            <pre><code>// product.service.ts
+createProduct(product: Product): Observable&lt;Product&gt; {
+  return this.http.post&lt;Product&gt;(this.apiUrl, product).pipe(
+    catchError(this.handleError)
+  );
+}</code></pre>
+
+            <p>On the backend, your Controller action returns a <code>CreatedAtAction</code> result to follow REST
+                standards:</p>
+
+            <pre><code>// ProductsController.cs
+[HttpPost]
+public async Task&lt;ActionResult&lt;Product&gt;&gt; Create(ProductDto dto) {
+    var product = await _service.AddAsync(dto);
+    return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Step 3: Global Error Handling</h2>
+            <p>When the backend explodes, the frontend shouldn't freeze. You need a centralized way to catch errors and
+                show notifications.</p>
+
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="Error Handling Flow"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWfHW5IaI5a2Fsl5OIannzyNXXp5hkvSQQFQYk2cByVZQ8kCcWQrGD4Q5ixCRBan6he08KgTdJhDOmM83ai4Fr5L6BNZe8IvAcIvNRrGzoBWONNzCMMbAaKNmS9NyHZgEMTTVpgDhWKnPO2jeQ-yhOttU_H8ZbTWgLGzj3G_Lo7kj-4VLeMPgYlWi535U/s1024/fullstack_error_handling.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+                <p><em>Graceful Degradation: Turning crashes into user-friendly alerts.</em></p>
+            </div>
+
+            <pre><code>// error.interceptor.ts
+export const errorInterceptor: HttpInterceptorFn = (req, next) => {
+  const toastService = inject(ToastService);
+  
+  return next(req).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
+        toastService.error('Session expired. Please login again.');
+      } else {
+        toastService.error('Something went wrong. Try again later.');
+      }
+      return throwError(() => error);
+    })
+  );
+};</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Connecting Angular and .NET is about more than just fetching JSON. By implementing Interceptors for Auth
+                and Errors, and following REST standards for CRUD, you build a robust "Full Stack" ecosystem that is
+                secure and scalable.</p>
+        </section>
+    </div>
+</div>

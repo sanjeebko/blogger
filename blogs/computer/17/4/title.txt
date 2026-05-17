@@ -1,0 +1,3 @@
+Title: Angular Hydration & SSR: Lightning Fast Loading
+Keywords: Angular SSR, Hydration, Server-Side Rendering, Performance, SEO, Web Vitals
+Image Prompt: water splash turning into digital code, representing hydration, dynamic and fluid motion, red and white color palette, macro photography style, high detail, 8k resolution

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular's New Control Flow: Performance Meets Simplicity</title>
+    <style>
+        :root {
+            --primary-color: #dd0031;
+            --secondary-color: #1565C0;
+            --background-color: #f8f9fa;
+            --text-color: #2c3e50;
+            --code-bg: #1e1e1e;
+            --card-bg: #ffffff;
+            --success-color: #2e7d32;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Banner */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .banner-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .banner-image {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-container:hover .banner-image {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .highlight-keyword {
+            color: #569cd6;
+        }
+
+        .highlight-string {
+            color: #ce9178;
+        }
+
+        .highlight-function {
+            color: #dcdcaa;
+        }
+
+        .highlight-class {
+            color: #4ec9b0;
+        }
+
+        .highlight-control {
+            color: #c586c0;
+            font-weight: bold;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="banner-container">
+                <img src="assets/banner.png" alt="Angular Control Flow Banner" class="banner-image">
+            </div>
+            <h1>Angular's New Control Flow</h1>
+            <div class="subtitle">Cleaner Syntax, Better Types, and Superior Performance</div>
+        </header>
+
+        <section>
+            <h2>Say Goodbye to Structural Directives</h2>
+            <p>
+                For years, we've relied on <code>*ngIf</code>, <code>*ngFor</code>, and <code>*ngSwitch</code>. While
+                they served us well, they were technically "directives" hacked to look like syntax.
+                They had limitations in type-checking and required importing <code>CommonModule</code> or
+                <code>NgIf/NgFor</code> in standalone components.
+            </p>
+            <p>
+                Angular 17 introduces a new, built-in control flow syntax. It's not a directive; it's part of the
+                template language itself.
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Old (*ngIf)</th>
+                        <th>New (@if)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Requires Imports (CommonModule)</td>
+                        <td>Built-in (No imports needed)</td>
+                    </tr>
+                    <tr>
+                        <td>Template based (extra &lt;ng-template&gt; for else)</td>
+                        <td>Javascript-like syntax ({ })</td>
+                    </tr>
+                    <tr>
+                        <td>Slower (runtime directive overhead)</td>
+                        <td>Faster (compiled directly)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>The New Syntax: A Walkthrough</h2>
+
+            <h3>1. Conditional Rendering (@if)</h3>
+            <p>The syntax is cleaner and supports <code>@else if</code> naturally.</p>
+            <pre><code><span class="highlight-control">@if</span> (user.isLoggedIn) {
+  &lt;user-dashboard [user]="user" /&gt;
+} <span class="highlight-control">@else if</span> (user.isGuest) {
+  &lt;guest-banner /&gt;
+} <span class="highlight-control">@else</span> {
+  &lt;login-form /&gt;
+}</code></pre>
+
+            <h3>2. The Power of Loops (@for)</h3>
+            <p>
+                The new <code>@for</code> block mandates a <code>track</code> expression. This forces developers to
+                adopt the high-performance practice of keyed lists, ensuring that Angular knows exactly which items
+                changed, moved, or were deleted.
+            </p>
+            <pre><code><span class="highlight-control">@for</span> (product of products; track product.id) {
+  &lt;product-card [data]="product" /&gt;
+} <span class="highlight-control">@empty</span> {
+  &lt;div class="no-results"&gt;No products found.&lt;/div&gt;
+}</code></pre>
+            <p>Notice the <code>@empty</code> block? It covers the common use case of "show this list, or show a message
+                if empty" without needing a separate wrapper check!</p>
+        </section>
+
+        <section>
+            <h2>Building a Dynamic User Dashboard</h2>
+            <p>Let's build a real-world example: A filterable user list. We want to show how <code>@for</code> interacts
+                with Signals and how it handles updates efficiently.</p>
+
+            <h3>Step 1: The Code (Standalone Component)</h3>
+            <pre><code><span class="highlight-keyword">import</span> { Component, signal, computed } <span class="highlight-keyword">from</span> <span class="highlight-string">'@angular/core'</span>;
+
+<span class="highlight-keyword">interface</span> User {
+  id: <span class="highlight-keyword">number</span>;
+  name: <span class="highlight-keyword">string</span>;
+  role: <span class="highlight-string">'admin'</span> | <span class="highlight-string">'user'</span>;
+}
+
+<span class="highlight-keyword">@Component</span>({
+  selector: <span class="highlight-string">'app-user-list'</span>,
+  standalone: <span class="highlight-keyword">true</span>,
+  template: `
+    &lt;div class="controls"&gt;
+      &lt;button (click)="filter.set('all')"&gt;All&lt;/button&gt;
+      &lt;button (click)="filter.set('admin')"&gt;Admins Only&lt;/button&gt;
+      &lt;button (click)="shuffle()"&gt;Shuffle List&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;ul class="user-grid"&gt;
+      <span class="highlight-control">@for</span> (user of filteredUsers(); track user.id; let idx = $index, e = $even) {
+        &lt;li [class.gray-bg]="e"&gt;
+          &lt;span class="index"&gt;{{ idx + 1 }}.&lt;/span&gt; 
+          &lt;strong&gt;{{ user.name }}&lt;/strong&gt; 
+          &lt;span class="badge"&gt;{{ user.role }}&lt;/span&gt;
+        &lt;/li&gt;
+      } <span class="highlight-control">@empty</span> {
+        &lt;li&gt;No users match your filter.&lt;/li&gt;
+      }
+    &lt;/ul&gt;
+  `,
+  styles: [`
+    .user-grid { list-style: none; padding: 0; }
+    .user-grid li { padding: 10px; border-bottom: 1px solid #eee; display: flex; gap: 10px; }
+    .gray-bg { background: #f9f9f9; }
+    .badge { background: #e3f2fd; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; }
+  `]
+})
+<span class="highlight-keyword">export class</span> UserListComponent {
+  users = signal&lt;User[]&gt;([
+    { id: 1, name: 'Alice', role: 'admin' },
+    { id: 2, name: 'Bob', role: 'user' },
+    { id: 3, name: 'Charlie', role: 'user' },
+    { id: 4, name: 'David', role: 'admin' },
+  ]);
+
+  filter = signal&lt;<span class="highlight-string">'all'</span> | <span class="highlight-string">'admin'</span>&gt;(<span class="highlight-string">'all'</span>);
+
+  filteredUsers = computed(() => {
+    <span class="highlight-keyword">const</span> f = <span class="highlight-keyword">this</span>.filter();
+    <span class="highlight-keyword">return</span> f === <span class="highlight-string">'all'</span> 
+      ? <span class="highlight-keyword">this</span>.users() 
+      : <span class="highlight-keyword">this</span>.users().filter(u => u.role === <span class="highlight-string">'admin'</span>);
+  });
+
+  shuffle() {
+    <span class="highlight-keyword">this</span>.users.update(list => [...list].sort(() => Math.random() - 0.5));
+  }
+}</code></pre>
+
+            <h3>Why <code>track</code> is Critical</h3>
+            <p>
+                In the example above, <code>track user.id</code> tells Angular that the unique identity of each row is
+                the User ID.
+                If we shuffle the list, Angular <strong>moves</strong> the DOM elements instead of destroying and
+                recreating them.
+                This preserves internal state (like focus or text selection) and is significantly faster for large
+                lists.
+            </p>
+        </section>
+
+        <section>
+            <h2>Automatic Migration</h2>
+            <p>
+                Worried about rewriting all your existing templates? Don't be. The Angular team provided a schematic to
+                do it for you!
+            </p>
+            <pre><code>ng generate @angular/core:control-flow</code></pre>
+            <p>Running this command will scan your project and automatically convert <code>*ngIf</code> to
+                <code>@if</code>, <code>*ngFor</code> to <code>@for</code>, and so on. It's safe, fast, and magical.
+            </p>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>
+                The new control flow syntax is a massive quality-of-life improvement. It makes templates more readable,
+                safer, and faster by default.
+                Combined with Signals, it completes the picture of the "New Angular" — a framework that is both powerful
+                and developer-friendly.
+            </p>
+        </section>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,239 @@
+{
+  "name": "LoadWordToMongoDB-Dev",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 2
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [0, 0],
+      "id": "adbc8d51-fe72-4383-9c3a-40a227433b7c",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": ";WITH FirstUnprocessed AS (\n    SELECT TOP 1 Word\n    FROM GameDictionaryCopy\n    WHERE Processed = 0\n    ORDER BY WordId\n)\nSELECT \n    g.WordId,\n    g.Word,\n    g.Description,\n    g.Processed\nFROM GameDictionaryCopy g\nINNER JOIN FirstUnprocessed f\n    ON g.Word = f.Word\nORDER BY g.WordId;\n"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [224, 0],
+      "id": "657b99a5-0ae0-47e8-a71c-0f5d7e93470c",
+      "name": "Microsoft SQL",
+      "credentials": {
+        "microsoftSql": {
+          "id": "kLWBEttuiVOg5QUX",
+          "name": "Microsoft SQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {
+          "format": true,
+          "fileName": "={{ $json.Word }}"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [448, 0],
+      "id": "4b483f6e-8e0a-4c1b-8628-5bfa7f7c3e03",
+      "name": "Convert to File",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {
+          "format": "json"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [672, 224],
+      "id": "110ef515-dd3d-4a48-acce-f9284867e5ce",
+      "name": "Ollama Chat Model",
+      "notesInFlow": false,
+      "credentials": {
+        "ollamaApi": {
+          "id": "zyl6PeV6maQJ0cH2",
+          "name": "Ollama account"
+        }
+      },
+      "notes": "You are the export to identify best meaning of a word from a list of words provided."
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "From the list of words and it's descriptions. Give me the meaning of the word in the json format {\"word\":\"word\", \"meaning\":\"meaning of the word\"}. The json should contain a single result. ",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are a helpful agent to decide best meaning of words provided."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [736, 0],
+      "id": "b4c9390f-41e0-4ff3-9775-4a3aea5b4284",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "=\n{{ $workflow.id }}",
+        "contextWindowLength": 20
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [800, 224],
+      "id": "fd69b69d-b926-41b6-8dd7-eb31c6e2d0c0",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "\nUPDATE [Wordle].[dbo].[GameDictionaryCopy]\nSET Processed = 1\nWHERE Word = '{{ $json.Word }}' ;"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [1344, 0],
+      "id": "d6002d48-2678-44e4-8c91-79572d6fc344",
+      "name": "Microsoft SQL1",
+      "credentials": {
+        "microsoftSql": {
+          "id": "kLWBEttuiVOg5QUX",
+          "name": "Microsoft SQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = $input.first().json.output;\nconst parsed = JSON.parse(raw);\n\n// parsed.Result is an array → map it into n8n items\nreturn parsed.Result.map(r => ({\n  json: {\n    WordId: r.WordId,\n    Word: r.Word,\n    Description: r.Meaning\n  }\n}));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1088, 0],
+      "id": "1a7e2bc4-1143-44b7-8612-0e237bbe9703",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "operation": "insert",
+        "collection": "dictionary",
+        "fields": "Word, Description",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [1328, 192],
+      "id": "9f0aea54-91fe-48b6-a850-1a8a0912b667",
+      "name": "Insert documents",
+      "credentials": {
+        "mongoDb": {
+          "id": "7DL5DScLmggl3F1x",
+          "name": "MongoDB account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insert documents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL1": {
+      "main": [[]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": []
+}

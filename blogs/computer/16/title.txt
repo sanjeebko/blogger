@@ -1,0 +1,3 @@
+Title: How to Remove Workspace in TFS 2010-2018
+Keywords: TFS, Team Foundation Server, Visual Studio, Workspace, Command Line, DevOps
+Image Prompt: cybernetic command line interface, red delete command syntax glowing, deleting digital workspace data, matrix style background, dark mode, high tech illustration

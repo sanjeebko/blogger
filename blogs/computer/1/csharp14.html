@@ -1,304 +1,163 @@
-<!DOCTYPE html><!DOCTYPE html>
 
-<html lang="en"><html lang="en">
-
-<head>  <head>
-
-    <meta charset="utf-8">    <meta charset="utf-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>C# 14 Feature Guide - Blogger Version</title>    <meta
-
-</head>      name="description"
-
-<body>      content="Explore the key features of C# 14, including extension members, field keyword, and more improvements for cleaner code."
-
-    />
-
-<!-- ============================================ -->    <title>C# 14 Feature Guide - A Leap Toward Cleaner, Smarter Code</title>
-
-<!-- SECTION 1: CSS STYLES                        -->    <style>
-
-<!-- Copy this into Blogger Theme CSS or use      -->      * {
-
-<!-- <style> tags in your post HTML view          -->        margin: 0;
-
-<!-- ============================================ -->        padding: 0;
-
-        box-sizing: border-box;
-
-<div style="background: #f0f0f0; padding: 20px; margin: 20px 0; border: 2px dashed #666;">      }
-
-<h3>📋 COPY THIS CSS (Method 1: Add to Theme CSS)</h3>      body {
-
-<p><strong>Go to:</strong> Theme → Customize → Advanced → Add CSS</p>        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-<pre style="background: #fff; padding: 15px; overflow-x: auto; border: 1px solid #ddd;">        line-height: 1.6;
-
-<code>        color: #333;
-
-/* C# 14 Blog Post Styles */        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-
-.csharp-blog-container {        min-height: 100vh;
-
-    max-width: 900px;        padding: 2rem 1rem;
-
-    margin: 20px auto;      }
-
-    background: white;      .container {
-
-    border-radius: 12px;        max-width: 900px;
-
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);        margin: 0 auto;
-
-    overflow: hidden;        background: white;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;        border-radius: 12px;
-
-}        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-
-        overflow: hidden;
-
-.csharp-blog-header {      }
-
-    background: linear-gradient(135deg, #512da8 0%, #673ab7 100%);      header {
-
-    color: white;        background: linear-gradient(135deg, #512da8 0%, #673ab7 100%);
-
-    padding: 3rem 2rem;        color: white;
-
-    text-align: center;        padding: 3rem 2rem;
-
-}        text-align: center;
-
-      }
-
-.csharp-blog-header h1 {      header h1 {
-
-    font-size: 2.5rem;        font-size: 2.5rem;
-
-    margin-bottom: 1rem;        margin-bottom: 1rem;
-
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-
-    line-height: 1.2;      }
-
-}      main {
-
-        padding: 2.5rem;
-
-.csharp-blog-header p {      }
-
-    font-size: 1.1rem;      h2 {
-
-    opacity: 0.95;        color: #512da8;
-
-}        font-size: 1.8rem;
-
-        margin-bottom: 1rem;
-
-.csharp-blog-content {        border-bottom: 3px solid #673ab7;
-
-    padding: 2.5rem;      }
-
-    line-height: 1.7;      code {
-
-}        background: #f4f4f4;
-
-        padding: 0.2rem 0.4rem;
-
-.csharp-blog-content section {        border-radius: 3px;
-
-    margin-bottom: 3rem;        font-family: Consolas, monospace;
-
-}        color: #d63384;
-
-      }
-
-.csharp-blog-content h2 {      pre {
-
-    color: #512da8;        background: #1e1e1e;
-
-    font-size: 1.8rem;        color: #d4d4d4;
-
-    margin: 2rem 0 1rem;        padding: 1.5rem;
-
-    padding-bottom: 0.5rem;        border-radius: 8px;
-
-    border-bottom: 3px solid #673ab7;        overflow-x: auto;
-
-}        margin: 1.5rem 0;
-
-      }
-
-.csharp-blog-content h3 {    </style>
-
-    color: #673ab7;  </head>
-
-    font-size: 1.4rem;  <body>
-
-    margin: 1.5rem 0 1rem;    <div class="container">
-
-}      <header>
-
-        <h1>C# 14 A Leap Toward Cleaner, Smarter Code</h1>
-
-.csharp-blog-content p {        <p>Exploring the most impactful features with practical examples</p>
-
-    margin-bottom: 1rem;      </header>
-
-    color: #333;      <main>
-
-}        <article>
-
-          <h2>Introduction</h2>
-
-.intro-box {          <p>
-
-    background: #f5f5f5;            C# 14 marks a thoughtful evolution in the language, focusing on
-
-    padding: 1.5rem;            expressiveness, modularity, and developer productivity.
-
-    border-left: 4px solid #673ab7;          </p>
-
-    border-radius: 4px;        </article>
-
-    margin: 1.5rem 0;      </main>
-
-}    </div>
-
-  </body>
-
-.feature-list-box {</html>
-
-    background: #fafafa;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-}
-
-.csharp-blog-content ol,
-.csharp-blog-content ul {
-    margin-left: 2rem;
-    margin-bottom: 1rem;
-}
-
-.csharp-blog-content li {
-    margin-bottom: 0.8rem;
-    line-height: 1.7;
-}
-
-.csharp-blog-content li strong {
-    color: #512da8;
-}
-
-.csharp-blog-content code {
-    background: #f4f4f4;
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
-    font-family: 'Courier New', Consolas, monospace;
-    font-size: 0.9em;
-    color: #d63384;
-}
-
-.csharp-blog-content pre {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    padding: 1.5rem;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin: 1.5rem 0;
-    border-left: 4px solid #673ab7;
-}
-
-.csharp-blog-content pre code {
-    background: transparent;
-    color: inherit;
-    padding: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.code-comment { color: #6a9955; }
-.code-keyword { color: #569cd6; }
-.code-type { color: #4ec9b0; }
-
-.highlight-box {
-    background: #e8f5e9;
-    border-left: 4px solid #4caf50;
-    padding: 1rem;
-    margin: 1.5rem 0;
-    border-radius: 4px;
-}
-
-.emoji {
-    font-size: 1.2em;
-    margin-right: 0.3rem;
-}
-
-@media (max-width: 768px) {
-    .csharp-blog-header h1 {
-        font-size: 1.8rem;
-    }
-    .csharp-blog-content {
-        padding: 1.5rem;
-    }
-    .csharp-blog-content h2 {
-        font-size: 1.5rem;
-    }
-}
-</code>
-</pre>
-</div>
-
-<!-- ============================================ -->
-<!-- SECTION 2: HTML CONTENT FOR BLOG POST       -->
-<!-- Copy this into Blogger HTML editor          -->
-<!-- (Switch from Compose to HTML view)          -->
-<!-- ============================================ -->
-
-<div style="background: #e3f2fd; padding: 20px; margin: 20px 0; border: 2px dashed #1976d2;">
-<h3>📋 COPY THIS HTML (Paste in Blogger's HTML View)</h3>
-<p><strong>Instructions:</strong> In Blogger, create a new post → Click "HTML" view (not Compose) → Paste this code</p>
-</div>
-
-<!-- ========== START COPYING FROM HERE ========== -->
 
 <style>
-/* Inline styles for Blogger - Alternative to Theme CSS */
-.csharp-blog-container { max-width: 900px; margin: 20px auto; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.15); overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-.csharp-blog-header { background: linear-gradient(135deg, #512da8 0%, #673ab7 100%); color: white; padding: 3rem 2rem; text-align: center; }
-.csharp-blog-header h1 { font-size: 2.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1.2; }
-.csharp-blog-header p { font-size: 1.1rem; opacity: 0.95; }
-.csharp-blog-content { padding: 2.5rem; line-height: 1.7; }
-.csharp-blog-content section { margin-bottom: 3rem; }
-.csharp-blog-content h2 { color: #512da8; font-size: 1.8rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 3px solid #673ab7; }
-.csharp-blog-content h3 { color: #673ab7; font-size: 1.4rem; margin: 1.5rem 0 1rem; }
-.csharp-blog-content p { margin-bottom: 1rem; color: #333; }
-.intro-box { background: #f5f5f5; padding: 1.5rem; border-left: 4px solid #673ab7; border-radius: 4px; margin: 1.5rem 0; }
-.feature-list-box { background: #fafafa; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0; }
-.csharp-blog-content ol, .csharp-blog-content ul { margin-left: 2rem; margin-bottom: 1rem; }
-.csharp-blog-content li { margin-bottom: 0.8rem; line-height: 1.7; }
-.csharp-blog-content li strong { color: #512da8; }
-.csharp-blog-content code { background: #f4f4f4; padding: 0.2rem 0.5rem; border-radius: 3px; font-family: 'Courier New', Consolas, monospace; font-size: 0.9em; color: #d63384; }
-.csharp-blog-content pre { background: #1e1e1e; color: #d4d4d4; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border-left: 4px solid #673ab7; }
-.csharp-blog-content pre code { background: transparent; color: inherit; padding: 0; font-size: 0.95rem; line-height: 1.6; }
-.code-comment { color: #6a9955; }
-.code-keyword { color: #569cd6; }
-.code-type { color: #4ec9b0; }
-.highlight-box { background: #e8f5e9; border-left: 4px solid #4caf50; padding: 1rem; margin: 1.5rem 0; border-radius: 4px; }
-.emoji { font-size: 1.2em; margin-right: 0.3rem; }
-@media (max-width: 768px) {
-    .csharp-blog-header h1 { font-size: 1.8rem; }
-    .csharp-blog-content { padding: 1.5rem; }
-    .csharp-blog-content h2 { font-size: 1.5rem; }
-}
+    /* Inline styles for Blogger - Alternative to Theme CSS */
+    .csharp-blog-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .csharp-blog-header {
+        background: linear-gradient(135deg, #512da8 30%, #102f7b 40%,#102f7b 80%, #512da8 90%);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+        .csharp-blog-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .csharp-blog-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+    .csharp-blog-content {
+        padding: 2.5rem;
+        line-height: 1.7;
+    }
+
+        .csharp-blog-content section {
+            margin-bottom: 3rem;
+        }
+
+        .csharp-blog-content h2 {
+            color: #512da8;
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #673ab7;
+        }
+
+        .csharp-blog-content h3 {
+            color: #673ab7;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        .csharp-blog-content p {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+    .intro-box {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-left: 4px solid #673ab7;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    .feature-list-box {
+        background: #fafafa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+    }
+
+    .csharp-blog-content ol, .csharp-blog-content ul {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .csharp-blog-content li {
+        margin-bottom: 0.8rem;
+        line-height: 1.7;
+    }
+
+        .csharp-blog-content li strong {
+            color: #512da8;
+        }
+
+    .csharp-blog-content code {
+        background: #f4f4f4;
+        padding: 0.2rem 0.5rem;
+        border-radius: 3px;
+        font-family: 'Courier New', Consolas, monospace;
+        font-size: 0.9em;
+        color: #d63384;
+    }
+
+    .csharp-blog-content pre {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border-left: 4px solid #673ab7;
+    }
+
+        .csharp-blog-content pre code {
+            background: transparent;
+            color: inherit;
+            padding: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+    .code-comment {
+        color: #6a9955;
+    }
+
+    .code-keyword {
+        color: #569cd6;
+    }
+
+    .code-type {
+        color: #4ec9b0;
+    }
+
+    .highlight-box {
+        background: #e8f5e9;
+        border-left: 4px solid #4caf50;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+
+    .emoji {
+        font-size: 1.2em;
+        margin-right: 0.3rem;
+    }
+
+    @media (max-width: 768px) {
+        .csharp-blog-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .csharp-blog-content {
+            padding: 1.5rem;
+        }
+
+            .csharp-blog-content h2 {
+                font-size: 1.5rem;
+            }
+    }
 </style>
 
 <div class="csharp-blog-container">
     <div class="csharp-blog-header">
-        <h1>C# 14 — A Leap Toward Cleaner, Smarter Code</h1>
+        <h1><div class="separator" style="clear: both; text-align: center;"><a href="https://blogger.googleusercontent.com/img/a/AVvXsEjvkc9PxAI-Eg6xpyYz_tVXn4Rg15pOpufA2tzgGk4TiUUXvw0I7Mi8NOdscuvePrv7fkOKhwZsDdf0lb9FeEyqT4ZZxi_FU6Q-sFAsUIK97YVXDVHLeo109LqAh9jZAsBtnpo82jb0mHuXiKYw17CfRUW1lqK_Dkwy_Cka_oxSHV9mnCVkjsSNkou21uA" style="margin-left: 1em; margin-right: 1em;"><img alt="" data-original-height="1024" data-original-width="1024" height="640" src="https://blogger.googleusercontent.com/img/a/AVvXsEjvkc9PxAI-Eg6xpyYz_tVXn4Rg15pOpufA2tzgGk4TiUUXvw0I7Mi8NOdscuvePrv7fkOKhwZsDdf0lb9FeEyqT4ZZxi_FU6Q-sFAsUIK97YVXDVHLeo109LqAh9jZAsBtnpo82jb0mHuXiKYw17CfRUW1lqK_Dkwy_Cka_oxSHV9mnCVkjsSNkou21uA=w640-h640" width="640" /></a></div><br /><br /></h1><h1>C# 14 — A Leap Toward Cleaner, Smarter Code</h1>
         <p>Exploring the most impactful features with practical examples</p>
     </div>
 
@@ -313,12 +172,12 @@
         <section>
             <h2><span class="emoji">🧭</span> C# 14 Feature Highlights</h2>
             <p>Here are the key features we'll be diving into:</p>
-            
+
             <div class="feature-list-box">
                 <ol>
                     <li><strong>Extension Members</strong> — Add properties and indexers to existing types via extension blocks.</li>
                     <li><strong>Field Keyword in Properties</strong> — Access auto-generated backing fields directly with <code>field</code>.</li>
-                    <li><strong>Null-Conditional Assignment (<code>??=</code>)</strong> — Assign only when the target is null.</li>
+                    <li><strong>Enhanced Null-Conditional Member Access</strong> — Safer navigation with <code>?.</code> and <code>?[]</code>.</li>
                     <li><strong>Unbound Generic Types in <code>nameof</code></strong> — Use open generic types for cleaner diagnostics.</li>
                     <li><strong>Implicit Span Conversions</strong> — Seamless transitions between <code>Span&lt;T&gt;</code> and <code>ReadOnlySpan&lt;T&gt;</code>.</li>
                     <li><strong>Lambda Parameter Modifiers</strong> — Use <code>ref</code>, <code>in</code>, or <code>out</code> in lambda expressions.</li>
@@ -332,46 +191,43 @@
 
         <section>
             <h2>1. Extension Members</h2>
-            
+
             <h3><span class="emoji">🔧</span> What Are Extension Members?</h3>
             <p>Traditionally, C# extension methods let you "add" methods to existing types without modifying them. But with C# 14, you can now define:</p>
-            
+
             <ul>
                 <li>Properties</li>
                 <li>Indexers</li>
                 <li>Events</li>
                 <li>Even operators</li>
             </ul>
-            
+
             <p>…all inside an <code>extension</code> block scoped to a specific type.</p>
 
-            <h3><span class="emoji">🧪</span> Example: Extension Members for <code>IEnumerable&lt;T&gt;</code></h3>
-            
-<pre><code><span class="code-keyword">static class</span> <span class="code-type">EnumerableExtensions</span>
+            <h3><span class="emoji">🧪</span> Example: Extension Methods for <code>IEnumerable&lt;T&gt;</code></h3>
+
+<pre><code><span class="code-keyword">public static class</span> <span class="code-type">EnumerableExtensions</span>
 {
-    <span class="code-keyword">extension</span>&lt;<span class="code-type">T</span>&gt;(<span class="code-type">IEnumerable</span>&lt;<span class="code-type">T</span>&gt; source)
-    {
-        <span class="code-comment">// Property: Check if the collection is empty</span>
-        <span class="code-keyword">public bool</span> IsEmpty => !source.Any();
+            <span class="code-comment">// Method: Check if the collection is empty</span>
+            <span class="code-keyword">public static bool</span> IsEmpty&lt;<span class="code-type">T</span>&gt;(<span class="code-keyword">this</span> <span class="code-type">IEnumerable</span>&lt;<span class="code-type">T</span>&gt; source)
+        =&gt; !source.Any();
 
-        <span class="code-comment">// Indexer: Access element by index</span>
-        <span class="code-keyword">public</span> <span class="code-type">T</span> <span class="code-keyword">this</span>[<span class="code-keyword">int</span> index] => source.Skip(index).First();
+            <span class="code-comment">// Method: Access element by index safely (returns default if out of range)</span>
+            <span class="code-keyword">public static</span> <span class="code-type">T</span>? ElementAtOrDefaultSafe&lt;<span class="code-type">T</span>&gt;(<span class="code-keyword">this</span> <span class="code-type">IEnumerable</span>&lt;<span class="code-type">T</span>&gt; source, <span class="code-keyword">int</span> index)
+        =&gt; source.Skip(index).DefaultIfEmpty(<span class="code-keyword">default</span>!).FirstOrDefault();
 
-        <span class="code-comment">// Method: Get the last element safely</span>
-        <span class="code-keyword">public</span> <span class="code-type">T</span>? LastOrDefaultSafe() => source.Reverse().FirstOrDefault();
-    }
+            <span class="code-comment">// Method: Get the last element safely</span>
+            <span class="code-keyword">public static</span> <span class="code-type">T</span>? LastOrDefaultSafe&lt;<span class="code-type">T</span>&gt;(<span class="code-keyword">this</span> <span class="code-type">IEnumerable</span>&lt;<span class="code-type">T</span>&gt; source)
+        =&gt; source.LastOrDefault();
 }</code></pre>
 
             <h3><span class="emoji">💡</span> Usage Example</h3>
 <pre><code><span class="code-keyword">var</span> numbers = <span class="code-keyword">new</span>[] { 1, 2, 3, 4, 5 };
 
-<span class="code-comment">// Using the extension property</span>
-<span class="code-keyword">if</span> (!numbers.IsEmpty)
+<span class="code-comment">// Using the extension methods</span>
+<span class="code-keyword">if</span> (!numbers.IsEmpty())
 {
-    <span class="code-comment">// Using the extension indexer</span>
-    Console.WriteLine($<span class="code-type">"Third element: {numbers[2]}"</span>);
-    
-    <span class="code-comment">// Using the extension method</span>
+    Console.WriteLine($<span class="code-type">"Third element: {numbers.ElementAtOrDefaultSafe(2)}"</span>);
     Console.WriteLine($<span class="code-type">"Last element: {numbers.LastOrDefaultSafe()}"</span>);
 }</code></pre>
 
@@ -387,30 +243,30 @@
 
         <section>
             <h2>2. Field Keyword in Properties</h2>
-            
+
             <h3><span class="emoji">🔑</span> Direct Access to Backing Fields</h3>
             <p>The new <code>field</code> keyword allows you to access the auto-generated backing field directly in property accessors, eliminating the need to manually declare private fields.</p>
 
             <h3><span class="emoji">🧪</span> Example: Smart Properties with Validation</h3>
 <pre><code><span class="code-keyword">public class</span> <span class="code-type">Product</span>
 {
-    <span class="code-keyword">public string</span> Name { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+            <span class="code-keyword">public string</span> Name { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
 
-    <span class="code-keyword">public decimal</span> Price
+            <span class="code-keyword">public decimal</span> Price
     {
-        <span class="code-keyword">get</span> => field;
-        <span class="code-keyword">set</span>
+            <span class="code-keyword">get</span> =&gt; field;
+            <span class="code-keyword">set</span>
         {
-            <span class="code-keyword">if</span> (value < 0)
-                <span class="code-keyword">throw new</span> <span class="code-type">ArgumentException</span>(<span class="code-type">"Price cannot be negative"</span>);
+            <span class="code-keyword">if</span> (value &lt; 0)
+            <span class="code-keyword">throw new</span> <span class="code-type">ArgumentException</span>(<span class="code-type">"Price cannot be negative"</span>);
             field = value;
         }
     }
 
-    <span class="code-keyword">public int</span> Quantity
+            <span class="code-keyword">public int</span> Quantity
     {
-        <span class="code-keyword">get</span> => field;
-        <span class="code-keyword">set</span>
+            <span class="code-keyword">get</span> =&gt; field;
+            <span class="code-keyword">set</span>
         {
             field = Math.Max(0, value); <span class="code-comment">// Ensure non-negative</span>
             Console.WriteLine($<span class="code-type">"Stock updated: {field} units"</span>);
@@ -424,37 +280,162 @@
         </section>
 
         <section>
-            <h2>3. Null-Conditional Assignment (??=)</h2>
-            
-            <h3><span class="emoji">🎯</span> Assign Only When Null</h3>
-            <p>The <code>??=</code> operator assigns a value to a variable only if it's currently <code>null</code>. This simplifies lazy initialization patterns.</p>
+            <h2>3. Enhanced Null-Conditional Member Access</h2>
 
-<pre><code><span class="code-keyword">private</span> <span class="code-type">Logger</span>? _logger;
+            <h3><span class="emoji">🎯</span> Safer Navigation with ?. and ?[]</h3>
+            <p>C# 14 enhances the null-conditional member access operators <code>?.</code> and <code>?[]</code> with improved support for more scenarios and better performance. These operators allow you to safely navigate object hierarchies without explicit null checks.</p>
 
-<span class="code-keyword">public</span> <span class="code-type">Logger</span> Logger
+            <h3><span class="emoji">🧪</span> Example: Enhanced Null-Conditional Access</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">Person</span>
 {
-    <span class="code-keyword">get</span>
-    {
-        <span class="code-comment">// Initialize only if null</span>
-        _logger ??= <span class="code-keyword">new</span> <span class="code-type">Logger</span>();
-        <span class="code-keyword">return</span> _logger;
-    }
-}</code></pre>
-
-            <p><strong>Comparison with traditional approach:</strong></p>
-<pre><code><span class="code-comment">// Old way</span>
-<span class="code-keyword">if</span> (_logger == <span class="code-keyword">null</span>)
-{
-    _logger = <span class="code-keyword">new</span> <span class="code-type">Logger</span>();
+    <span class="code-keyword">public string</span>? Name { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public</span> <span class="code-type">Address</span>? HomeAddress { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public</span> <span class="code-type">List</span>&lt;<span class="code-type">Phone</span>&gt;? PhoneNumbers { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
 }
 
-<span class="code-comment">// New way</span>
-_logger ??= <span class="code-keyword">new</span> <span class="code-type">Logger</span>();</code></pre>
+<span class="code-keyword">public class</span> <span class="code-type">Address</span>
+{
+    <span class="code-keyword">public string</span>? Street { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public string</span>? City { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">string</span>&gt;? Metadata { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}
+
+<span class="code-keyword">public class</span> <span class="code-type">Phone</span>
+{
+    <span class="code-keyword">public string</span> Type { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; } = <span class="code-keyword">string</span>.Empty;
+    <span class="code-keyword">public string</span> Number { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; } = <span class="code-keyword">string</span>.Empty;
+}
+
+<span class="code-comment">// C# 14: Enhanced null-conditional access</span>
+<span class="code-keyword">void</span> ProcessPerson(<span class="code-type">Person</span>? person)
+{
+    <span class="code-comment">// Safe property access</span>
+    <span class="code-keyword">var</span> city = person?.HomeAddress?.City;
+    
+    <span class="code-comment">// Safe indexer access with ?[]</span>
+    <span class="code-keyword">var</span> postalCode = person?.HomeAddress?.Metadata?[<span class="code-type">"PostalCode"</span>];
+    
+    <span class="code-comment">// Safe collection access</span>
+    <span class="code-keyword">var</span> firstPhone = person?.PhoneNumbers?[0]?.Number;
+    
+    <span class="code-comment">// Safe method invocation</span>
+    <span class="code-keyword">var</span> phoneCount = person?.PhoneNumbers?.Count;
+    
+    <span class="code-comment">// Complex chaining with multiple null checks</span>
+    <span class="code-keyword">var</span> hasWorkPhone = person?.PhoneNumbers
+        ?.Any(p => p?.Type == <span class="code-type">"Work"</span>) ?? <span class="code-keyword">false</span>;
+}</code></pre>
+
+            <h3><span class="emoji">💡</span> Real-World Example: API Response Processing</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">ApiResponse</span>
+{
+    <span class="code-keyword">public</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">object</span>&gt;? Data { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public</span> <span class="code-type">List</span>&lt;<span class="code-keyword">string</span>&gt;? Errors { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">string</span>&gt;? Headers { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}
+
+<span class="code-keyword">void</span> ProcessApiResponse(<span class="code-type">ApiResponse</span>? response)
+{
+    <span class="code-comment">// Traditional approach - verbose and error-prone</span>
+    <span class="code-keyword">string</span>? userId = <span class="code-keyword">null</span>;
+    <span class="code-keyword">if</span> (response != <span class="code-keyword">null</span> && 
+        response.Data != <span class="code-keyword">null</span> && 
+        response.Data.ContainsKey(<span class="code-type">"user"</span>) &&
+        response.Data[<span class="code-type">"user"</span>] <span class="code-keyword">is</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">object</span>&gt; user &&
+        user.ContainsKey(<span class="code-type">"id"</span>))
+    {
+        userId = user[<span class="code-type">"id"</span>]?.ToString();
+    }
+
+    <span class="code-comment">// C# 14: Enhanced null-conditional approach</span>
+    <span class="code-keyword">var</span> userIdSimple = (response?.Data?[<span class="code-type">"user"</span>] <span class="code-keyword">as</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">object</span>&gt;)
+        ?[<span class="code-type">"id"</span>]?.ToString();
+    
+    <span class="code-comment">// Safe error message extraction</span>
+    <span class="code-keyword">var</span> firstError = response?.Errors?[0];
+    <span class="code-keyword">var</span> errorCount = response?.Errors?.Count ?? 0;
+    
+    <span class="code-comment">// Safe header access</span>
+    <span class="code-keyword">var</span> contentType = response?.Headers?[<span class="code-type">"Content-Type"</span>];
+    <span class="code-keyword">var</span> rateLimit = response?.Headers?[<span class="code-type">"X-Rate-Limit"</span>];
+    
+    <span class="code-comment">// Combining with null-coalescing for defaults</span>
+    <span class="code-keyword">var</span> safeContentType = response?.Headers?[<span class="code-type">"Content-Type"</span>] ?? <span class="code-type">"application/json"</span>;
+}</code></pre>
+
+            <p><strong>Comparison with traditional null checking:</strong></p>
+<pre><code><span class="code-comment">// Old way - verbose and repetitive</span>
+<span class="code-keyword">string</span>? GetCityOldWay(<span class="code-type">Person</span>? person)
+{
+    <span class="code-keyword">if</span> (person != <span class="code-keyword">null</span> && 
+        person.HomeAddress != <span class="code-keyword">null</span> && 
+        person.HomeAddress.City != <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">return</span> person.HomeAddress.City;
+    }
+    <span class="code-keyword">return null</span>;
+}
+
+<span class="code-comment">// C# 14 way - concise and readable</span>
+<span class="code-keyword">string</span>? GetCityNewWay(<span class="code-type">Person</span>? person) => person?.HomeAddress?.City;</code></pre>
+
+            <h3><span class="emoji">🎯</span> Advanced Example: JSON-like Object Navigation</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">JsonDocument</span>
+{
+    <span class="code-keyword">public</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">object</span>&gt;? Root { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}
+
+<span class="code-keyword">void</span> ExtractNestedData(<span class="code-type">JsonDocument</span>? doc)
+{
+    <span class="code-comment">// Navigate deeply nested JSON-like structures safely</span>
+    <span class="code-keyword">var</span> nestedValue = (doc?.Root?[<span class="code-type">"data"</span>] <span class="code-keyword">as</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">object</span>&gt;)
+        ?[<span class="code-type">"items"</span>] <span class="code-keyword">as</span> <span class="code-type">List</span>&lt;<span class="code-keyword">object</span>&gt;;
+    
+    <span class="code-comment">// Safe array access with bounds checking</span>
+    <span class="code-keyword">var</span> firstItem = (nestedValue?.Count > 0) 
+        ? nestedValue[0] <span class="code-keyword">as</span> <span class="code-type">Dictionary</span>&lt;<span class="code-keyword">string</span>, <span class="code-keyword">object</span>&gt;
+        : <span class="code-keyword">null</span>;
+    
+    <span class="code-comment">// Extract final value with multiple fallbacks</span>
+    <span class="code-keyword">var</span> finalValue = firstItem?[<span class="code-type">"value"</span>]?.ToString() 
+                    ?? firstItem?[<span class="code-type">"default"</span>]?.ToString() 
+                    ?? <span class="code-type">"Unknown"</span>;
+    
+    Console.WriteLine($<span class="code-type">"Extracted value: {finalValue}"</span>);
+}
+
+<span class="code-comment">// Working with nullable collections</span>
+<span class="code-keyword">void</span> ProcessOptionalCollections(<span class="code-type">Person</span>? person)
+{
+    <span class="code-comment">// Safe enumeration</span>
+    <span class="code-keyword">var</span> phoneTypes = person?.PhoneNumbers
+        ?.Where(p => p?.Type != <span class="code-keyword">null</span>)
+        ?.Select(p => p.Type)
+        ?.ToList();
+    
+    <span class="code-comment">// Safe aggregation</span>
+    <span class="code-keyword">var</span> totalPhones = person?.PhoneNumbers?.Count ?? 0;
+    
+    <span class="code-comment">// Safe conditional operations</span>
+    <span class="code-keyword">var</span> hasMobilePhone = person?.PhoneNumbers
+        ?.Any(p => p?.Type?.ToLower() == <span class="code-type">"mobile"</span>) ?? <span class="code-keyword">false</span>;
+}</code></pre>
+
+            <div class="highlight-box">
+                <p><strong>💡 Key Benefits:</strong></p>
+                <ul>
+                    <li><strong>Cleaner code</strong> — Eliminates verbose null-checking boilerplate</li>
+                    <li><strong>Better performance</strong> — Optimized null checks with minimal overhead</li>
+                    <li><strong>Safer navigation</strong> — Prevents NullReferenceException at runtime</li>
+                    <li><strong>Enhanced readability</strong> — Intent is clearer than nested if statements</li>
+                    <li><strong>Chainable operations</strong> — Multiple safe operations in single expressions</li>
+                </ul>
+            </div>
         </section>
 
         <section>
             <h2>4. Unbound Generic Types in <code>nameof</code></h2>
-            
+
             <h3><span class="emoji">📝</span> What Are Unbound Generic Types?</h3>
             <p>Prior to C# 14, you couldn't use <code>nameof</code> with open generic types directly. You had to specify type parameters even when you just wanted the type's name. Now, you can reference unbound generic types cleanly.</p>
 
@@ -469,27 +450,27 @@ _logger ??= <span class="code-keyword">new</span> <span class="code-type">Logger
             <h3><span class="emoji">💡</span> Real-World Usage: Generic Factory with Logging</h3>
 <pre><code><span class="code-keyword">public class</span> <span class="code-type">GenericFactory</span>&lt;<span class="code-type">T</span>&gt; <span class="code-keyword">where</span> <span class="code-type">T</span> : <span class="code-keyword">new</span>()
 {
-    <span class="code-keyword">public</span> <span class="code-type">T</span> Create()
+            <span class="code-keyword">public</span> <span class="code-type">T</span> Create()
     {
-        <span class="code-comment">// Log the factory name without specifying T</span>
-        <span class="code-keyword">var</span> factoryName = <span class="code-keyword">nameof</span>(<span class="code-type">GenericFactory</span>&lt;&gt;);
+            <span class="code-comment">// Log the factory name without specifying T</span>
+            <span class="code-keyword">var</span> factoryName = <span class="code-keyword">nameof</span>(<span class="code-type">GenericFactory</span>&lt;&gt;);
         Console.WriteLine($<span class="code-type">"Creating instance in {factoryName}"</span>);
         
-        <span class="code-keyword">return new</span> <span class="code-type">T</span>();
+            <span class="code-keyword">return new</span> <span class="code-type">T</span>();
     }
 }
 
 <span class="code-comment">// Usage in error handling</span>
 <span class="code-keyword">public void</span> ProcessRepository&lt;<span class="code-type">TRepo</span>, <span class="code-type">TEntity</span>&gt;()
 {
-    <span class="code-keyword">try</span>
+            <span class="code-keyword">try</span>
     {
-        <span class="code-comment">// Processing logic...</span>
+            <span class="code-comment">// Processing logic...</span>
     }
-    <span class="code-keyword">catch</span> (<span class="code-type">Exception</span> ex)
+            <span class="code-keyword">catch</span> (<span class="code-type">Exception</span> ex)
     {
-        <span class="code-comment">// Clean error messages without type parameters</span>
-        <span class="code-keyword">throw new</span> <span class="code-type">InvalidOperationException</span>(
+            <span class="code-comment">// Clean error messages without type parameters</span>
+            <span class="code-keyword">throw new</span> <span class="code-type">InvalidOperationException</span>(
             $<span class="code-type">"Failed in {nameof(ProcessRepository&lt;,&gt;)}"</span>, ex);
     }
 }</code></pre>
@@ -515,7 +496,7 @@ _logger ??= <span class="code-keyword">new</span> <span class="code-type">Logger
 
         <section>
             <h2>5. Implicit Span Conversions</h2>
-            
+
             <h3><span class="emoji">⚡</span> Seamless Span Type Transitions</h3>
             <p>C# 14 introduces implicit conversions between <code>Span&lt;T&gt;</code> and <code>ReadOnlySpan&lt;T&gt;</code>, making it much easier to work with high-performance memory operations. You can now pass <code>Span&lt;T&gt;</code> to methods expecting <code>ReadOnlySpan&lt;T&gt;</code> without explicit casting.</p>
 
@@ -523,7 +504,7 @@ _logger ??= <span class="code-keyword">new</span> <span class="code-type">Logger
 <pre><code><span class="code-comment">// Before C# 14 - Manual casting required</span>
 <span class="code-keyword">void</span> ProcessData(<span class="code-type">ReadOnlySpan</span>&lt;<span class="code-keyword">byte</span>&gt; data)
 {
-    <span class="code-comment">// Process read-only data</span>
+            <span class="code-comment">// Process read-only data</span>
     Console.WriteLine($<span class="code-type">"Processing {data.Length} bytes"</span>);
 }
 
@@ -540,40 +521,40 @@ ProcessData(buffer); <span class="code-comment">// ✅ Works seamlessly!</span><
             <h3><span class="emoji">💡</span> Real-World Example: Stream Processing</h3>
 <pre><code><span class="code-keyword">public class</span> <span class="code-type">DataProcessor</span>
 {
-    <span class="code-comment">// Method that reads data without modifying it</span>
-    <span class="code-keyword">public int</span> CalculateChecksum(<span class="code-type">ReadOnlySpan</span>&lt;<span class="code-keyword">byte</span>&gt; data)
+            <span class="code-comment">// Method that reads data without modifying it</span>
+            <span class="code-keyword">public int</span> CalculateChecksum(<span class="code-type">ReadOnlySpan</span>&lt;<span class="code-keyword">byte</span>&gt; data)
     {
-        <span class="code-keyword">int</span> checksum = 0;
-        <span class="code-keyword">foreach</span> (<span class="code-keyword">var</span> b <span class="code-keyword">in</span> data)
+            <span class="code-keyword">int</span> checksum = 0;
+            <span class="code-keyword">foreach</span> (<span class="code-keyword">var</span> b <span class="code-keyword">in</span> data)
         {
             checksum ^= b;
         }
-        <span class="code-keyword">return</span> checksum;
+            <span class="code-keyword">return</span> checksum;
     }
 
-    <span class="code-comment">// Method that modifies data</span>
-    <span class="code-keyword">public void</span> EncryptData(<span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; data, <span class="code-keyword">byte</span> key)
+            <span class="code-comment">// Method that modifies data</span>
+            <span class="code-keyword">public void</span> EncryptData(<span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; data, <span class="code-keyword">byte</span> key)
     {
-        <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 0; i &lt; data.Length; i++)
+            <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 0; i &lt; data.Length; i++)
         {
             data[i] ^= key;
         }
     }
 
-    <span class="code-keyword">public void</span> ProcessStream()
+            <span class="code-keyword">public void</span> ProcessStream()
     {
-        <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; buffer = stackalloc <span class="code-keyword">byte</span>[512];
+            <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; buffer = stackalloc <span class="code-keyword">byte</span>[512];
         
-        <span class="code-comment">// Fill buffer with data...</span>
+            <span class="code-comment">// Fill buffer with data...</span>
         
-        <span class="code-comment">// Implicit conversion to ReadOnlySpan&lt;byte&gt;</span>
-        <span class="code-keyword">var</span> checksum = CalculateChecksum(buffer); <span class="code-comment">// ✅ Works!</span>
+            <span class="code-comment">// Implicit conversion to ReadOnlySpan&lt;byte&gt;</span>
+            <span class="code-keyword">var</span> checksum = CalculateChecksum(buffer); <span class="code-comment">// ✅ Works!</span>
         
-        <span class="code-comment">// Modify the buffer</span>
+            <span class="code-comment">// Modify the buffer</span>
         EncryptData(buffer, 0x5A);
         
-        <span class="code-comment">// Calculate checksum again</span>
-        <span class="code-keyword">var</span> newChecksum = CalculateChecksum(buffer); <span class="code-comment">// ✅ Still works!</span>
+            <span class="code-comment">// Calculate checksum again</span>
+            <span class="code-keyword">var</span> newChecksum = CalculateChecksum(buffer); <span class="code-comment">// ✅ Still works!</span>
         
         Console.WriteLine($<span class="code-type">"Checksums: {checksum} → {newChecksum}"</span>);
     }
@@ -583,7 +564,7 @@ ProcessData(buffer); <span class="code-comment">// ✅ Works seamlessly!</span><
 <pre><code><span class="code-comment">// Stack-allocated buffer for zero-allocation processing</span>
 <span class="code-keyword">public static</span> <span class="code-keyword">bool</span> ValidateData(<span class="code-type">ReadOnlySpan</span>&lt;<span class="code-keyword">char</span>&gt; input)
 {
-    <span class="code-keyword">return</span> input.Length &gt; 0 &amp;&amp; input[0] == <span class="code-type">'{'</span> &amp;&amp; input[^1] == <span class="code-type">'}'</span>;
+            <span class="code-keyword">return</span> input.Length &gt; 0 &amp;&amp; input[0] == <span class="code-type">'{'</span> &amp;&amp; input[^1] == <span class="code-type">'}'</span>;
 }
 
 <span class="code-comment">// Can now pass strings directly!</span>
@@ -616,7 +597,7 @@ ProcessData(buffer); <span class="code-comment">// ✅ Works seamlessly!</span><
 <pre><code><span class="code-comment">// Pattern 1: Parse without allocation</span>
 <span class="code-keyword">public static int</span> ParseNumber(<span class="code-type">ReadOnlySpan</span>&lt;<span class="code-keyword">char</span>&gt; text)
 {
-    <span class="code-keyword">return int</span>.Parse(text);
+            <span class="code-keyword">return int</span>.Parse(text);
 }
 
 <span class="code-keyword">string</span> input = <span class="code-type">"12345"</span>;
@@ -625,47 +606,786 @@ ProcessData(buffer); <span class="code-comment">// ✅ Works seamlessly!</span><
 <span class="code-comment">// Pattern 2: Slice and process</span>
 <span class="code-keyword">void</span> ProcessSegments(<span class="code-type">ReadOnlySpan</span>&lt;<span class="code-keyword">char</span>&gt; data)
 {
-    <span class="code-keyword">var</span> firstPart = data.Slice(0, 10);
-    <span class="code-keyword">var</span> secondPart = data.Slice(10);
-    <span class="code-comment">// Process without creating new strings</span>
+            <span class="code-keyword">var</span> firstPart = data.Slice(0, 10);
+            <span class="code-keyword">var</span> secondPart = data.Slice(10);
+            <span class="code-comment">// Process without creating new strings</span>
 }
 
 <span class="code-comment">// Pattern 3: Safe buffer operations</span>
 <span class="code-keyword">void</span> SafeReadBuffer()
 {
-    <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; writeBuffer = <span class="code-keyword">new byte</span>[100];
+            <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; writeBuffer = <span class="code-keyword">new byte</span>[100];
     FillBuffer(writeBuffer);
     
-    <span class="code-comment">// Pass as read-only to prevent modifications</span>
+            <span class="code-comment">// Pass as read-only to prevent modifications</span>
     VerifyBuffer(writeBuffer); <span class="code-comment">// Implicit → ReadOnlySpan</span>
 }</code></pre>
         </section>
 
         <section>
+            <h2>6. Lambda Parameter Modifiers</h2>
+
+            <h3><span class="emoji">🔄</span> Enhanced Lambda Expressions</h3>
+            <p>C# 14 allows you to use parameter modifiers (<code>ref</code>, <code>in</code>, <code>out</code>) in lambda expressions, enabling more efficient parameter passing and better performance in high-throughput scenarios.</p>
+
+            <h3><span class="emoji">🧪</span> Example: Using <code>ref</code> in Lambdas</h3>
+<pre><code><span class="code-comment">// Before C# 14 - Had to use delegates explicitly</span>
+<span class="code-keyword">delegate void</span> <span class="code-type">RefAction</span>&lt;<span class="code-type">T</span>&gt;(<span class="code-keyword">ref</span> <span class="code-type">T</span> value);
+
+<span class="code-keyword">void</span> ProcessWithRef(<span class="code-type">RefAction</span>&lt;<span class="code-keyword">int</span>&gt; action)
+{
+            <span class="code-keyword">int</span> value = 10;
+    action(<span class="code-keyword">ref</span> value);
+    Console.WriteLine(value);
+}
+
+<span class="code-comment">// C# 14 - Use ref directly in lambda</span>
+<span class="code-keyword">var</span> incrementer = (<span class="code-keyword">ref int</span> x) =&gt; x++;
+
+<span class="code-keyword">int</span> number = 5;
+incrementer(<span class="code-keyword">ref</span> number);
+Console.WriteLine(number); <span class="code-comment">// Output: 6</span></code></pre>
+
+            <h3><span class="emoji">💡</span> Real-World Example: High-Performance Data Processing</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">DataTransformer</span>
+{
+            <span class="code-comment">// Transform large structs in-place without copying</span>
+            <span class="code-keyword">public void</span> TransformInPlace&lt;<span class="code-type">T</span>&gt;(
+            <span class="code-type">List</span>&lt;<span class="code-type">T</span>&gt; items,
+            <span class="code-type">RefAction</span>&lt;<span class="code-type">T</span>&gt; transformer) <span class="code-keyword">where</span> <span class="code-type">T</span> : <span class="code-keyword">struct</span>
+    {
+            <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = 0; i &lt; items.Count; i++)
+        {
+            <span class="code-keyword">var</span> temp = items[i];
+            transformer(<span class="code-keyword">ref</span> temp);
+            items[i] = temp;
+        }
+    }
+}
+
+<span class="code-comment">// Usage: Transform points without allocation</span>
+<span class="code-keyword">struct</span> <span class="code-type">Point</span>
+{
+            <span class="code-keyword">public double</span> X, Y;
+}
+
+<span class="code-keyword">var</span> points = <span class="code-keyword">new</span> <span class="code-type">List</span>&lt;<span class="code-type">Point</span>&gt; { <span class="code-keyword">new</span>() { X = 1, Y = 2 } };
+<span class="code-keyword">var</span> transformer = <span class="code-keyword">new</span> <span class="code-type">DataTransformer</span>();
+
+<span class="code-comment">// Lambda with ref modifier - modifies in place</span>
+transformer.TransformInPlace(points, (<span class="code-keyword">ref</span> <span class="code-type">Point</span> p) =&gt; 
+{
+    p.X *= 2;
+    p.Y *= 2;
+});</code></pre>
+
+            <h3><span class="emoji">📊</span> Using <code>in</code> for Read-Only References</h3>
+<pre><code><span class="code-comment">// Use 'in' to pass large structs efficiently without copying</span>
+<span class="code-keyword">struct</span> <span class="code-type">Matrix4x4</span>
+{
+            <span class="code-keyword">public double</span>[,] Data;
+            <span class="code-comment">// ... large struct with 16 doubles</span>
+}
+
+<span class="code-comment">// Custom delegate type with 'in' parameter</span>
+<span class="code-keyword">public delegate double</span> <span class="code-type">InFunc</span>&lt;<span class="code-type">T</span>&gt;(<span class="code-keyword">in</span> <span class="code-type">T</span> value);
+
+<span class="code-comment">// Lambda with 'in' parameter - read-only, no copy</span>
+<span class="code-type">InFunc</span>&lt;<span class="code-type">Matrix4x4</span>&gt; calculateDeterminant = 
+    (<span class="code-keyword">in</span> <span class="code-type">Matrix4x4</span> matrix) =&gt;
+    {
+            <span class="code-comment">// Access matrix without copying the entire struct</span>
+            <span class="code-keyword">return</span> matrix.Data[0, 0] * matrix.Data[1, 1];
+    };
+
+<span class="code-keyword">var</span> matrix = <span class="code-keyword">new</span> <span class="code-type">Matrix4x4</span>();
+<span class="code-keyword">var</span> det = calculateDeterminant(<span class="code-keyword">in</span> matrix);</code></pre>
+
+            <h3><span class="emoji">🎯</span> Using <code>out</code> for Output Parameters</h3>
+<pre><code><span class="code-comment">// Custom delegate type with 'out' parameter</span>
+<span class="code-keyword">public delegate bool</span> <span class="code-type">TryParseFunc</span>&lt;<span class="code-type">T</span>&gt;(<span class="code-keyword">string</span> input, <span class="code-keyword">out</span> <span class="code-type">T</span> result);
+
+<span class="code-comment">// Lambda that returns multiple values via out parameter</span>
+<span class="code-type">TryParseFunc</span>&lt;<span class="code-keyword">int</span>&gt; tryParse = 
+    (<span class="code-keyword">string</span> input, <span class="code-keyword">out int</span> result) =&gt;
+    {
+            <span class="code-keyword">return int</span>.TryParse(input, <span class="code-keyword">out</span> result);
+    };
+
+<span class="code-keyword">if</span> (tryParse(<span class="code-type">"42"</span>, <span class="code-keyword">out var</span> value))
+{
+    Console.WriteLine($<span class="code-type">"Parsed: {value}"</span>);
+}
+
+<span class="code-comment">// Practical example: Validation with details</span>
+<span class="code-keyword">public delegate bool</span> <span class="code-type">TryValidate</span>(<span class="code-keyword">string</span> input, <span class="code-keyword">out string</span> errorMessage);
+
+<span class="code-type">TryValidate</span> validateEmail = 
+    (<span class="code-keyword">string</span> email, <span class="code-keyword">out string</span> errorMessage) =&gt;
+    {
+            <span class="code-keyword">if</span> (<span class="code-keyword">string</span>.IsNullOrEmpty(email))
+        {
+            errorMessage = <span class="code-type">"Email cannot be empty"</span>;
+            <span class="code-keyword">return false</span>;
+        }
+            <span class="code-keyword">if</span> (!email.Contains(<span class="code-type">"@"</span>))
+        {
+            errorMessage = <span class="code-type">"Invalid email format"</span>;
+            <span class="code-keyword">return false</span>;
+        }
+        errorMessage = <span class="code-keyword">string</span>.Empty;
+            <span class="code-keyword">return true</span>;
+    };</code></pre>
+
+            <div class="highlight-box">
+                <p><strong>💡 Key Benefits:</strong></p>
+                <ul>
+                    <li><strong>Better performance</strong> — Avoid copying large structs</li>
+                    <li><strong>More expressive</strong> — Write functional code with side effects when needed</li>
+                    <li><strong>Cleaner APIs</strong> — Use lambdas in more scenarios without wrapper methods</li>
+                    <li><strong>Type safety</strong> — Compiler enforces parameter semantics</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Partial Events and Constructors</h2>
+
+            <h3><span class="emoji">📂</span> Modular Code Organization</h3>
+            <p>C# 14 extends the <code>partial</code> keyword to events and constructors, allowing you to split their implementation across multiple files. This is especially useful for generated code scenarios and large class implementations.</p>
+
+            <h3><span class="emoji">🧪</span> Example: Partial Constructors</h3>
+<pre><code><span class="code-comment">// File: Person.cs - Main implementation</span>
+<span class="code-keyword">public partial class</span> <span class="code-type">Person</span>
+{
+            <span class="code-keyword">public string</span> FirstName { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+            <span class="code-keyword">public string</span> LastName { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+            <span class="code-keyword">public int</span> Age { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+            <span class="code-comment">// Partial constructor declaration</span>
+            <span class="code-keyword">public partial</span> Person(<span class="code-keyword">string</span> firstName, <span class="code-keyword">string</span> lastName);
+}
+
+<span class="code-comment">// File: Person.Generated.cs - Auto-generated validation logic</span>
+<span class="code-keyword">public partial class</span> <span class="code-type">Person</span>
+{
+            <span class="code-comment">// Partial constructor implementation</span>
+            <span class="code-keyword">public partial</span> Person(<span class="code-keyword">string</span> firstName, <span class="code-keyword">string</span> lastName)
+    {
+            <span class="code-comment">// Generated validation and initialization</span>
+            <span class="code-keyword">if</span> (<span class="code-keyword">string</span>.IsNullOrWhiteSpace(firstName))
+            <span class="code-keyword">throw new</span> <span class="code-type">ArgumentException</span>(<span class="code-keyword">nameof</span>(firstName));
+        
+            <span class="code-keyword">if</span> (<span class="code-keyword">string</span>.IsNullOrWhiteSpace(lastName))
+            <span class="code-keyword">throw new</span> <span class="code-type">ArgumentException</span>(<span class="code-keyword">nameof</span>(lastName));
+        
+        FirstName = firstName;
+        LastName = lastName;
+        Age = 0;
+        
+            <span class="code-comment">// Call generated initialization logic</span>
+        InitializeGeneratedProperties();
+    }
+
+            <span class="code-keyword">partial void</span> InitializeGeneratedProperties();
+}</code></pre>
+
+            <h3><span class="emoji">💡</span> Example: Partial Events</h3>
+<pre><code><span class="code-comment">// File: DataService.cs - Main class</span>
+<span class="code-keyword">public partial class</span> <span class="code-type">DataService</span>
+{
+            <span class="code-comment">// Partial event declaration</span>
+            <span class="code-keyword">public partial event</span> <span class="code-type">EventHandler</span>&lt;<span class="code-type">DataChangedEventArgs</span>&gt; DataChanged;
+
+            <span class="code-keyword">public void</span> UpdateData(<span class="code-keyword">string</span> newData)
+    {
+            <span class="code-comment">// Business logic</span>
+        ProcessData(newData);
+        
+            <span class="code-comment">// Raise the partial event</span>
+        DataChanged?.Invoke(<span class="code-keyword">this</span>, <span class="code-keyword">new</span> <span class="code-type">DataChangedEventArgs</span>(newData));
+    }
+
+            <span class="code-keyword">private void</span> ProcessData(<span class="code-keyword">string</span> data) { <span class="code-comment">/* ... */</span> }
+}
+
+<span class="code-comment">// File: DataService.Logging.cs - Logging concerns</span>
+<span class="code-keyword">public partial class</span> <span class="code-type">DataService</span>
+{
+            <span class="code-comment">// Partial event implementation with logging</span>
+            <span class="code-keyword">public partial event</span> <span class="code-type">EventHandler</span>&lt;<span class="code-type">DataChangedEventArgs</span>&gt; DataChanged
+    {
+            <span class="code-keyword">add</span>
+        {
+            Console.WriteLine($<span class="code-type">"Subscriber added to DataChanged event"</span>);
+            field += value; <span class="code-comment">// C# 14 field keyword</span>
+        }
+            <span class="code-keyword">remove</span>
+        {
+            Console.WriteLine($<span class="code-type">"Subscriber removed from DataChanged event"</span>);
+            field -= value;
+        }
+    }
+}</code></pre>
+
+            <h3><span class="emoji">🎯</span> Real-World Use Case: Separating Generated Code</h3>
+<pre><code><span class="code-comment">// File: ViewModel.cs - Hand-written code</span>
+<span class="code-keyword">public partial class</span> <span class="code-type">UserViewModel</span>
+{
+            <span class="code-keyword">private string</span> _username;
+    
+            <span class="code-comment">// Partial event for property changes</span>
+            <span class="code-keyword">public partial event</span> <span class="code-type">PropertyChangedEventHandler</span> PropertyChanged;
+
+            <span class="code-keyword">public string</span> Username
+    {
+            <span class="code-keyword">get</span> =&gt; _username;
+            <span class="code-keyword">set</span>
+        {
+            <span class="code-keyword">if</span> (_username != value)
+            {
+                _username = value;
+                OnPropertyChanged(<span class="code-keyword">nameof</span>(Username));
+            }
+        }
+    }
+
+            <span class="code-keyword">protected void</span> OnPropertyChanged(<span class="code-keyword">string</span> propertyName)
+    {
+        PropertyChanged?.Invoke(<span class="code-keyword">this</span>, <span class="code-keyword">new</span> <span class="code-type">PropertyChangedEventArgs</span>(propertyName));
+    }
+}
+
+<span class="code-comment">// File: ViewModel.Generated.cs - Source generated code</span>
+<span class="code-keyword">public partial class</span> <span class="code-type">UserViewModel</span>
+{
+            <span class="code-comment">// Generated partial constructor with dependency injection</span>
+            <span class="code-keyword">public partial</span> UserViewModel(
+            <span class="code-type">ILogger</span> logger,
+            <span class="code-type">IDataService</span> dataService);
+
+            <span class="code-keyword">public partial</span> UserViewModel(
+            <span class="code-type">ILogger</span> logger,
+            <span class="code-type">IDataService</span> dataService)
+    {
+            <span class="code-comment">// Generated initialization</span>
+        _logger = logger ?? <span class="code-keyword">throw new</span> <span class="code-type">ArgumentNullException</span>(<span class="code-keyword">nameof</span>(logger));
+        _dataService = dataService ?? <span class="code-keyword">throw new</span> <span class="code-type">ArgumentNullException</span>(<span class="code-keyword">nameof</span>(dataService));
+        
+        _logger.LogInformation(<span class="code-type">"UserViewModel created"</span>);
+    }
+
+            <span class="code-comment">// Generated partial event implementation with weak references</span>
+            <span class="code-keyword">public partial event</span> <span class="code-type">PropertyChangedEventHandler</span> PropertyChanged
+    {
+            <span class="code-keyword">add</span> { _weakEventManager.AddHandler(value); }
+            <span class="code-keyword">remove</span> { _weakEventManager.RemoveHandler(value); }
+    }
+
+            <span class="code-keyword">private readonly</span> <span class="code-type">WeakEventManager</span> _weakEventManager = <span class="code-keyword">new</span>();
+            <span class="code-keyword">private readonly</span> <span class="code-type">ILogger</span> _logger;
+            <span class="code-keyword">private readonly</span> <span class="code-type">IDataService</span> _dataService;
+}</code></pre>
+
+            <div class="highlight-box">
+                <p><strong>💡 Key Benefits:</strong></p>
+                <ul>
+                    <li><strong>Clean separation</strong> — Keep generated code separate from hand-written code</li>
+                    <li><strong>Better maintainability</strong> — Organize large classes across multiple files</li>
+                    <li><strong>Source generators</strong> — Perfect for code generation scenarios</li>
+                    <li><strong>Team collaboration</strong> — Different team members can work on different aspects</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>8. User-Defined Compound Assignment Operators</h2>
+
+            <h3><span class="emoji">🔧</span> Customize Compound Operations</h3>
+            <p>C# 14 allows you to define custom behavior for compound assignment operators like <code>+=</code>, <code>-=</code>, <code>*=</code>, etc. This enables more intuitive APIs for custom types.</p>
+
+            <h3><span class="emoji">🧪</span> Example: Custom Vector Type</h3>
+<pre><code><span class="code-keyword">public struct</span> <span class="code-type">Vector3</span>
+{
+            <span class="code-keyword">public double</span> X, Y, Z;
+
+            <span class="code-keyword">public</span> Vector3(<span class="code-keyword">double</span> x, <span class="code-keyword">double</span> y, <span class="code-keyword">double</span> z)
+    {
+        X = x; Y = y; Z = z;
+    }
+
+            <span class="code-comment">// Define the fundamental operators</span>
+            <span class="code-keyword">public static</span> <span class="code-type">Vector3</span> <span class="code-keyword">operator</span> +(<span class="code-type">Vector3</span> a, <span class="code-type">Vector3</span> b)
+        =&gt; <span class="code-keyword">new</span>(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+
+            <span class="code-keyword">public static</span> <span class="code-type">Vector3</span> <span class="code-keyword">operator</span> *(<span class="code-type">Vector3</span> v, <span class="code-keyword">double</span> scalar)
+        =&gt; <span class="code-keyword">new</span>(v.X * scalar, v.Y * scalar, v.Z * scalar);
+}
+
+<span class="code-comment">// Usage — Compound assignments use the defined operators</span>
+<span class="code-keyword">var</span> velocity = <span class="code-keyword">new</span> <span class="code-type">Vector3</span>(1, 2, 3);
+<span class="code-keyword">var</span> acceleration = <span class="code-keyword">new</span> <span class="code-type">Vector3</span>(0.1, 0.2, 0.3);
+
+velocity += acceleration; <span class="code-comment">// Uses operator + under the hood</span>
+velocity *= 0.5;          <span class="code-comment">// Uses operator * under the hood</span></code></pre>
+
+            <h3><span class="emoji">💡</span> Example: StringBuilder-like Builder Pattern</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">QueryBuilder</span>
+{
+            <span class="code-keyword">private</span> <span class="code-type">StringBuilder</span> _query = <span class="code-keyword">new</span>();
+
+            <span class="code-comment">// Define fundamental operators</span>
+            <span class="code-keyword">public static</span> <span class="code-type">QueryBuilder</span> <span class="code-keyword">operator</span> +(<span class="code-type">QueryBuilder</span> builder, <span class="code-keyword">string</span> clause)
+    {
+            <span class="code-keyword">if</span> (builder._query.Length &gt; 0)
+            builder._query.Append(<span class="code-type">" "</span>);
+        builder._query.Append(clause);
+            <span class="code-keyword">return</span> builder;
+    }
+
+            <span class="code-keyword">public static</span> <span class="code-type">QueryBuilder</span> <span class="code-keyword">operator</span> &amp;(<span class="code-type">QueryBuilder</span> builder, <span class="code-keyword">string</span> condition)
+    {
+            <span class="code-keyword">if</span> (!builder._query.ToString().Contains(<span class="code-type">"WHERE"</span>))
+            builder._query.Append(<span class="code-type">" WHERE "</span>);
+            <span class="code-keyword">else</span>
+            builder._query.Append(<span class="code-type">" AND "</span>);
+        builder._query.Append(condition);
+            <span class="code-keyword">return</span> builder;
+    }
+
+            <span class="code-keyword">public override string</span> ToString() =&gt; _query.ToString();
+}
+
+<span class="code-comment">// Usage — Intuitive query building</span>
+<span class="code-keyword">var</span> query = <span class="code-keyword">new</span> <span class="code-type">QueryBuilder</span>();
+query += <span class="code-type">"SELECT * FROM Users"</span>;
+query &amp;= <span class="code-type">"Age &gt; 18"</span>;
+query &amp;= <span class="code-type">"IsActive = 1"</span>;
+query += <span class="code-type">"ORDER BY Name"</span>;
+
+Console.WriteLine(query);
+<span class="code-comment">// Output: SELECT * FROM Users WHERE Age &gt; 18 AND IsActive = 1 ORDER BY Name</span></code></pre>
+
+            <h3><span class="emoji">🎯</span> Example: Collection Builder with Validation</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">ValidatedCollection</span>&lt;<span class="code-type">T</span>&gt;
+{
+            <span class="code-keyword">private</span> <span class="code-type">List</span>&lt;<span class="code-type">T</span>&gt; _items = <span class="code-keyword">new</span>();
+            <span class="code-keyword">private</span> <span class="code-type">Func</span>&lt;<span class="code-type">T</span>, <span class="code-keyword">bool</span>&gt; _validator;
+
+            <span class="code-keyword">public</span> ValidatedCollection(<span class="code-type">Func</span>&lt;<span class="code-type">T</span>, <span class="code-keyword">bool</span>&gt; validator)
+    {
+        _validator = validator;
+    }
+
+            <span class="code-comment">// Define fundamental operators</span>
+            <span class="code-keyword">public static</span> <span class="code-type">ValidatedCollection</span>&lt;<span class="code-type">T</span>&gt; <span class="code-keyword">operator</span> +(
+            <span class="code-type">ValidatedCollection</span>&lt;<span class="code-type">T</span>&gt; collection, <span class="code-type">T</span> item)
+    {
+            <span class="code-keyword">if</span> (collection._validator(item))
+        {
+            collection._items.Add(item);
+            Console.WriteLine($<span class="code-type">"✓ Added: {item}"</span>);
+        }
+            <span class="code-keyword">else</span>
+        {
+            Console.WriteLine($<span class="code-type">"✗ Rejected: {item}"</span>);
+        }
+            <span class="code-keyword">return</span> collection;
+    }
+
+            <span class="code-keyword">public static</span> <span class="code-type">ValidatedCollection</span>&lt;<span class="code-type">T</span>&gt; <span class="code-keyword">operator</span> -(
+            <span class="code-type">ValidatedCollection</span>&lt;<span class="code-type">T</span>&gt; collection, <span class="code-type">T</span> item)
+    {
+        collection._items.Remove(item);
+            <span class="code-keyword">return</span> collection;
+    }
+
+            <span class="code-keyword">public int</span> Count =&gt; _items.Count;
+}
+
+<span class="code-comment">// Usage</span>
+<span class="code-keyword">var</span> numbers = <span class="code-keyword">new</span> <span class="code-type">ValidatedCollection</span>&lt;<span class="code-keyword">int</span>&gt;(x =&gt; x &gt; 0);
+numbers += 5;   <span class="code-comment">// ✓ Added: 5</span>
+numbers += -3;  <span class="code-comment">// ✗ Rejected: -3</span>
+numbers += 10;  <span class="code-comment">// ✓ Added: 10</span></code></pre>
+
+            <div class="highlight-box">
+                <p><strong>💡 Key Benefits:</strong></p>
+                <ul>
+                    <li><strong>Intuitive syntax</strong> — Make custom types behave like built-in types</li>
+                    <li><strong>Performance</strong> — Optimize in-place operations without temporary allocations</li>
+                    <li><strong>Fluent APIs</strong> — Create chainable, readable code</li>
+                    <li><strong>Domain modeling</strong> — Express domain concepts naturally</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>9. Improved Interpolated Strings</h2>
+
+            <h3><span class="emoji">📝</span> Enhanced String Formatting</h3>
+            <p>C# 14 brings significant improvements to string interpolation, including better performance, enhanced formatting options, and support for custom interpolated string handlers.</p>
+
+            <h3><span class="emoji">🧪</span> Example: Advanced Formatting</h3>
+<pre><code><span class="code-comment">// Enhanced format specifiers</span>
+<span class="code-keyword">var</span> price = 1234.567;
+<span class="code-keyword">var</span> date = <span class="code-keyword">new</span> <span class="code-type">DateTime</span>(2025, 11, 3);
+
+<span class="code-comment">// Multiple format specifiers with alignment</span>
+<span class="code-keyword">var</span> formatted = $<span class="code-type">"Price: {price,15:C2} | Date: {date:yyyy-MM-dd}"</span>;
+<span class="code-comment">// Output: "Price:      $1,234.57 | Date: 2025-11-03"</span>
+
+<span class="code-comment">// C# 14: Conditional formatting within interpolation</span>
+<span class="code-keyword">var</span> stock = 5;
+<span class="code-keyword">var</span> message = $<span class="code-type">"Stock: {stock} ({(stock &gt; 0 ? \"Available\" : \"Out of stock\")})"</span>;
+
+<span class="code-comment">// Nested interpolations (improved in C# 14)</span>
+<span class="code-keyword">var</span> items = <span class="code-keyword">new</span>[] { <span class="code-type">"Apple"</span>, <span class="code-type">"Banana"</span>, <span class="code-type">"Cherry"</span> };
+<span class="code-keyword">var</span> list = $<span class="code-type">"Items: {string.Join(", ", items.Select(x =&gt; $"'{x}'"))}"</span>;
+<span class="code-comment">// Output: "Items: 'Apple', 'Banana', 'Cherry'"</span></code></pre>
+
+            <h3><span class="emoji">💡</span> Performance: Custom Interpolated String Handlers</h3>
+<pre><code><span class="code-comment">// Custom handler for SQL query building with parameter safety</span>
+[<span class="code-type">System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute</span>]
+<span class="code-keyword">public ref struct</span> <span class="code-type">SqlInterpolatedStringHandler</span>
+{
+            <span class="code-keyword">private</span> <span class="code-type">System.Text.StringBuilder</span> _builder;
+            <span class="code-keyword">private</span> <span class="code-type">System.Collections.Generic.List</span>&gt; _parameters;
+
+            <span class="code-keyword">public</span> SqlInterpolatedStringHandler(<span class="code-keyword">int</span> literalLength, <span class="code-keyword">int</span> formattedCount)
+    {
+    _builder = <span class="code-keyword">new</span> <span class="code-type">System.Text.StringBuilder</span>(literalLength);
+    _parameters = <span class="code-keyword">new</span> <span class="code-type">System.Collections.Generic.List</span>&lt;<span class="code-keyword">object</span>&gt;(formattedCount);
+    }
+
+            <span class="code-keyword">public void</span> AppendLiteral(<span class="code-keyword">string</span> s) =&gt; _builder.Append(s);
+
+            <span class="code-keyword">public void</span> AppendFormatted&lt;<span class="code-type">T</span>&gt;(<span class="code-type">T</span> value)
+    {
+        _parameters.Add(value);
+        _builder.Append($<span class="code-type">"@p{_parameters.Count - 1}"</span>);
+    }
+
+            <span class="code-keyword">public</span> (<span class="code-keyword">string</span> Query, <span class="code-keyword">object</span>[] Parameters) GetResult()
+        =&gt; (_builder.ToString(), _parameters.ToArray());
+}
+
+<span class="code-comment">// Usage - Safe parameterized queries</span>
+<span class="code-keyword">public static class</span> <span class="code-type">SqlQuery</span>
+{
+            <span class="code-keyword">public static</span> (<span class="code-keyword">string</span> Query, <span class="code-keyword">object</span>[] Parameters) Create(
+            <span class="code-type">SqlInterpolatedStringHandler</span> handler)
+    {
+            <span class="code-keyword">return</span> handler.GetResult();
+    }
+}
+
+<span class="code-comment">// Create safe SQL queries</span>
+<span class="code-keyword">var</span> userId = 42;
+<span class="code-keyword">var</span> userName = <span class="code-type">"John"</span>;
+
+<span class="code-keyword">var</span> (query, parameters) = <span class="code-type">SqlQuery</span>.Create(
+    $<span class="code-type">"SELECT * FROM Users WHERE Id = {userId} AND Name = {userName}"</span>);
+
+Console.WriteLine(query);
+<span class="code-comment">// Output: "SELECT * FROM Users WHERE Id = @p0 AND Name = @p1"</span>
+Console.WriteLine(<span class="code-keyword">string</span>.Join(<span class="code-type">", "</span>, parameters));
+<span class="code-comment">// Output: "42, John"</span></code></pre>
+
+            <h3><span class="emoji">🎯</span> Example: Logging with Conditional Evaluation</h3>
+<pre><code><span class="code-comment">// Custom logger that only evaluates expensive operations if needed</span>
+<span class="code-keyword">public enum</span> <span class="code-type">LogLevel</span> { Debug = 1, Info = 2, Warn = 3, Error = 4 }
+
+<span class="code-keyword">public class</span> <span class="code-type">SmartLogger</span>
+{
+            <span class="code-keyword">private</span> <span class="code-type">LogLevel</span> _currentLevel = <span class="code-type">LogLevel</span>.Info;
+
+            <span class="code-keyword">public void</span> Log(
+            <span class="code-type">LogLevel</span> level,
+        [<span class="code-type">System.Runtime.CompilerServices.InterpolatedStringHandlerArgumentAttribute</span>(<span class="code-type">"this"</span>, <span class="code-type">"level"</span>)]
+            <span class="code-type">LogInterpolatedStringHandler</span> handler)
+    {
+            <span class="code-keyword">if</span> (level &gt;= _currentLevel)
+        {
+            Console.WriteLine(handler.ToString());
+        }
+    }
+}
+
+[<span class="code-type">System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute</span>]
+<span class="code-keyword">public ref struct</span> <span class="code-type">LogInterpolatedStringHandler</span>
+{
+            <span class="code-keyword">private</span> <span class="code-type">System.Text.StringBuilder</span>? _builder;
+            <span class="code-keyword">private</span> <span class="code-keyword">bool</span> _enabled;
+
+            <span class="code-keyword">public</span> LogInterpolatedStringHandler(
+            <span class="code-keyword">int</span> literalLength,
+            <span class="code-keyword">int</span> formattedCount,
+            <span class="code-type">SmartLogger</span> logger,
+            <span class="code-type">LogLevel</span> level,
+            <span class="code-keyword">out bool</span> isEnabled)
+    {
+        _enabled = level &gt;= logger._currentLevel;
+        isEnabled = _enabled;
+        _builder = _enabled ? <span class="code-keyword">new</span> <span class="code-type">System.Text.StringBuilder</span>(literalLength) : <span class="code-keyword">null</span>;
+    }
+
+            <span class="code-keyword">public void</span> AppendLiteral(<span class="code-keyword">string</span> s)
+    {
+            <span class="code-keyword">if</span> (_enabled) _builder!.Append(s);
+    }
+
+            <span class="code-keyword">public void</span> AppendFormatted&lt;<span class="code-type">T</span>&gt;(<span class="code-type">T</span> value)
+    {
+            <span class="code-keyword">if</span> (_enabled) _builder!.Append(value);
+    }
+
+            <span class="code-keyword">public override string</span> ToString() =&gt; _builder?.ToString() ?? <span class="code-keyword">string</span>.Empty;
+}
+
+<span class="code-comment">// Usage - Expensive operations only run if logging is enabled</span>
+<span class="code-keyword">var</span> logger = <span class="code-keyword">new</span> <span class="code-type">SmartLogger</span>();
+<span class="code-keyword">var</span> data = <span class="code-keyword">new</span> <span class="code-type">List</span>&lt;<span class="code-keyword">int</span>&gt; { 1, 2, 3 };
+
+<span class="code-keyword">string</span> ExpensiveOperation(<span class="code-type">IEnumerable</span>&lt;<span class="code-keyword">int</span>&gt; items)
+{
+            <span class="code-keyword">return</span> <span class="code-keyword">string</span>.Join(<span class="code-type">","</span>, items.Select(i =&gt; (i * i).ToString()));
+}
+
+<span class="code-comment">// This expensive operation only runs if Debug level is enabled</span>
+logger.Log(<span class="code-type">LogLevel</span>.Debug,
+    $<span class="code-type">"Processing {data.Count} items, details: {ExpensiveOperation(data)}"</span>);</code></pre>
+
+            <h3><span class="emoji">📊</span> Real-World Example: URL Builder</h3>
+<pre><code><span class="code-keyword">public class</span> <span class="code-type">UrlBuilder</span>
+{
+            <span class="code-keyword">public static string</span> Build(<span class="code-type">UrlInterpolatedStringHandler</span> handler)
+        =&gt; handler.ToString();
+}
+
+[<span class="code-type">System.Runtime.CompilerServices.InterpolatedStringHandlerAttribute</span>]
+<span class="code-keyword">public ref struct</span> <span class="code-type">UrlInterpolatedStringHandler</span>
+{
+            <span class="code-keyword">private</span> <span class="code-type">System.Text.StringBuilder</span> _builder;
+
+            <span class="code-keyword">public</span> UrlInterpolatedStringHandler(<span class="code-keyword">int</span> literalLength, <span class="code-keyword">int</span> formattedCount)
+    {
+    _builder = <span class="code-keyword">new</span> <span class="code-type">System.Text.StringBuilder</span>(literalLength);
+    }
+
+            <span class="code-keyword">public void</span> AppendLiteral(<span class="code-keyword">string</span> s) =&gt; _builder.Append(s);
+
+            <span class="code-keyword">public void</span> AppendFormatted(<span class="code-keyword">string</span> value)
+    {
+            <span class="code-comment">// Automatically URL-encode interpolated values</span>
+        _builder.Append(<span class="code-type">Uri</span>.EscapeDataString(value ?? <span class="code-keyword">string</span>.Empty));
+    }
+
+            <span class="code-keyword">public override string</span> ToString() =&gt; _builder.ToString();
+}
+
+<span class="code-comment">// Usage - Automatic URL encoding</span>
+<span class="code-keyword">var</span> searchTerm = <span class="code-type">"C# programming"</span>;
+<span class="code-keyword">var</span> category = <span class="code-type">"Books &amp; Media"</span>;
+
+<span class="code-keyword">var</span> url = <span class="code-type">UrlBuilder</span>.Build(
+    $<span class="code-type">"https://example.com/search?q={searchTerm}&amp;category={category}"</span>);
+
+Console.WriteLine(url);
+<span class="code-comment">// Output: "https://example.com/search?q=C%23%20programming&amp;category=Books%20%26%20Media"</span></code></pre>
+
+            <div class="highlight-box">
+                <p><strong>💡 Key Benefits:</strong></p>
+                <ul>
+                    <li><strong>Zero-allocation</strong> — Custom handlers can optimize memory usage</li>
+                    <li><strong>Conditional evaluation</strong> — Skip expensive operations when not needed</li>
+                    <li><strong>Type safety</strong> — Enforce formatting rules at compile time</li>
+                    <li><strong>Domain-specific</strong> — Create specialized string builders (SQL, URLs, etc.)</li>
+                    <li><strong>Better performance</strong> — Reduced allocations in hot paths</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>10. Collection Expressions (Preview)</h2>
+
+            <h3><span class="emoji">📦</span> Concise Collection Initialization</h3>
+            <p>C# 14 introduces collection expressions, providing a unified, concise syntax for creating and initializing collections of any type. This feature simplifies code and makes collection creation more intuitive.</p>
+
+            <h3><span class="emoji">🧪</span> Example: Basic Collection Expressions</h3>
+<pre><code><span class="code-comment">// Traditional way</span>
+<span class="code-keyword">var</span> oldList = <span class="code-keyword">new</span> <span class="code-type">List</span>&lt;<span class="code-keyword">int</span>&gt; { 1, 2, 3, 4, 5 };
+<span class="code-keyword">var</span> oldArray = <span class="code-keyword">new int</span>[] { 1, 2, 3, 4, 5 };
+
+<span class="code-comment">// C# 14: Collection expressions - unified syntax</span>
+<span class="code-type">List</span>&lt;<span class="code-keyword">int</span>&gt; list = [1, 2, 3, 4, 5];
+<span class="code-keyword">int</span>[] array = [1, 2, 3, 4, 5];
+<span class="code-type">Span</span>&lt;<span class="code-keyword">int</span>&gt; span = [1, 2, 3, 4, 5];
+
+<span class="code-comment">// Empty collections</span>
+<span class="code-type">List</span>&lt;<span class="code-keyword">string</span>&gt; empty = [];
+<span class="code-keyword">int</span>[] emptyArray = [];</code></pre>
+
+            <h3><span class="emoji">💡</span> Example: Spread Operator</h3>
+<pre><code><span class="code-comment">// Combine collections with spread operator ..</span>
+<span class="code-keyword">int</span>[] first = [1, 2, 3];
+<span class="code-keyword">int</span>[] second = [4, 5, 6];
+<span class="code-keyword">int</span>[] third = [7, 8, 9];
+
+<span class="code-comment">// Spread and combine</span>
+<span class="code-keyword">int</span>[] combined = [..first, ..second, ..third];
+<span class="code-comment">// Result: [1, 2, 3, 4, 5, 6, 7, 8, 9]</span>
+
+<span class="code-comment">// Mix literals and spreads</span>
+<span class="code-keyword">int</span>[] mixed = [0, ..first, 10, ..second, 20];
+<span class="code-comment">// Result: [0, 1, 2, 3, 10, 4, 5, 6, 20]</span>
+
+<span class="code-comment">// Spread with LINQ</span>
+<span class="code-keyword">var</span> numbers = [1, 2, 3, 4, 5];
+<span class="code-keyword">var</span> doubled = [..numbers.Select(x =&gt; x * 2)];
+<span class="code-comment">// Result: [2, 4, 6, 8, 10]</span></code></pre>
+
+            <h3><span class="emoji">🎯</span> Example: Pattern Matching with Collections</h3>
+<pre><code><span class="code-comment">// Pattern matching with collection expressions</span>
+<span class="code-keyword">string</span> DescribeCollection(<span class="code-keyword">int</span>[] numbers) =&gt; numbers <span class="code-keyword">switch</span>
+{
+    [] =&gt; <span class="code-type">"Empty collection"</span>,
+    [<span class="code-keyword">var</span> single] =&gt; $<span class="code-type">"Single element: {single}"</span>,
+    [<span class="code-keyword">var</span> first, <span class="code-keyword">var</span> second] =&gt; $<span class="code-type">"Two elements: {first}, {second}"</span>,
+    [<span class="code-keyword">var</span> first, .., <span class="code-keyword">var</span> last] =&gt; $<span class="code-type">"First: {first}, Last: {last}"</span>,
+    _ =&gt; $<span class="code-type">"Collection with {numbers.Length} elements"</span>
+};
+
+<span class="code-comment">// Usage</span>
+Console.WriteLine(DescribeCollection([]));           <span class="code-comment">// "Empty collection"</span>
+Console.WriteLine(DescribeCollection([42]));         <span class="code-comment">// "Single element: 42"</span>
+Console.WriteLine(DescribeCollection([1, 2]));       <span class="code-comment">// "Two elements: 1, 2"</span>
+Console.WriteLine(DescribeCollection([1, 2, 3, 4])); <span class="code-comment">// "First: 1, Last: 4"</span></code></pre>
+
+            <h3><span class="emoji">🔥</span> Real-World Example: API Response Building</h3>
+<pre><code><span class="code-keyword">public record</span> <span class="code-type">ApiResponse</span>(<span class="code-keyword">string</span> Status, <span class="code-keyword">object</span>[] Data);
+
+<span class="code-keyword">public class</span> <span class="code-type">UserService</span>
+{
+            <span class="code-keyword">public</span> <span class="code-type">ApiResponse</span> GetUsers(<span class="code-keyword">bool</span> includeAdmin, <span class="code-keyword">bool</span> includeGuests)
+    {
+            <span class="code-keyword">var</span> regularUsers = GetRegularUsers();
+            <span class="code-keyword">var</span> adminUsers = includeAdmin ? GetAdminUsers() : [];
+            <span class="code-keyword">var</span> guestUsers = includeGuests ? GetGuestUsers() : [];
+
+            <span class="code-comment">// Build response with collection expressions</span>
+            <span class="code-keyword">return new</span> <span class="code-type">ApiResponse</span>(
+            <span class="code-type">"success"</span>,
+            [
+                ..regularUsers,
+                ..adminUsers,
+                ..guestUsers
+            ]
+        );
+    }
+
+            <span class="code-keyword">private object</span>[] GetRegularUsers() =&gt; [
+            <span class="code-keyword">new</span> { Id = 1, Name = <span class="code-type">"Alice"</span>, Role = <span class="code-type">"User"</span> },
+            <span class="code-keyword">new</span> { Id = 2, Name = <span class="code-type">"Bob"</span>, Role = <span class="code-type">"User"</span> }
+    ];
+
+            <span class="code-keyword">private object</span>[] GetAdminUsers() =&gt; [
+            <span class="code-keyword">new</span> { Id = 100, Name = <span class="code-type">"Admin"</span>, Role = <span class="code-type">"Admin"</span> }
+    ];
+
+            <span class="code-keyword">private object</span>[] GetGuestUsers() =&gt; [
+            <span class="code-keyword">new</span> { Id = 200, Name = <span class="code-type">"Guest"</span>, Role = <span class="code-type">"Guest"</span> }
+    ];
+}</code></pre>
+
+            <h3><span class="emoji">📊</span> Example: Building Test Data</h3>
+<pre><code><span class="code-comment">// Easy test data creation</span>
+<span class="code-keyword">public class</span> <span class="code-type">Product</span>
+{
+            <span class="code-keyword">public string</span> Name { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; } = <span class="code-keyword">string</span>.Empty;
+            <span class="code-keyword">public int</span> Price { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}
+
+<span class="code-keyword">public static class</span> <span class="code-type">TestDataBuilder</span>
+{
+            <span class="code-keyword">public static</span> <span class="code-type">List</span>&lt;<span class="code-type">Product</span>&gt; CreateTestProducts()
+    {
+            <span class="code-keyword">var</span> electronics = CreateElectronics();
+            <span class="code-keyword">var</span> books = CreateBooks();
+            <span class="code-keyword">var</span> featured = <span class="code-keyword">new</span> <span class="code-type">Product</span> { Name = <span class="code-type">"Featured Item"</span>, Price = 999 };
+
+            <span class="code-comment">// Combine with collection expressions</span>
+            <span class="code-keyword">return</span> [featured, ..electronics, ..books];
+    }
+
+            <span class="code-keyword">private static</span> <span class="code-type">Product</span>[] CreateElectronics() =&gt; [
+            <span class="code-keyword">new</span> <span class="code-type">Product</span> { Name = <span class="code-type">"Laptop"</span>, Price = 1200 },
+            <span class="code-keyword">new</span> <span class="code-type">Product</span> { Name = <span class="code-type">"Phone"</span>, Price = 800 }
+    ];
+
+            <span class="code-keyword">private static</span> <span class="code-type">Product</span>[] CreateBooks() =&gt; [
+            <span class="code-keyword">new</span> <span class="code-type">Product</span> { Name = <span class="code-type">"C# Guide"</span>, Price = 45 },
+            <span class="code-keyword">new</span> <span class="code-type">Product</span> { Name = <span class="code-type">"Design Patterns"</span>, Price = 55 }
+    ];
+}
+
+<span class="code-comment">// Simple check without external test frameworks</span>
+<span class="code-keyword">int</span> Sum(<span class="code-keyword">int</span>[] numbers) =&gt; numbers.Sum();
+Console.WriteLine(Sum([1,2,3]));   <span class="code-comment">// 6</span>
+Console.WriteLine(Sum([10,20,30])); <span class="code-comment">// 60</span></code></pre>
+
+            <h3><span class="emoji">⚡</span> Performance Example: Stack Allocation</h3>
+<pre><code><span class="code-comment">// Collection expressions work with Span for stack allocation</span>
+<span class="code-keyword">public static void</span> ProcessData()
+{
+            <span class="code-comment">// Stack-allocated span with collection expression</span>
+            <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; numbers = [1, 2, 3, 4, 5];
+    
+            <span class="code-comment">// Zero heap allocation!</span>
+            <span class="code-keyword">foreach</span> (<span class="code-keyword">var</span> num <span class="code-keyword">in</span> numbers)
+    {
+        Console.WriteLine(num * 2);
+    }
+
+            <span class="code-comment">// Combine with stackalloc for larger data</span>
+            <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; buffer = stackalloc <span class="code-keyword">byte</span>[256];
+            <span class="code-type">Span</span>&lt;<span class="code-keyword">byte</span>&gt; header = [0xFF, 0xFE, 0xFD];
+    
+            <span class="code-comment">// Copy header to buffer</span>
+    header.CopyTo(buffer);
+}</code></pre>
+
+            <div class="highlight-box">
+                <p><strong>💡 Key Benefits:</strong></p>
+                <ul>
+                    <li><strong>Unified syntax</strong> — Same syntax for arrays, lists, spans, and more</li>
+                    <li><strong>More readable</strong> — Cleaner, less verbose collection initialization</li>
+                    <li><strong>Spread operator</strong> — Easy collection combination and manipulation</li>
+                    <li><strong>Pattern matching</strong> — Powerful collection destructuring</li>
+                    <li><strong>Performance</strong> — Works with stack-allocated spans</li>
+                    <li><strong>Type inference</strong> — Compiler figures out the target type</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
             <h2><span class="emoji">🚀</span> Conclusion</h2>
             <p>C# 14 continues the language's tradition of thoughtful, developer-friendly improvements. From extension members that extend types more naturally, to the field keyword that eliminates boilerplate, these features help you write code that's both more expressive and maintainable.</p>
-            
-            <p>As you adopt C# 14 in your projects, you'll find these small enhancements add up to significant productivity gains. The language continues to evolve in ways that respect existing code while opening new possibilities for elegant solutions.</p>
-            
+
+            <p>The addition of lambda parameter modifiers enables more efficient functional programming patterns, while partial events and constructors improve code organization in large projects. User-defined compound assignment operators make custom types feel more natural, and improved interpolated strings provide both performance and flexibility.</p>
+
+            <p>Finally, collection expressions bring a modern, unified syntax for working with collections, making code more concise and readable. As you adopt C# 14 in your projects, you'll find these small enhancements add up to significant productivity gains. The language continues to evolve in ways that respect existing code while opening new possibilities for elegant solutions.</p>
+
             <div class="highlight-box">
-                <p><strong>📚 Further Reading:</strong> Stay tuned for more in-depth explorations of each C# 14 feature. Happy coding!</p>
+                <p><strong>📚 Next Steps:</strong></p>
+                <ul>
+                    <li>Experiment with these features in your own projects</li>
+                    <li>Explore the official C# 14 documentation for more details</li>
+                    <li>Share your experiences and patterns with the community</li>
+                    <li>Stay tuned for more advanced use cases and best practices</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Happy coding with C# 14! 🎉</strong></p>
             </div>
         </section>
     </div>
 </div>
-
-<!-- ========== STOP COPYING HERE ========== -->
-
-<div style="background: #fff3cd; padding: 20px; margin: 20px 0; border: 2px solid #ffc107; border-radius: 8px;">
-<h3>⚠️ Important Notes for Blogger:</h3>
-<ol style="line-height: 1.8;">
-    <li><strong>Use HTML View:</strong> Always paste this in HTML view, NOT Compose view</li>
-    <li><strong>Preview First:</strong> Use the preview button to check how it looks before publishing</li>
-    <li><strong>Inline Styles Included:</strong> The <code>&lt;style&gt;</code> block at the beginning contains all necessary CSS</li>
-    <li><strong>Mobile Responsive:</strong> The design automatically adapts to mobile screens</li>
-    <li><strong>Edit Content:</strong> You can safely edit the text content between tags without affecting styling</li>
-</ol>
-</div>
-
-</body>
-</html>

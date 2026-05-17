@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizing Performance with Angular Deferrable Views</title>
+    <style>
+        :root {
+            --primary-color: #dd0031;
+            --secondary-color: #00838f;
+            --background-color: #f8f9fa;
+            --text-color: #2c3e50;
+            --code-bg: #1e1e1e;
+            --card-bg: #ffffff;
+            --warning-color: #ffb74d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Banner */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .banner-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .banner-image {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-container:hover .banner-image {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .highlight-keyword {
+            color: #569cd6;
+        }
+
+        .highlight-string {
+            color: #ce9178;
+        }
+
+        .highlight-function {
+            color: #dcdcaa;
+        }
+
+        .highlight-class {
+            color: #4ec9b0;
+        }
+
+        .highlight-defer {
+            color: #c586c0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="banner-container">
+                <img src="assets/banner.png" alt="Angular Deferrable Views Banner" class="banner-image">
+            </div>
+            <h1>Deferrable Views (@defer)</h1>
+            <div class="subtitle">Lazy Loading Made Easy, Granular, and Native</div>
+        </header>
+
+        <section>
+            <h2>The Cost of "Everything at Once"</h2>
+            <p>
+                In Single Page Applications (SPAs), bundle size is the enemy. Historically, we fought this with
+                Route-based Lazy Loading.
+                We'd split our app into feature modules (Admin, User, Settings) and load them only when the user
+                navigated there.
+            </p>
+            <p>
+                But what about the <strong>Landing Page</strong>? It might have a heavy Google Map, a complex Chart, and
+                a Video Player.
+                Loading all of that upfront hurts your Core Web Vitals (specifically LCP and TBT), even if the user
+                never scrolls down to see them.
+            </p>
+            <p>
+                Enter <code>@defer</code>. It allows you to lazy load <strong>parts of a template</strong> with zero
+                boilerplate. No extra `NgModule`, no route config. Just pure magic.
+            </p>
+        </section>
+
+        <section>
+            <h2>The Syntax: Declarative Loading</h2>
+            <p>The <code>@defer</code> block controls when the dependency is fetched. It works in tandem with
+                <code>@placeholder</code>, <code>@loading</code>, and <code>@error</code> blocks to provide a complete
+                UX.
+            </p>
+
+            <pre><code><span class="highlight-defer">@defer</span> {
+  &lt;heavy-chart-component /&gt;
+} <span class="highlight-defer">@placeholder</span> (minimum 500ms) {
+  &lt;div class="chart-skeleton"&gt;&lt;/div&gt;
+} <span class="highlight-defer">@loading</span> (after 100ms; minimum 1s) {
+  &lt;spinner /&gt;
+} <span class="highlight-defer">@error</span> {
+  &lt;p&gt;Failed to load the chart.&lt;/p&gt;
+}</code></pre>
+
+            <ul>
+                <li><strong>@defer</strong>: Main content to be lazy-loaded.</li>
+                <li><strong>@placeholder</strong>: Shown immediately until the bundle is fetched. Crucial for preventing
+                    layout shift (CLS).</li>
+                <li><strong>@loading</strong>: Optional state shown <em>while</em> fetching (if it takes too long).</li>
+                <li><strong>@error</strong>: Shown if the network request fails.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Triggers: You Control the "When"</h2>
+            <p>The real power lies in the triggers. You can specify exactly what user action or state should initiate
+                the download.</p>
+
+            <h3>1. on viewport (Standard)</h3>
+            <p>Load when the placeholder enters the visible screen area.</p>
+            <pre><code><span class="highlight-defer">@defer</span> (on viewport) { 
+  &lt;app-footer /&gt; 
+}</code></pre>
+
+            <h3>2. on interaction (User-driven)</h3>
+            <p>Load when the user clicks or touches the placeholder area.</p>
+            <pre><code><span class="highlight-defer">@defer</span> (on interaction) { 
+  &lt;app-comments-section /&gt; 
+} <span class="highlight-defer">@placeholder</span> {
+  &lt;button&gt;Load Comments&lt;/button&gt;
+}</code></pre>
+
+            <h3>3. on hover (Predictive)</h3>
+            <p>Load when the user mouses over an area. Great for tooltips or heavy dropdowns.</p>
+            <pre><code><span class="highlight-defer">@defer</span> (on hover) { 
+  &lt;app-tooltip-content /&gt; 
+}</code></pre>
+
+            <h3>4. on timer (Delayed)</h3>
+            <p>Load after X seconds. Good for low-priority tracking scripts or ads.</p>
+            <pre><code><span class="highlight-defer">@defer</span> (on timer(5s)) { 
+  &lt;app-analytics-widget /&gt; 
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Real World Example: The "Heavy" Gallery</h2>
+            <p>Imagine a photo gallery where clicking an image opens a high-res editor/viewer that weighs 2MB.</p>
+
+            <pre><code><span class="highlight-keyword">@Component</span>({
+  selector: <span class="highlight-string">'app-gallery'</span>,
+  standalone: <span class="highlight-keyword">true</span>,
+  imports: [ImageThumbnailComponent, HighResEditorComponent], <span class="highlight-class">// No lazy import syntax needed!</span>
+  template: `
+    &lt;div class="grid"&gt;
+      <span class="highlight-control">@for</span> (img of images; track img.id) {
+        &lt;app-thumbnail [src]="img.src" (click)="selectedId.set(img.id)" /&gt;
+      }
+    &lt;/div&gt;
+
+    <span class="highlight-class">// Only load the editor when an image is actually selected</span>
+    <span class="highlight-defer">@defer</span> (when selectedId() !== null) {
+      &lt;app-high-res-editor [imageId]="selectedId()" /&gt;
+    } <span class="highlight-defer">@placeholder</span> {
+      &lt;!-- invisible or empty placeholder --&gt;
+    }
+  `
+})
+<span class="highlight-keyword">export class</span> GalleryComponent {
+  selectedId = signal&lt;<span class="highlight-keyword">number</span> | <span class="highlight-keyword">null</span>&gt;(<span class="highlight-keyword">null</span>);
+  images = [...]; 
+}</code></pre>
+
+            <p>In this example, the <code>HighResEditorComponent</code> code is split into a separate chunk
+                automatically by the compiler. The browser won't download it until <code>selectedId</code> becomes
+                non-null.</p>
+        </section>
+
+        <section>
+            <h2>Prefetching</h2>
+            <p>You can also decouple the "loading" from the "rendering". Maybe you want to load the code
+                <code>on idle</code>, but only render it <code>on interaction</code>.
+            </p>
+            <pre><code><span class="highlight-defer">@defer</span> (on interaction; prefetch on idle) { 
+  &lt;app-heavy-widget /&gt; 
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>
+                <code>@defer</code> is a game-changer for Core Web Vitals. It puts performance optimization directly
+                into the template syntax where it belongs, making it intuitive and easy to maintain.
+                Start using it for any component that isn't critical for the initial paint!
+            </p>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

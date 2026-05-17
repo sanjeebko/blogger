@@ -1,0 +1,3 @@
+Title: Optimizing Performance with Angular Deferrable Views (@defer)
+Keywords: Angular @defer, Lazy Loading, Core Web Vitals, Performance Optimization, Frontend Development
+Image Prompt: a high-tech loading dock or portal opening sequentially, showing content appearing piece by piece, holographic style, blue and red lighting, 3d isometric view, clean and detailed

@@ -1,0 +1,3 @@
+Title: What Is Cloud Computing? - Azure, AWS, and The Cloud Explained
+Keywords: Cloud Computing, Azure, AWS, Infrastructure, Serverless, DevOps
+Image Prompt: ethereal digital cloud structure formed by connecting server nodes and data streams, bright blue and white, cybernetic sky, 8k

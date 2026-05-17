@@ -1,0 +1,481 @@
+{
+  "name": "BlogGenerator",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b7514456-7d84-4426-a36e-55e2895cdb99",
+      "name": "When clicking 'Execute workflow'",
+      "position": [
+        -624,
+        220
+      ],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "id": "d70f406f-93bb-4c66-8a23-1f39e0f55efd",
+      "name": "Google Gemini Chat Model",
+      "position": [
+        -400,
+        192
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "12DKPRNOFpK0yTyy",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "endpointUrl": "http://192.168.1.60/mcp",
+        "options": {}
+      },
+      "id": "124e23fe-6da4-4728-81aa-93e87f9ab1d2",
+      "name": "MCP Client",
+      "position": [
+        -144,
+        192
+      ],
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.2,
+      "notes": "Blogger MCP Server (Python) - Lists blogs and posts, creates/updates content"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "You are an expert technical writer creating high-quality programming blog posts for developers and students.\n\n=== WORKFLOW STEPS ===\n\nSTEP 1: Use blogger_list_blogs to get your blog ID.\n\nSTEP 2: Use blogger_list_posts with parameters:\n- blogId: (the ID from step 1)\n- status: [\"LIVE\"]\n- maxResults: 100\n- fetchBodies: false\n\nSTEP 3: Generate 2 NEW trending programming/computer topics that DON'T match existing titles.\n\nSTEP 4: For EACH topic, create structured blog data (content will be generated later by Ollama):\n\n=== CONTENT STRUCTURE ===\n\n**METADATA**:\n- Title: Complete, SEO-friendly title\n- Description: 1-2 sentence summary\n- Labels: 5-7 relevant tags\n- Word Count Target: 2000-2500 words\n- Reading Time: 10 minutes\n\n**OUTLINE** (8-10 sections):\n1. Introduction - Hook, context, learning objectives\n2. Core Concept Explanation - Deep dive into fundamentals\n3. Real-World Applications - Practical use cases\n4. Implementation Guide - Step-by-step with code\n5. Best Practices - Professional patterns\n6. Common Pitfalls - What to avoid\n7. Advanced Topics - Next-level concepts\n8. Conclusion - Summary and next steps\n\n**CODE EXAMPLES** (4-6 examples):\n- Specify: language, purpose, key concepts to demonstrate\n- Example: {\"language\": \"typescript\", \"purpose\": \"Demonstrate Angular signals\", \"concepts\": [\"signal creation\", \"computed values\", \"effects\"]}\n\n**IMAGE PROMPTS** (3-5 images):\nGenerate detailed prompts for:\n1. Banner image - Main hero image for top of article\n2. Concept diagrams - 2-3 visual explanations of key concepts\n3. Code comparison - Before/after or good/bad practice visualization\n\nFormat: \"Professional [style] illustration showing [subject] with [details], tech blog style, clean modern design, [colors]\"\n\nExample: \"Professional isometric illustration showing Angular component architecture with signals data flow, tech blog style, clean modern design, blue and orange accent colors, 1200x600px\"\n\n**VISUAL ELEMENTS**:\n- Comparison table topics (what to compare)\n- Info box content (tips, warnings, examples)\n- Feature list items\n\nSTEP 5: Output ONLY valid JSON:\n{\n  \"blogId\": \"<blog ID>\",\n  \"topics\": [\n    {\n      \"title\": \"Complete descriptive title\",\n      \"description\": \"Brief 1-2 sentence summary\",\n      \"labels\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\", \"tag5\"],\n      \"wordCount\": 2500,\n      \"readingTime\": \"10 min\",\n      \"outline\": [\n        {\"section\": \"Introduction\", \"topics\": [\"Hook about topic\", \"Why it matters\", \"What you'll learn\"], \"wordCount\": 250},\n        {\"section\": \"Core Concepts\", \"topics\": [\"Key concept 1\", \"Key concept 2\"], \"wordCount\": 350}\n      ],\n      \"codeExamples\": [\n        {\"language\": \"typescript\", \"purpose\": \"Basic example\", \"concepts\": [\"concept1\", \"concept2\"]},\n        {\"language\": \"typescript\", \"purpose\": \"Advanced pattern\", \"concepts\": [\"concept3\", \"concept4\"]}\n      ],\n      \"imagePrompts\": [\n        {\"type\": \"banner\", \"filename\": \"banner.png\", \"prompt\": \"Professional tech illustration...\"},\n        {\"type\": \"diagram\", \"filename\": \"architecture-diagram.png\", \"prompt\": \"Clean diagram showing...\"},\n        {\"type\": \"comparison\", \"filename\": \"before-after.png\", \"prompt\": \"Side-by-side comparison...\"}\n      ],\n      \"visualElements\": {\n        \"comparisonTable\": {\"comparing\": \"Approach A vs Approach B\", \"criteria\": [\"Performance\", \"Ease of Use\", \"Scalability\"]},\n        \"infoBoxes\": [\n          {\"type\": \"tip\", \"content\": \"Pro tip about...\"},\n          {\"type\": \"warning\", \"content\": \"Common mistake...\"}\n        ],\n        \"featureList\": [\"Feature 1\", \"Feature 2\", \"Feature 3\"]\n      }\n    }\n  ]\n}\n\nBe SPECIFIC and DETAILED in all prompts and outlines. This data will be used to generate the final blog post!",
+        "options": {
+          "returnIntermediateSteps": true
+        }
+      },
+      "id": "fe87fadf-f259-4556-b8e3-1ff76bfcc383",
+      "name": "AI Agent",
+      "position": [
+        -344,
+        -32
+      ],
+      "retryOnFail": true,
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $execution.id }}",
+        "contextWindowLength": 50
+      },
+      "id": "d55dfbfa-e175-463e-9169-7d8ccdf5ed11",
+      "name": "Simple Memory",
+      "position": [
+        -272,
+        192
+      ],
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $input.item.json.output;\nlet parsed;\n\nif (typeof output === 'string') {\n  const jsonMatch = output.match(/\\{[\\s\\S]*\\}/);\n  if (jsonMatch) {\n    parsed = JSON.parse(jsonMatch[0]);\n  } else {\n    throw new Error('No JSON found in output');\n  }\n} else {\n  parsed = output;\n}\n\nconst blogId = parsed.blogId;\nconst topics = parsed.topics || [];\n\nconst now = new Date();\nreturn topics.map((topic, index) => {\n  const uniqueId = `${now.getTime()}_${index}`;\n  return {\n    json: {\n      uniquePostId: uniqueId,\n      blogId: blogId,\n      title: topic.title,\n      description: topic.description,\n      labels: topic.labels,\n      wordCount: topic.wordCount,\n      readingTime: topic.readingTime,\n      outline: topic.outline,\n      codeExamples: topic.codeExamples,\n      imagePrompts: topic.imagePrompts,\n      visualElements: topic.visualElements,\n      createdDate: now.toISOString(),\n      folderPath: `/files/bloggergenerator/${uniqueId}`\n    }\n  };\n});"
+      },
+      "id": "parse-json-node",
+      "name": "Parse JSON Output",
+      "position": [
+        64,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "command": "echo 'Cleanup skipped'",
+        "options": {}
+      },
+      "id": "cleanup-old-files",
+      "name": "Cleanup Old Files",
+      "position": [
+        -280,
+        368
+      ],
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "command": "=mkdir -p '{{ $json.folderPath }}/assets'",
+        "options": {}
+      },
+      "id": "create-folder-structure",
+      "name": "Create Folder Structure",
+      "position": [
+        288,
+        72
+      ],
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "jsCode": "// Retrieve original data from upstream node (Parse JSON Output) to bypass data loss in Execute Command\n// references: Parse JSON Output\n// We access all items from the Parse JSON Output node directly\nconst items = $(\"Parse JSON Output\").all();\nconst results = [];\n\nitems.forEach(item => {\n  const json = item.json;\n  \n  // Add folder paths that were created implicitly\n  json.folderCreated = true;\n  json.assetsPath = `${json.folderPath}/assets`;\n  json.imagesPath = `${json.folderPath}/assets/images`;\n\n  const imagePrompts = json.imagePrompts || [];\n\n  if (imagePrompts.length === 0) {\n    results.push({\n      json: {\n        ...json,\n        imagesGenerated: 0,\n        savedImages: [],\n        currentPrompt: null\n      }\n    });\n  } else {\n    imagePrompts.forEach(prompt => {\n      results.push({\n        json: {\n          ...json,\n          currentPrompt: prompt,\n          totalPrompts: imagePrompts.length\n        }\n      });\n    });\n  }\n});\n\nreturn results;"
+      },
+      "id": "split-image-prompts",
+      "name": "Split Image Prompts",
+      "position": [
+        512,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "workflowId": "={{ $workflow('GeminiNanoImageGenerator').id }}",
+        "fields": {
+          "values": [
+            {
+              "name": "prompt",
+              "value": "={{ $json.currentPrompt.prompt }}"
+            },
+            {
+              "name": "filename",
+              "value": "={{ $json.currentPrompt.filename }}"
+            },
+            {
+              "name": "folderName",
+              "value": "={{ $json.folderPath + '/assets' }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "generate-image-workflow",
+      "name": "Generate Image (Gemini)",
+      "position": [
+        736,
+        72
+      ],
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.1,
+      "notes": "Calls GeminiNanoImageGenerator workflow to generate images using Google Imagen API.\n\nReturns: filename, fullPath, timeTakenMs"
+    },
+    {
+      "parameters": {
+        "jsCode": "const result = $input.item.json;\nconst originalData = $input.item.json;\n\nreturn [{ json: {\n  ...originalData,\n  imageSaved: result.success || false,\n  imagePath: result.fullPath || '',\n  imageFilename: result.filename || '',\n  imageType: originalData.currentPrompt?.type || '',\n  imageGenerationTime: result.timeTakenMs || 0\n} }];"
+      },
+      "id": "process-image-result",
+      "name": "Process Image Result",
+      "position": [
+        960,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nif (items.length === 0) {\n  return [];\n}\n\n// Group items by uniquePostId\nconst postGroups = {};\nitems.forEach(item => {\n  const json = item.json;\n  const postId = json.uniquePostId;\n  if (!postGroups[postId]) {\n    postGroups[postId] = {\n      baseData: json,\n      images: []\n    };\n  }\n  if (json.imageSaved) {\n    postGroups[postId].images.push({\n      filename: json.imageFilename,\n      type: json.imageType,\n      path: json.imagePath\n    });\n  }\n});\n\n// Return one item per blog post\nreturn Object.values(postGroups).map(group => ({\n  json: {\n    uniquePostId: group.baseData.uniquePostId,\n    blogId: group.baseData.blogId,\n    title: group.baseData.title,\n    description: group.baseData.description,\n    labels: group.baseData.labels,\n    wordCount: group.baseData.wordCount,\n    readingTime: group.baseData.readingTime,\n    outline: group.baseData.outline,\n    codeExamples: group.baseData.codeExamples,\n    visualElements: group.baseData.visualElements,\n    createdDate: group.baseData.createdDate,\n    folderPath: group.baseData.folderPath,\n    imagesGenerated: group.images.length,\n    savedImages: group.images\n  }\n}));"
+      },
+      "id": "aggregate-images",
+      "name": "Aggregate Image Results",
+      "position": [
+        1184,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "model": "mistral:latest",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "generate-blog-ollama",
+      "name": "Generate Blog Content (Ollama)",
+      "position": [
+        1632,
+        80
+      ],
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "zyl6PeV6maQJ0cH2",
+          "name": "Ollama account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const imageList = ($json.savedImages || []).map(img => img.filename).join(', assets/');\n\n// Embed template structure directly since we cannot read local files from remote n8n\nconst templateStructure = `<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"description\" content=\"[ARTICLE_DESCRIPTION]\" />\n  <title>[ARTICLE_TITLE]</title>\n  <style>\n    /* Use standard tech blog CSS with: */\n    /* --primary-color: #dd0031; --secondary-color: #1565c0; */\n    /* Info/Warning/Tip boxes, syntax highlighting for code */\n  </style>\n</head>\n<body>\n  <header>\n    <img src=\"assets/banner.png\" class=\"banner-image\" />\n    <h1>[ARTICLE_TITLE]</h1>\n    <div class=\"meta-info\">Reading time: ~10 minutes | Updated: [DATE]</div>\n  </header>\n  \n  <section>\n    <h2>Introduction</h2>\n    <div class=\"info-box\"><strong>📘 What You\\'ll Learn</strong><p>...</p></div>\n    <p>[Introduction content]</p>\n  </section>\n\n  <!-- Repeat sections for each main topic -->\n  \n  <section>\n    <h2>[Main Topic]</h2>\n    <p>...</p>\n    <pre><code>[CODE_BLOCK]</code></pre>\n  </section>\n\n  <!-- Add Comparison Table, Feature Grid as needed -->\n  \n  <footer>...</footer>\n</body>\n</html>`;\n\nconst prompt = `You are an expert technical writer. Generate a complete 2,000-2,500 word blog post in HTML format using the data below.\n\nBLOG DATA:\n${JSON.stringify($json, null, 2)}\n\nHTML TEMPLATE STRUCTURE:\n${templateStructure}\n\nREQUIREMENTS:\n- Follow the template structure, including CSS classes (info-box, tip-box, warning-box, comparison-table, feature-grid)\n- Replace placeholders like [ARTICLE_TITLE], [ARTICLE_DESCRIPTION], etc.\n- Use all sections from outline with specified word counts\n- Include all ${$json.codeExamples?.length || 0} code examples with syntax highlighting classes (highlight-keyword, highlight-string, etc)\n- Add comparison tables, info boxes, feature grids from visualElements\n- Reference images: assets/${imageList}\n- Images generated: ${$json.imagesGenerated || 0}\n- Professional writing, second-person (you), active voice\n- Complete runnable code examples\n\nOutput ONLY the complete HTML content.`;\n\nreturn { json: { ...$json, ollamaPrompt: prompt } };"
+      },
+      "id": "ollama-prompt",
+      "name": "Build Ollama Prompt",
+      "position": [
+        1408,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "jsCode": "const htmlContent = $json.text || $json.content || $json.response;\nconst filename = $json.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '.html';\nconst folderPath = $json.folderPath;\n\nconst buffer = Buffer.from(htmlContent, 'utf8');\n\nreturn [{ \n  json: { \n    ...$json, \n    htmlFile: folderPath + '/' + filename, \n    filename, \n    generatedContent: htmlContent \n  },\n  binary: {\n    data: {\n      data: buffer.toString('base64'),\n      mimeType: 'text/html',\n      fileName: filename\n    }\n  }\n}];"
+      },
+      "id": "save-html-file",
+      "name": "Save HTML File",
+      "position": [
+        1840,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "fileName": "={{ $json.htmlFile }}",
+        "options": {}
+      },
+      "id": "write-html-to-file",
+      "name": "Write HTML to File",
+      "position": [
+        2000,
+        72
+      ],
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://192.168.1.60/mcp",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ { \"jsonrpc\": \"2.0\", \"id\": Date.now(), \"method\": \"tools/call\", \"params\": { \"name\": \"blogger_create_post\", \"arguments\": { \"blogId\": $json.blogId, \"title\": $json.title, \"content\": $json.generatedContent, \"labels\": $json.labels, \"isDraft\": true } } } }}",
+        "options": {}
+      },
+      "id": "create-draft-http",
+      "name": "Create Draft Posts",
+      "position": [
+        2224,
+        72
+      ],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst created = items.map((item, i) => ({\n  title: item.json.title,\n  uniquePostId: item.json.uniquePostId,\n  folderPath: item.json.folderPath,\n  htmlFile: item.json.htmlFile,\n  imageCount: item.json.imagesGenerated || 0,\n  response: item.json\n}));\nreturn { json: {\n  message: 'All blog posts generated and saved!',\n  count: created.length,\n  posts: created,\n  location: '/files/bloggergenerator/'\n} };"
+      },
+      "id": "done-node",
+      "name": "Done Creating Posts",
+      "position": [
+        2448,
+        72
+      ],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    }
+  ],
+  "connections": {
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Parse JSON Output",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Aggregate Image Results": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Build Ollama Prompt",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Build Ollama Prompt": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Generate Blog Content (Ollama)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Cleanup Old Files": {
+      "main": [
+        []
+      ]
+    },
+    "Create Draft Posts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Done Creating Posts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Create Folder Structure": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Split Image Prompts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Generate Blog Content (Ollama)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Save HTML File",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Generate Image (Gemini)": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Process Image Result",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "index": 0,
+            "node": "AI Agent",
+            "type": "ai_languageModel"
+          }
+        ]
+      ]
+    },
+    "MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "index": 0,
+            "node": "AI Agent",
+            "type": "ai_tool"
+          }
+        ]
+      ]
+    },
+    "Parse JSON Output": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create Folder Structure",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Process Image Result": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Aggregate Image Results",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Save HTML File": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Write HTML to File",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Write HTML to File": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create Draft Posts",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "index": 0,
+            "node": "AI Agent",
+            "type": "ai_memory"
+          }
+        ]
+      ]
+    },
+    "Split Image Prompts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Generate Image (Gemini)",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "When clicking 'Execute workflow'": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Cleanup Old Files",
+            "type": "main"
+          },
+          {
+            "index": 0,
+            "node": "AI Agent",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  }
+}

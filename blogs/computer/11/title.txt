@@ -1,0 +1,3 @@
+Title: Getting Started with Angular 17+: Signals & Standalone Components
+Keywords: Angular, Signals, Frontend, TypeScript, Web Development
+Image Prompt: deeply technical 3d render of angular logo with signal waves, futuristic, red and blue neon lighting, high quality, 8k

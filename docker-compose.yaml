@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  n8n:
+    image: n8nio/n8n:2.4.6
+    restart: always
+    user: root
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_ENCRYPTION_KEY=5hvdJQOKqqgRrp/qsWR0O35i+6QPuX2Z
+      # - N8N_USER_FOLDER=/home/node/.n8n
+      # --- Database connection settings ---
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=n8n
+      - DB_POSTGRESDB_USER=n8nuser
+      - DB_POSTGRESDB_PASSWORD=Scorpions18
+
+      # --- Webhook and instance URL ---
+      - WEBHOOK_URL=https://n8n.saasa.co.uk/
+
+      # --- Timezone ---
+      - TZ=Europe/London
+
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - nfs_storage:/files
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17.6
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=n8n
+      - POSTGRES_USER=n8nuser
+      - POSTGRES_PASSWORD=Scorpions18
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  n8n_data:
+  db_data:
+  nfs_storage:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.0.220,rw,nfsvers=4
+      device: ":/home/sanjeeb/data/n8n_169"

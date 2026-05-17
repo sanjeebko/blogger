@@ -1,0 +1,62 @@
+TOKEN ANALYSIS REPORT
+=====================
+
+✅ EXCELLENT! Your token is properly configured for automation.
+
+Token Details:
+--------------
+✅ Access Token:    Present ([redacted])
+✅ Refresh Token:   Present ([redacted])
+✅ Token URI:       https://oauth2.googleapis.com/token
+✅ Client ID:       [redacted]
+✅ Client Secret:   [redacted]
+✅ Scopes:          https://www.googleapis.com/auth/blogger
+✅ Expiry:          2026-01-26T01:18:53Z
+
+Status:
+-------
+⏰ Token Status: EXPIRED (expired ~36 hours ago on 2026-01-26, current time: 2026-01-27)
+✅ Auto-Refresh: WILL WORK (refresh_token is present)
+
+What This Means:
+----------------
+1. Your token has expired, BUT that's OK!
+2. The refresh_token is present, so it will auto-renew
+3. Next time you call any blogger tool, the server will:
+   - Detect the token is expired
+   - Use refresh_token to get a new access token
+   - Save the new token automatically
+   - Continue with your request
+
+No manual intervention needed! 🎉
+
+Next Steps:
+-----------
+1. ✅ Your token is already properly configured
+2. ✅ The refresh_token ensures automatic renewal
+3. 📝 Save this token.json to your server/container
+4. 🚀 Test by calling any blogger tool (e.g., blogger_list_blogs)
+5. 📊 Check logs - you should see "Refreshing expired access token..."
+
+Deployment Checklist:
+---------------------
+For Docker:
+  docker run -d \
+    -p 8081:8081 \
+    -v /path/to/token.json:/app/token.json:rw \
+    -v /path/to/credentials.json:/app/credentials.json:ro \
+    sanjeebojha/mcpserver-blogger:latest
+
+For Kubernetes:
+  1. Create ConfigMap or Secret with token.json
+  2. Mount to /app/token.json in pod
+  3. Ensure volume is read-write (not read-only)
+  4. Test by calling blogger tools
+
+Security Note:
+--------------
+⚠️  This token.json contains sensitive credentials:
+    - Keep it secure
+    - Don't commit to git
+    - Use Kubernetes Secrets for production
+    - Restrict file permissions (chmod 600)

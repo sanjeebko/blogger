@@ -1,0 +1,145 @@
+<style>
+    /* Inline styles for Blogger */
+    .blog-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .blog-header {
+        background: linear-gradient(135deg, #68217a 0%, #107c10 100%);
+        /* VS Purple to Green */
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+    }
+
+    .blog-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .blog-content {
+        padding: 2.5rem;
+        line-height: 1.7;
+    }
+
+    .blog-content section {
+        margin-bottom: 3rem;
+    }
+
+    .blog-content h2 {
+        color: #68217a;
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #107c10;
+    }
+
+    .blog-content p {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .intro-box {
+        background: #f3e5f5;
+        padding: 1.5rem;
+        border-left: 4px solid #68217a;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    .blog-content pre {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border-left: 4px solid #107c10;
+    }
+
+    .blog-content code {
+        font-family: 'Courier New', Consolas, monospace;
+    }
+
+    .warning-box {
+        background: #ffebee;
+        border-left: 4px solid #d32f2f;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+        color: #b71c1c;
+    }
+</style>
+
+<div class="blog-container">
+    <div class="blog-header">
+        <h1>
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="TFS Workspace Guide Banner" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhOJ7bOXCKjtTKoD5ndl30QdJurrAKIwhwquEGLWj5mek2bnZGB9KBV0fmMyltz4Pmo0kNPfP8zJntxUSgcTP76DP-Y_8MmzfC-9Js64O0ktBKUxJDbGxAODIuT8f70bv-_1wmJHQwLoSJZ4eE0bBXaWWpQ8kckZUlk6Ez9WTDOlaTJBDCaTeMbnisKSLQ/s1024/tfs_workspace_main.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+            </div>
+            How to Remove Workspace in TFS 2010-2018
+        </h1>
+        <p>A definitive guide to cleaning up old Team Foundation Server mappings</p>
+    </div>
+
+    <div class="blog-content">
+        <section>
+            <div class="intro-box">
+                <p>Have you ever encountered a "Workspace already exists" error or needed to clean up a developer
+                    channel mapping on a new machine? Dealing with stale Team Foundation Server (TFS) workspaces can be
+                    a headache.</p>
+                <p><strong>This solution works for TFS 2010, 2012, 2013, 2015, 2017, and 2018.</strong></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Solution: Visual Studio Command Prompt</h2>
+            <p>The most reliable way to delete a stubborn workspace is through the command line tool provided with
+                Visual Studio.</p>
+
+            <h3>Step 1: Open the Command Prompt</h3>
+            <p>Search your Start Menu for <strong>"Developer Command Prompt for VS 20XX"</strong> (where XX is your
+                version) and run it as Administrator.</p>
+
+            <h3>Step 2: Run the Delete Command</h3>
+            <p>Use the following command syntax to delete the specific workspace:</p>
+
+            <pre><code>tf workspace /delete /server:http://tfs.site.com:8080/tfs WORKSPACENAME</code></pre>
+
+            <div class="warning-box">
+                <strong>⚠️ Warning:</strong> This action is irreversible. Make sure you have checked in all your pending
+                changes before deleting the workspace!
+            </div>
+        </section>
+
+        <section>
+            <h2>Example Scenario</h2>
+            <p>If your user is <code>sanjeebPC</code> and your TFS server is located at
+                <code>http://tfs.site.com:8080/tfs</code>, the command would look like this:</p>
+
+            <pre><code>tf workspace /delete /server:http://tfs.site.com:8080/tfs sanjeebPC</code></pre>
+
+            <p>After hitting enter, you may be prompted to confirm. Type <strong>Y</strong> and press Enter.</p>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Using the <code>tf</code> command line utility is a powerful skill for any .NET developer using legacy
+                TFS. It grants you control that the GUI often hides.</p>
+        </section>
+    </div>
+</div>

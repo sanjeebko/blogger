@@ -1,0 +1,229 @@
+<style>
+    /* Inline styles for Blogger */
+    .blog-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .blog-header {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        /* Purple/Blue for .NET/API feel */
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+    }
+
+    .blog-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .blog-content {
+        padding: 2.5rem;
+        line-height: 1.7;
+    }
+
+    .blog-content section {
+        margin-bottom: 3rem;
+    }
+
+    .blog-content h2 {
+        color: #6a11cb;
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #2575fc;
+    }
+
+    .blog-content h3 {
+        color: #2575fc;
+        font-size: 1.4rem;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .blog-content p {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .intro-box {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-left: 4px solid #6a11cb;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    .blog-content pre {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border-left: 4px solid #6a11cb;
+    }
+
+    .blog-content code {
+        font-family: 'Courier New', Consolas, monospace;
+    }
+
+    .highlight-box {
+        background: #e1f5fe;
+        border-left: 4px solid #03a9f4;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="blog-container">
+    <div class="blog-header">
+        <h1>
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="API Architecture Banner"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEixuW1yWE3IKL_m__yfs8h5juYO56JV0leRde5N1RTvNTj-I-tOWaWY1fjYu5lxi60HZpDDh_f_iHk8xRVxxQ9dsI8uEeOoE-hRqgv8D34D3pvbcuuG1fV5gg-IeCN42By_zP0OMGsSlASnZz11z96tC7Awn_fFxNIqCnhnss-0-o1yDRKGSQV84Hlim-g/s1024/clean_api_main.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+            </div>
+            Building Clean APIs with ASP.NET Core
+        </h1>
+        <p>Best practices for designing maintainable, scalable, and secure REST APIs</p>
+    </div>
+
+    <div class="blog-content">
+        <section>
+            <div class="intro-box">
+                <p>Creating an API that works is easy. Creating an API that is maintainable, testable, and pleasant to
+                    consume is an art. In the .NET ecosystem, <strong>ASP.NET Core</strong> combined with <strong>Entity
+                        Framework (EF) Core</strong> gives us a powerful toolkit, but it's up to us to use it wisely.
+                </p>
+                <p>This guide covers the essential patterns for building clean, professional-grade APIs, moving beyond
+                    simple CRUD to robust enterprise architecture.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>1. Separation of Concerns: The Service Layer</h2>
+            <p>One of the most common mistakes is putting business logic directly inside Controllers. This makes code
+                hard to test and reuse. Instead, aim for a clear layered architecture.</p>
+
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="Clean Architecture Diagram"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_EaRXDwuGoMLd2fsRVbR67odYvnC5VF1u2AOozdCdMmBZrPOdNJ9sSXRdB7Uzu2SJwbi-7eSlG3uJTuop8t6llxk8eELkaTD0Ff-3Czjsu26mIfWT5AOuDFOd6IEkS8hQNigKhYmwKpYaGG8Cs8fzK_DJW_1MyIykJqX770SNnGiVlRsO9WeF0_AEA1o/s1024/api_clean_architecture.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+                <p><em>The Onion Architecture: Dependencies point inwards.</em></p>
+            </div>
+
+            <h3>❌ The Bad Way (Fat Controller)</h3>
+            <pre><code>[HttpPost]
+public IActionResult CreateOrder(OrderDto dto) {
+    // Validation logic mixed with business logic
+    if(dto.Amount < 0) return BadRequest();
+    
+    var order = new Order { ... };
+    _dbContext.Orders.Add(order); // Direct DB access in controller
+    _dbContext.SaveChanges();
+    return Ok(order);
+}</code></pre>
+
+            <h3>✅ The Clean Way (Service Pattern)</h3>
+            <pre><code>[HttpPost]
+public async Task&lt;IActionResult&gt; CreateOrder(OrderDto dto) {
+    // Controller only handles HTTP concerns
+    var result = await _orderService.CreateOrderAsync(dto);
+    return Ok(result);
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>2. Global Error Handling with Middleware</h2>
+            <p>Don't wrap every controller action in a <code>try-catch</code> block. It clutters your code. Instead, use
+                Middleware to catch exceptions globally and return a standardized error response.</p>
+
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="Middleware Pipeline"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx-2A1C1vm12wlUwrC1hA05XZzQeABoa44m9h5Px3CT15R5fcmlr0v5tHQpyIvYfUi71GbSi0V9neRqsknM0vFrNObrudWf3yrzPfrQ8nOq_Z2JPdjXDFuO4o9NsjLAQemm2yLKMmKgMe9ijaa3Me8W9WuRZ-OOtiJaScKZgr8AfiA-lOTiRxX9yFy3ow/s1024/api_middleware_flow.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+                <p><em>The Request Pipeline: Logic flows through middleware layers.</em></p>
+            </div>
+
+            <pre><code>public class ExceptionMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public ExceptionMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext httpContext)
+    {
+        try
+        {
+            await _next(httpContext);
+        }
+        catch (Exception ex)
+        {
+            await HandleExceptionAsync(httpContext, ex);
+        }
+    }
+
+    private Task HandleExceptionAsync(HttpContext context, Exception exception)
+    {
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+        return context.Response.WriteAsync(new ErrorDetails()
+        {
+            StatusCode = context.Response.StatusCode,
+            Message = "Internal Server Error from the custom middleware."
+        }.ToString());
+    }
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>3. Validation with FluentValidation</h2>
+            <p>Data annotations (Attributes) can get messy. <strong>FluentValidation</strong> allows you to separate
+                validation rules from your models, keeping your DTOs clean.</p>
+
+            <pre><code>public class OrderValidator : AbstractValidator&lt;OrderDto&gt; 
+{
+    public OrderValidator() 
+    {
+        RuleFor(x => x.ProductName).NotEmpty();
+        RuleFor(x => x.Amount).GreaterThan(0).WithMessage("Price must be positive");
+    }
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>4. Use DTOs (Data Transfer Objects)</h2>
+            <p>Never expose your database entities directly to the API client. It creates a tight coupling between your
+                database schema and your public interface.</p>
+            <div class="highlight-box">
+                <p><strong>Scenario:</strong> You add a `PasswordHash` column to your User table. If you return the
+                    Entity directly, you just leaked everyone's password hashes!</p>
+            </div>
+            <p>Always map your Entites to DTOs. Libraries like <strong>AutoMapper</strong> or manual mapping work great.
+            </p>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Building clean APIs is about discipline. By separating concerns, implementing global error handling, and
+                using DTOs, you create a codebase that your team will enjoy working on for years to come.</p>
+        </section>
+    </div>

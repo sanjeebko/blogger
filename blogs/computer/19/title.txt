@@ -1,14 +1,14 @@
-topic: "Green Software Engineering for High-Scale Systems"
-keywords: "green software, sustainable computing, carbon aware computing, efficient algorithms, cloud sustainability"
+topic: "RAG 2.0: Building Production-Ready Retrieval Pipelines"
+keywords: "rag 2.0, vector database, embeddings, hybrid search, llmops"
 
 content_headlines:
-1. Why carbon-aware engineering is now a business metric
-2. Measuring software emissions and energy consumption
-3. Architecture patterns that lower compute waste
-4. Efficient coding and workload scheduling techniques
-5. Building a practical sustainability scorecard for teams
+1. From demo RAG to production RAG architecture
+2. Chunking, reranking, and hybrid retrieval strategies
+3. Evaluating answer quality with grounded metrics
+4. Security and data governance for enterprise RAG
+5. Cost and latency tuning for real-world workloads
 
 gemini_image_prompts:
-1. "Create an educational green software architecture visual showing carbon-aware workload scheduling across regions with cleaner energy windows, plus performance/SLA safeguards. Keep sustainability concepts technically valid, 16:9."
-2. "Generate a factual engineering dashboard image with energy consumption, carbon intensity, server utilization, and request efficiency (energy per transaction) trends. Use realistic metrics and data visualization, 16:9."
-3. "Design an informative optimization infographic covering efficient algorithms, right-sized infrastructure, autoscaling, and storage lifecycle policies that reduce compute waste without reliability loss. Accurate cloud engineering style, 16:9."
+1. "Create a technically accurate RAG pipeline diagram with stages: document ingestion, chunking, embeddings, hybrid retrieval (BM25 + vector), reranking, LLM answer generation, and citation output. Style: clean enterprise infographic, 16:9."
+2. "Generate an educational visual about retrieval quality evaluation showing groundedness, context precision, recall, and answer faithfulness as measurable metrics dashboards. Use realistic data science dashboard elements only, 16:9."
+3. "Design a secure enterprise RAG architecture image with data classification, PII redaction, access control, audit logs, and tenant isolation around vector storage and inference services. Keep terminology and flows accurate, 16:9."

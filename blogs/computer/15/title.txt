@@ -8,4 +8,7 @@ content_headlines:
 4. Securing CI/CD pipelines and software supply chain
 5. Practical rollout plan for engineering organizations
 
-gemini_image_prompt: "Design a cybersecurity hero image depicting Zero Trust architecture with identity verification checkpoints, encrypted service-to-service traffic, and policy shields around cloud workloads. High-tech blueprint style, dark background, 16:9, no text."
+gemini_image_prompts:
+1. "Create a fact-based Zero Trust cloud-native architecture diagram with identity provider, short-lived credentials, policy decision point, policy enforcement point, and mTLS between services. Educational enterprise style, 16:9."
+2. "Generate an informative service-to-service security visual showing workload identity issuance, certificate rotation, encrypted traffic, and least-privilege authorization in a service mesh. Keep networking/security details technically correct, 16:9."
+3. "Design a DevSecOps pipeline security infographic with signed artifacts, SBOM generation, vulnerability scanning, admission policies, and runtime monitoring. Use only established software supply-chain controls, 16:9."

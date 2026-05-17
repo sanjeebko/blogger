@@ -8,4 +8,7 @@ content_headlines:
 4. Security and data governance for enterprise RAG
 5. Cost and latency tuning for real-world workloads
 
-gemini_image_prompt: "Design a technical infographic hero image for a Retrieval-Augmented Generation pipeline: data sources, embedding layer, vector database, reranker, and LLM response stage connected by flow arrows. Modern SaaS style, dark theme with neon accents, 16:9, high clarity, no text labels."
+gemini_image_prompts:
+1. "Create a technically accurate RAG pipeline diagram with stages: document ingestion, chunking, embeddings, hybrid retrieval (BM25 + vector), reranking, LLM answer generation, and citation output. Style: clean enterprise infographic, 16:9."
+2. "Generate an educational visual about retrieval quality evaluation showing groundedness, context precision, recall, and answer faithfulness as measurable metrics dashboards. Use realistic data science dashboard elements only, 16:9."
+3. "Design a secure enterprise RAG architecture image with data classification, PII redaction, access control, audit logs, and tenant isolation around vector storage and inference services. Keep terminology and flows accurate, 16:9."

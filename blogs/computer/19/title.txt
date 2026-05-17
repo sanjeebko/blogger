@@ -8,4 +8,7 @@ content_headlines:
 4. Efficient coding and workload scheduling techniques
 5. Building a practical sustainability scorecard for teams
 
-gemini_image_prompt: "Design a modern sustainability-tech hero image featuring energy-efficient data centers, carbon metrics dashboards, and optimized cloud workloads with eco indicators. Blend clean green and digital blue aesthetics, 16:9, high detail, no text."
+gemini_image_prompts:
+1. "Create an educational green software architecture visual showing carbon-aware workload scheduling across regions with cleaner energy windows, plus performance/SLA safeguards. Keep sustainability concepts technically valid, 16:9."
+2. "Generate a factual engineering dashboard image with energy consumption, carbon intensity, server utilization, and request efficiency (energy per transaction) trends. Use realistic metrics and data visualization, 16:9."
+3. "Design an informative optimization infographic covering efficient algorithms, right-sized infrastructure, autoscaling, and storage lifecycle policies that reduce compute waste without reliability loss. Accurate cloud engineering style, 16:9."

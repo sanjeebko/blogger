@@ -8,4 +8,7 @@ content_headlines:
 4. Incident response workflows for faster MTTR
 5. Building actionable dashboards engineers actually use
 
-gemini_image_prompt: "Generate an advanced observability dashboard concept image showing distributed traces, system metrics, and service dependency maps powered by OpenTelemetry and eBPF signals. Dark mode, neon data lines, cinematic depth, 16:9, no text."
+gemini_image_prompts:
+1. "Create an informative observability architecture diagram combining OpenTelemetry collectors, traces, metrics, logs, and service dependency graph for a microservices app. Ensure pipeline components are technically correct, 16:9."
+2. "Generate a practical SRE incident-response visual with alert trigger, trace drill-down, correlated logs/metrics, root-cause timeline, and mitigation steps. Use realistic operational workflow details, 16:9."
+3. "Design an educational eBPF + OpenTelemetry scene showing kernel-level signal capture feeding user-space observability backends with low overhead. Keep kernel/telemetry concepts accurate and non-fictional, 16:9."

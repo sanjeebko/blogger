@@ -8,4 +8,7 @@ content_headlines:
 4. Security and rate limiting for public AI APIs
 5. Benchmarks: edge vs centralized inference tradeoffs
 
-gemini_image_prompt: "Create a dynamic tech scene showing global edge locations serving AI API requests in real time. Visualize low-latency routes, serverless functions, and compact AI models at edge nodes. Sleek cyber style, world map abstraction, 16:9, no text."
+gemini_image_prompts:
+1. "Create an educational edge-inference architecture image showing user requests routed to nearest edge PoP, serverless function runtime, model cache, and fallback to regional inference. Use technically correct latency-focused flow, 16:9."
+2. "Generate a realistic API performance dashboard visual for serverless AI: p50/p95 latency, cache hit ratio, token throughput, and error-rate panels by region. Keep metrics plausible and clearly organized, 16:9."
+3. "Design a security-focused diagram for public AI APIs at the edge with rate limiting, API keys/JWT validation, WAF checks, and abuse detection before model execution. Ensure concepts are accurate and implementation-ready, 16:9."

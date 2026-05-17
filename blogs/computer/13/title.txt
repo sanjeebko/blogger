@@ -8,4 +8,7 @@ content_headlines:
 4. Governance without slowing developer velocity
 5. Measuring developer experience and platform adoption
 
-gemini_image_prompt: "Generate a futuristic enterprise illustration of an internal developer portal with service catalog cards, deployment pipelines, and self-service templates. Show happy developer workflows and streamlined architecture. Minimal modern UI style, 16:9, no text."
+gemini_image_prompts:
+1. "Create an internal developer portal overview image with service catalog, golden path templates, CI/CD starter scaffolds, and ownership metadata. Make it educational with realistic platform engineering artifacts, 16:9."
+2. "Generate a process diagram for self-service software delivery: request template, policy checks, automated repo/bootstrap, deployment pipeline, and observability defaults. Use accurate DevEx and governance terminology, 16:9."
+3. "Design an informative metrics dashboard visual for platform adoption: lead time, deployment frequency, change failure rate, and developer satisfaction trends. Keep all metrics aligned with common DORA/DevEx practice, 16:9."

@@ -8,4 +8,7 @@ content_headlines:
 4. Caching and parallelization for faster delivery
 5. Governance patterns for multi-repo organizations
 
-gemini_image_prompt: "Create a CI/CD operations illustration with GitHub-style workflow graphs, parallel job lanes, secure secrets vault, and deployment stages from commit to production. Clean isometric design, blue and black palette, 16:9, no text."
+gemini_image_prompts:
+1. "Create an educational GitHub Actions optimization diagram with reusable workflows, matrix builds, dependency caching, and parallel job execution from commit to deploy. Use realistic CI/CD flow and terminology, 16:9."
+2. "Generate a security-hardening visual for CI runners: OIDC-based cloud auth, ephemeral runners, secret-scoped permissions, and artifact integrity checks. Keep all controls practical and technically accurate, 16:9."
+3. "Design an operations dashboard image for multi-repo CI governance showing workflow duration trends, flaky test rate, queue time, and policy compliance scorecards. Informative and data-centric, 16:9."

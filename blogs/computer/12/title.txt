@@ -8,4 +8,7 @@ content_headlines:
 4. Automation policies for scaling and budget alerts
 5. KPI dashboard for engineering and finance alignment
 
-gemini_image_prompt: "Create a cloud operations hero image showing Kubernetes clusters, cost dashboards, and automated scaling controls reducing spend. Include nodes, pods, and finance charts. Professional enterprise style, teal and indigo palette, 16:9, no text, high resolution."
+gemini_image_prompts:
+1. "Create an informative Kubernetes FinOps dashboard scene showing cluster namespaces, CPU/memory requests vs limits, utilization heatmaps, and monthly cost breakdown by workload. Use realistic K8s and cloud cost concepts, 16:9."
+2. "Generate a factual optimization workflow diagram: rightsizing recommendations, HPA/VPA autoscaling, spot node pools, and budget alerting pipeline from telemetry to action. Enterprise DevOps style, 16:9."
+3. "Design a clear architecture visual for cost-efficient Kubernetes: on-demand + reserved + spot mix, workload scheduling policies, and reliability safeguards for interruption handling. Keep cloud concepts technically correct, 16:9."

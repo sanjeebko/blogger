@@ -1,0 +1,908 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Discover what's new in .NET 10: performance improvements, C# 14 features, cloud-native enhancements, AI integration, and modern development tools." />
+    <title>What's New in .NET 10?</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #1B1F3B;
+        background: linear-gradient(135deg, #F1F5FF 0%, #FBFCFF 45%, #DCE8FF 100%);
+        min-height: 100vh;
+        padding: 2rem 1rem;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 22px;
+        box-shadow: 0 22px 48px rgba(27, 31, 59, 0.18);
+        overflow: hidden;
+      }
+      header {
+        background: linear-gradient(135deg, #512BD4 0%, #6D3ED4 45%, #8C5EE6 100%);
+        color: white;
+        padding: 3.5rem 2.5rem;
+        text-align: center;
+      }
+      .header-image {
+        display: block;
+        margin-top: 120px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 2rem;
+        width: 520px;
+        height: 380px;
+        border-radius: 5% 10% 25% 10%;
+        border: 10px solid rgba(255, 255, 255, 0.85);
+        object-fit: cover;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+      }
+      header h1 {
+        font-size: 2.6rem;
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        text-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+        line-height: 1.35;
+      }
+      header p {
+        font-size: 1.15rem;
+        max-width: 720px;
+        margin: 0 auto;
+        opacity: 0.95;
+      }
+      main {
+        padding: 3rem;
+      }
+      .content-image {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+        border-radius: 5% 10% 25% 10%;
+        border: 10px solid rgba(255, 255, 255, 0.85);
+        margin: 1.5rem 0;
+        object-fit: cover;
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+        display: block;
+      }
+      h2 {
+        color: #512BD4;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 3px solid #6D3ED4;
+        padding-bottom: 0.6rem;
+        margin-top: 2.8rem;
+      }
+      h3 {
+        color: #3C1B9E;
+        font-size: 1.45rem;
+        margin: 1.8rem 0 1rem;
+      }
+      h4 {
+        color: #2D147A;
+        font-size: 1.2rem;
+        margin: 1.2rem 0 0.6rem;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+      ul, ol {
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      }
+      li {
+        margin-bottom: 0.7rem;
+      }
+      li strong {
+        color: #3C1B9E;
+      }
+      code {
+        background: #F5F0FF;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-family: 'Consolas', 'Monaco', monospace;
+        color: #512BD4;
+        font-size: 0.9em;
+      }
+      pre {
+        background: #1E1E1E;
+        color: #D4D4D4;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border-left: 4px solid #512BD4;
+      }
+      pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .emoji {
+        font-size: 1.2em;
+        margin-right: 0.4rem;
+      }
+      .intro-box {
+        background: linear-gradient(135deg, rgba(81, 43, 212, 0.18) 0%, rgba(140, 94, 230, 0.24) 100%);
+        border-radius: 18px;
+        padding: 2.2rem;
+        border-left: 6px solid #512BD4;
+        margin: 1.5rem 0 2rem;
+        box-shadow: 0 12px 30px rgba(81, 43, 212, 0.18);
+      }
+      .highlight-box {
+        background: #F3EFFF;
+        border-left: 5px solid #512BD4;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .info-box {
+        background: #E3F2FD;
+        border-left: 5px solid #1E88E5;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .tip-box {
+        background: #FFF3E0;
+        border-left: 5px solid #FF9800;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+      .warning-box {
+        background: #FFEBEE;
+        border-left: 5px solid #F44336;
+        padding: 1.2rem 1.5rem;
+        border-radius: 12px;
+        margin: 1.6rem 0;
+      }
+            .card-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                margin: 2rem 0;
+            }
+            .card {
+                background: white;
+                border: 1px solid rgba(81, 43, 212, 0.2);
+                border-radius: 14px;
+                padding: 1.6rem;
+                box-shadow: 0 12px 26px rgba(81, 43, 212, 0.12);
+                width: 100%;
+            }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.8rem 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+      }
+      th, td {
+        border: 1px solid rgba(81, 43, 212, 0.12);
+        padding: 0.9rem 1rem;
+        text-align: left;
+      }
+      th {
+        background: #512BD4;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+      tr:nth-child(even) {
+        background: rgba(243, 239, 255, 0.6);
+      }
+      tr:hover {
+        background: rgba(140, 94, 230, 0.18);
+      }
+      .pill {
+        display: inline-block;
+        background: #512BD4;
+        color: white;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        margin: 0.2rem;
+      }
+      @media (max-width: 900px) {
+        main {
+          padding: 2rem 1.5rem;
+        }
+        header h1 {
+          font-size: 2.2rem;
+        }
+      }
+      @media (max-width: 600px) {
+        header {
+          padding: 2.5rem 1.7rem;
+        }
+        header h1 {
+          font-size: 1.9rem;
+        }
+        header p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>What's New in .NET 10?</h1>
+            <p>.NET 10 brings groundbreaking performance improvements, cloud-native features, AI integration, and developer productivity enhancements for modern application development.</p>
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjll2hcL7NFx9SulSRJ2ZZI1g3uxRy2ooCQfbXyCtmTuZd93FhYe_pYWD593W_KfchuFM1HIJm3L5eXfRsNZw2gzsVreVM-Ypta6EquSyK8kFdkmZM0j_EzOv3pkrIUs553-RpB1m812mSAiOiCfn0YdTplbyLDWmBdPrsfPpaFcM5mBTgRYOGuy8G7HYk/s600/dotnet10_00_title.png" alt="What's New in .NET 10 header" class="header-image" />
+        </header>
+        <main>
+            <article>
+                <div class="intro-box">
+                    <p><strong>.NET 10</strong> represents a major milestone in Microsoft's unified platform evolution, delivering unprecedented performance, seamless cloud-native development, integrated AI capabilities, and enhanced developer experiences. Released in November 2025, .NET 10 builds upon the solid foundation of previous releases while introducing innovative features that push the boundaries of what's possible with modern application development.</p>
+                    <p>This comprehensive guide explores the key enhancements across runtime performance, C# 14 language features, ASP.NET Core improvements, cloud-native tooling, MAUI updates, Blazor advancements, and AI integration—everything you need to leverage .NET 10's full potential.</p>
+                </div>
+            </article>
+
+            <section>
+                <h2><span class="emoji">⚡</span> 1. Performance & Runtime Improvements</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHfEXbym3EouE9PCo0nucEKYnUjwaklMmaQ39a0Z0tguWmUbPQO8976i6MOWkA0r9eXe1cz1wZRemP3O99XsW4HZ4r8lgKxyi7d6J1l1DlbypQ1wgMnV3xESgakk4oMeui5Quxv-fpe4oFCL6m7cBwZpB9hoEIqHDl8kX_XHy8_XHow4FYEpmchBnoOnY/s600/dotnet10_01_performance.png" alt="Performance and runtime improvements illustration" class="content-image" />
+
+                <div class="highlight-box">
+                    <p><strong>Core Performance Enhancements:</strong></p>
+                    <ul>
+                        <li><strong>JIT Compiler Optimizations:</strong> 15-25% faster startup times through improved tiered compilation and profile-guided optimization (PGO).</li>
+                        <li><strong>GC Improvements:</strong> Dynamic Adaptive to Application Size (DATAS) reduces memory footprint by 20-30% for microservices.</li>
+                        <li><strong>Native AOT Enhancements:</strong> Full support for ASP.NET Core minimal APIs with 70% smaller deployment size.</li>
+                        <li><strong>SIMD Improvements:</strong> Enhanced vectorization with AVX-512 support for numerical and data processing workloads.</li>
+                    </ul>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Startup Performance</h4>
+                        <p>These improvements shine in short-lived processes like CLI tools, serverless functions, and small microservices where every millisecond of cold start matters.</p>
+                        <ul>
+                            <li><strong>Assembly loading optimization:</strong> Non-essential assemblies are loaded lazily so your minimal API can start serving simple requests while heavy features load in the background.</li>
+                            <li><strong>Improved R2R compilation:</strong> Ready-to-Run images reduce JIT work on first request, cutting cold-start time for containerized web apps.</li>
+                            <li><strong>Lazy initialization patterns:</strong> Large caches and background services can be wired to initialize only when actually needed, improving initial responsiveness.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Throughput</h4>
+                        <p>Designed for busy APIs, background workers, and real-time systems where sustained requests per second are critical.</p>
+                        <ul>
+                            <li><strong>Enhanced inlining heuristics:</strong> Hot methods in routing, JSON serialization, and validation are more aggressively inlined, reducing call overhead.</li>
+                            <li><strong>Better loop optimizations:</strong> Common loops over arrays and <code>Span&lt;T&gt;</code> are vectorized, boosting performance for log processing and ETL-like workloads.</li>
+                            <li><strong>Reduced allocation overhead:</strong> Fewer temporary objects are created in core libraries, reducing GC pressure and increasing sustained throughput.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Memory Efficiency</h4>
+                        <p>Especially useful when running many instances per node in Kubernetes or on small cloud SKUs.</p>
+                        <ul>
+                            <li><strong><code>Span&lt;T&gt;</code> and <code>Memory&lt;T&gt;</code> optimizations:</strong> IO, networking, and text APIs rely more on spans, avoiding unnecessary copies.</li>
+                            <li><strong>Reduced GEN0/GEN1 collections:</strong> Allocation patterns in the BCL and ASP.NET Core have been tuned to allocate less and promote less, leading to fewer short GC pauses.</li>
+                            <li><strong>Better heap compaction algorithms:</strong> Long-running services stay stable over days of uptime with less fragmentation and more predictable memory usage.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <pre><code>// Example: Native AOT with minimal API
+using Microsoft.AspNetCore.Builder;
+
+var builder = WebApplication.CreateSlimBuilder(args);
+var app = builder.Build();
+
+app.MapGet("/", () => "Hello .NET 10!");
+app.Run();
+
+// Build with: dotnet publish -c Release /p:PublishAot=true
+// Result: ~8MB executable, <50ms startup time</code></pre>
+
+                <div class="info-box">
+                    <p><strong>💡 Benchmark:</strong> Web API throughput increased by 40% compared to .NET 9, with memory usage reduced by 25% in containerized scenarios.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🎯</span> 2. C# 14 Language Features</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidBCxTiyFHfguiCugz_c9c-GDHjAAZ1ROR_kAOMG1W45e1rzYWL6P72ggXQDF9FWKlSxlkBAYDcNgQe0TLZgB6bmuxgHVbUd4bZywYx44KMd8SywlpJIkSi0bg8TGCwPbKT_UGb3MYfXleV1Oecb90mI-gqYxv4IcZBSewe0hzZ_EsVF-5yFa3OYF_Gnw/s600/dotnet10_02_csharp14.png" alt="C# 14 language features illustration" class="content-image" />
+
+                <p>.NET 10 ships with C# 14, bringing powerful new language features that enhance developer productivity and code clarity:</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Extension Members</h4>
+                        <p>Add properties and indexers to existing types via extension blocks:</p>
+                        <pre><code>extension StringExtensions for string
+{
+    public bool IsValidEmail =>
+        this.Contains("@");
+    
+    public string this[Range range] =>
+        this[range];
+}</code></pre>
+                    </div>
+                    <div class="card">
+                        <h4>Field Keyword in Properties</h4>
+                        <p>Auto-generated backing fields directly in property initializers:</p>
+                        <pre><code>public string Name
+{
+    get => field;
+    set => field = value.Trim();
+} = string.Empty;</code></pre>
+                    </div>
+                    <div class="card">
+                        <h4>Unbound Generic Types</h4>
+                        <p>Use open generic types in nameof expressions:</p>
+                        <pre><code>// Now valid in C# 14
+var name = nameof(List<>);
+var method = nameof(Enumerable
+    .Select<,>);</code></pre>
+                    </div>
+                    <div class="card">
+                        <h4>Improved Pattern Matching</h4>
+                        <p>Enhanced list patterns and recursive patterns:</p>
+                        <pre><code>if (numbers is [var first, 
+    .., var last])
+{
+    Console.WriteLine(
+        $"{first}...{last}");
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Additional C# 14 Features:</strong></p>
+                    <ul>
+                        <li><strong>Null-Conditional Assignment:</strong> <code>obj?.Property ??= defaultValue</code></li>
+                        <li><strong>Implicit Span Conversions:</strong> Automatic conversion of arrays to <code>ReadOnlySpan&lt;T&gt;</code></li>
+                        <li><strong>Collection Expressions:</strong> Enhanced syntax with spread operators</li>
+                        <li><strong>Lambda Improvements:</strong> Natural delegate types and async improvements</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🌐</span> 3. ASP.NET Core Enhancements</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh6tWiRpXpbjJO7IqvyZ8iagEd7L_e57-G74k6TDrWsujOMMFL5Rxy0YufwOHe5Lf1I_X6DtTE4L3DnqaC-7icNIYvU3wglZEuCQjmMQTDQL4e_mA51z8fs_sIEW1lqgGFfmDcpj89ue9wo5WyPM7_3AKfdtGUoP1tZR7jLwCwgp3X6_bUrmVlEaACaH5s/s600/dotnet10_03_aspnetcore.png" alt="ASP.NET Core enhancements illustration" class="content-image" />
+
+                <div class="intro-box">
+                    <p>ASP.NET Core 10 delivers significant improvements for web APIs, Blazor applications, and cloud-native services.</p>
+                </div>
+
+                <h3>Minimal APIs 2.0</h3>
+                <pre><code>// Enhanced minimal APIs with automatic OpenAPI generation
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi(); // New built-in OpenAPI support
+
+var app = builder.Build();
+
+app.MapGet("/products/{id}", 
+    (int id, IProductService service) => 
+        service.GetProduct(id))
+    .WithName("GetProduct")
+    .WithTags("Products")
+    .Produces<Product>(200)
+    .ProducesValidationProblem();
+
+app.MapOpenApi(); // Serves OpenAPI spec
+app.Run();</code></pre>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>HTTP/3 by Default</h4>
+                        <ul>
+                            <li>QUIC protocol support enabled</li>
+                            <li>Improved multiplexing</li>
+                            <li>Better mobile connectivity</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Built-in Rate Limiting</h4>
+                        <ul>
+                            <li>Token bucket algorithm</li>
+                            <li>Sliding window policies</li>
+                            <li>Distributed scenarios support</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Output Caching</h4>
+                        <ul>
+                            <li>Memory and distributed caching</li>
+                            <li>Tag-based invalidation</li>
+                            <li>Compression integration</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Request Decompression</h4>
+                        <ul>
+                            <li>Automatic content decompression</li>
+                            <li>Gzip, Brotli, Deflate support</li>
+                            <li>Configurable size limits</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Blazor United</h3>
+                <div class="highlight-box">
+                    <p><strong>Unified Rendering Modes:</strong> Blazor 10 introduces "Blazor United" - seamless switching between Server, WebAssembly, and SSR (Static Server Rendering) per component:</p>
+                    <pre><code>@* Per-component rendering mode *@
+@page "/products"
+@rendermode InteractiveServer
+
+<ProductList @rendermode InteractiveWebAssembly />
+<ProductDetails @rendermode InteractiveAuto /></code></pre>
+                </div>
+
+                <ul>
+                    <li><strong>Enhanced Form Handling:</strong> Built-in validation with FluentValidation integration</li>
+                    <li><strong>Streaming Rendering:</strong> Progressive SSR for improved perceived performance</li>
+                    <li><strong>Hot Reload Improvements:</strong> Faster iteration with enhanced Hot Reload capabilities</li>
+                    <li><strong>QuickGrid Enhancements:</strong> Advanced data grid with virtualization and custom templates</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><span class="emoji">☁️</span> 4. Cloud-Native & Container Features</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8mJQ4DGpLFhPelOymbHDgC9BgOnxWNy1EsRSqP3BZzIbsRK_E8ZeZMZIZ4IWjwGp64uVRXV2mDXUM5sUsShSRG_fR8Y8QgBoExP3d44uGyHtp3xyRKVoXN-nebmjXi4IWJ6hcvPPezBPipllTbR-Qm8Uk9KPSDRBQAxkVn3euJvuRFq-i6sNyCXB3H-_ZBSg/s600/dotnet10_04_cloud.png" alt="Cloud-native and container features illustration" class="content-image" />
+
+                <div class="intro-box">
+                    <p>.NET 10 doubles down on cloud-native development with enhanced container support, observability, and orchestration integration.</p>
+                </div>
+
+                <h3>Container Optimization</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th>Benefit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Chiseled Containers</td>
+                            <td>Ultra-minimal Ubuntu-based images</td>
+                            <td>40% smaller size, reduced attack surface</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-arch Images</td>
+                            <td>Native ARM64 and x64 support</td>
+                            <td>Optimized for various cloud platforms</td>
+                        </tr>
+                        <tr>
+                            <td>Layer Optimization</td>
+                            <td>Intelligent layer caching</td>
+                            <td>Faster builds and deployments</td>
+                        </tr>
+                        <tr>
+                            <td>Distroless Support</td>
+                            <td>Google distroless base images</td>
+                            <td>Maximum security, minimal footprint</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Observability Enhancements</h3>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8mJQ4DGpLFhPelOymbHDgC9BgOnxWNy1EsRSqP3BZzIbsRK_E8ZeZMZIZ4IWjwGp64uVRXV2mDXUM5sUsShSRG_fR8Y8QgBoExP3d44uGyHtp3xyRKVoXN-nebmjXi4IWJ6hcvPPezBPipllTbR-Qm8Uk9KPSDRBQAxkVn3euJvuRFq-i6sNyCXB3H-_ZBSg/s600/dotnet10_04_cloud.png" alt="OpenTelemetry observability" class="content-image" />
+                <pre><code>// Built-in OpenTelemetry integration
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddOpenTelemetry()
+    .WithTracing(tracing => tracing
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation()
+        .AddOtlpExporter())
+    .WithMetrics(metrics => metrics
+        .AddAspNetCoreInstrumentation()
+        .AddRuntimeInstrumentation()
+        .AddOtlpExporter());
+
+// Automatic distributed tracing and metrics collection</code></pre>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Health Checks 2.0</h4>
+                        <ul>
+                            <li>Kubernetes liveness/readiness probes</li>
+                            <li>Custom health check authoring</li>
+                            <li>Dependency health tracking</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Resilience Patterns</h4>
+                        <ul>
+                            <li>Built-in retry policies</li>
+                            <li>Circuit breaker patterns</li>
+                            <li>Timeout and fallback strategies</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Configuration</h4>
+                        <ul>
+                            <li>Azure App Configuration support</li>
+                            <li>Kubernetes ConfigMaps/Secrets</li>
+                            <li>Hot reload configuration changes</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🤖</span> 5. AI & Machine Learning Integration</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjm5Cbtm_okqvcFi7usIqdccx5-rJopWgfDqolqOXKFBAx24R3NEI26JrKuY6bmMY9b_-O9GsyLZVoG9smg1NqPTkkx2dpStqaD4LwZ5MT0Gocql8k4U2WnPflIe7pg5CixSOidZUr_F-LbnxRyxAEJi4E37X5Bw6noqRqPj28wkEhnAoUpVIpknUsM5Sg/s600/dotnet10_05_ai.png" alt="AI and ML integration illustration" class="content-image" />
+
+                <div class="highlight-box">
+                    <p><strong>.NET 10 brings AI to the forefront</strong> with native integration of large language models, semantic search, and intelligent application features.</p>
+                </div>
+
+                <h3>Semantic Kernel Integration</h3>
+                <pre><code>using Microsoft.SemanticKernel;
+
+var kernel = Kernel.CreateBuilder()
+    .AddAzureOpenAIChatCompletion(
+        deploymentName: "gpt-4",
+        endpoint: "https://...",
+        apiKey: "...")
+    .Build();
+
+// Use AI in your application
+var result = await kernel.InvokePromptAsync(
+    "Summarize the following text: {{$input}}",
+    new() { ["input"] = longText });
+
+Console.WriteLine(result);</code></pre>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Vector Search</h4>
+                        <ul>
+                            <li>Built-in embedding generation</li>
+                            <li>Similarity search capabilities</li>
+                            <li>Integration with vector databases</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>ML.NET 4.0</h4>
+                        <ul>
+                            <li>Enhanced AutoML capabilities</li>
+                            <li>ONNX runtime improvements</li>
+                            <li>Deep learning model support</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>AI Building Blocks</h4>
+                        <ul>
+                            <li>Text classification</li>
+                            <li>Sentiment analysis</li>
+                            <li>Named entity recognition</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Responsible AI</h4>
+                        <ul>
+                            <li>Bias detection tools</li>
+                            <li>Explainability features</li>
+                            <li>Privacy-preserving ML</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>💡 Use Case:</strong> Build intelligent chatbots, document Q&A systems, and semantic search features with just a few lines of code using Semantic Kernel and Azure OpenAI.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">📱</span> 6. .NET MAUI Evolution</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEituM8RhKAJLphlnawj84yAsUVDQfat1f7KwWziuE3vHG6pfNtQGDISOySODO5tngUTdACRT1qK-wV4wYCu07CiG71r5RWz9K2vF8dXgrUpwAqbls3ahOdYNGWABcrV8j0f4GIcIHNV8meKg3EHiA7NVRcFzqvYQcJjy5r00xkqLiqlt1MUObiZZJ85gA4/s600/dotnet10_06_maui.png" alt="MAUI multi-device UI illustration" class="content-image" />
+
+                <p>.NET Multi-platform App UI (MAUI) 10 delivers enhanced cross-platform development for mobile and desktop applications, with a strong focus on startup time, smooth UI, and deeper access to native platform features.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Performance</h4>
+                        <p>MAUI 10 makes cross-platform apps feel truly native by cutting down startup time and reducing UI jank.</p>
+                        <ul>
+                            <li><strong>50% faster app startup on Android:</strong> Precompiled XAML and optimized resource loading mean your home screen appears noticeably quicker on real devices.</li>
+                            <li><strong>Improved rendering pipeline:</strong> The new layout and drawing pipeline reduces overdraw and unnecessary layout passes, giving smoother scrolling in list-heavy pages.</li>
+                            <li><strong>Reduced memory footprint:</strong> Image and font caching are smarter, so long-running apps (chat, dashboards, POS) leak less memory over time.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Controls & UI</h4>
+                        <p>Modern design systems out of the box, with more polished controls and fewer custom renderers to maintain.</p>
+                        <ul>
+                            <li><strong>Material Design 3 support:</strong> Android apps pick up updated elevation, shapes, and color schemes automatically when you use standard MAUI controls.</li>
+                            <li><strong>Fluent Design integration (Windows):</strong> Desktop apps feel at home on Windows 11 with updated styles, rounded corners, and system accent colors.</li>
+                            <li><strong>Enhanced data grid control:</strong> Virtualization, sorting, and templating improvements make it easier to build CRUD admin screens and reporting dashboards.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Desktop Features</h4>
+                        <p>Turn a mobile-first MAUI app into a serious desktop citizen without rewriting the UI stack.</p>
+                        <ul>
+                            <li><strong>Window management APIs:</strong> Open secondary windows for chat, inspector, or tool panes, and control size/position programmatically.</li>
+                            <li><strong>System tray integration:</strong> Build utilities that minimize to tray, show status icons, and respond to quick actions from the tray menu.</li>
+                            <li><strong>Multi-window support:</strong> On macOS and Windows, allow users to open multiple documents or views side by side, like a traditional desktop app.</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Platform APIs</h4>
+                        <p>Access to deeper device capabilities with a consistent .NET API surface.</p>
+                        <ul>
+                            <li><strong>Camera and media enhancements:</strong> Simplified photo/video capture APIs make it easier to build apps for inspections, deliveries, and social content.</li>
+                            <li><strong>Biometric authentication:</strong> Use Face ID, Touch ID, or Windows Hello for secure login flows with a single abstraction layer.</li>
+                            <li><strong>Background tasks support:</strong> Schedule background syncs or push-notification handlers that behave correctly across iOS, Android, Windows, and macOS.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <pre><code>// Example: Cross-platform file picker
+using Microsoft.Maui.Storage;
+
+public async Task<string> PickFileAsync()
+{
+    var result = await FilePicker.PickAsync(new PickOptions
+    {
+        PickerTitle = "Select a document",
+        FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+        {
+            { DevicePlatform.iOS, new[] { "public.pdf" } },
+            { DevicePlatform.Android, new[] { "application/pdf" } },
+            { DevicePlatform.WinUI, new[] { ".pdf" } },
+            { DevicePlatform.MacCatalyst, new[] { "pdf" } }
+        })
+    });
+
+    return result?.FullPath;
+}</code></pre>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🛠️</span> 7. Developer Productivity</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi872gEZ9reeyYwH1LyOf47nOgk8eRc1pvlWUiQ2azD_ubAqoQEuXpdPQqoPr_kngjnJjDsgrZb-cZZKcpKKrqMvQz2g0tbK3NzIAxQdsrXa8qVk8Jed9tx1_FuRK4djQfJkPJIDfpo29Wqg4pcX3b_OovFeg5wiAxahgtepv8w8Sn5saqNlYSAslws3PI/s600/dotnet10_07_productivity.png" alt="Developer productivity illustration" class="content-image" />
+
+                <div class="intro-box">
+                    <p>.NET 10 introduces numerous enhancements that streamline development workflows and improve the overall developer experience.</p>
+                </div>
+
+                <h3>Enhanced Tooling</h3>
+                <ul>
+                    <li><strong>Visual Studio 2026:</strong> AI-powered code completions, intelligent refactoring suggestions</li>
+                    <li><strong>VS Code C# Dev Kit:</strong> Full .NET debugging, Hot Reload, and project management</li>
+                    <li><strong>GitHub Copilot Integration:</strong> .NET-aware code generation and documentation</li>
+                    <li><strong>dotnet CLI Enhancements:</strong> Improved templates, better error messages, interactive mode</li>
+                </ul>
+
+                <h3>Developer Experience Improvements</h3>
+                <div class="highlight-box">
+                    <pre><code>// New dotnet CLI features
+dotnet new list --ai                    // AI-suggested project templates
+dotnet add package --suggest            // Package recommendation
+dotnet watch --interactive              // Interactive Hot Reload mode
+dotnet analyze --fix                    // Auto-fix code issues
+dotnet test --coverage --format=cobertura  // Built-in code coverage</code></pre>
+                </div>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Hot Reload Everywhere</h4>
+                        <ul>
+                            <li>Blazor (all render modes)</li>
+                            <li>MAUI applications</li>
+                            <li>ASP.NET Core apps</li>
+                            <li>Console applications</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Diagnostics</h4>
+                        <ul>
+                            <li>Improved exception messages</li>
+                            <li>Better stack traces</li>
+                            <li>Performance profiling integration</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <h4>Testing</h4>
+                        <ul>
+                            <li>Parallel test execution</li>
+                            <li>Snapshot testing support</li>
+                            <li>Integration test improvements</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🔒</span> 8. Security Enhancements</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi872gEZ9reeyYwH1LyOf47nOgk8eRc1pvlWUiQ2azD_ubAqoQEuXpdPQqoPr_kngjnJjDsgrZb-cZZKcpKKrqMvQz2g0tbK3NzIAxQdsrXa8qVk8Jed9tx1_FuRK4djQfJkPJIDfpo29Wqg4pcX3b_OovFeg5wiAxahgtepv8w8Sn5saqNlYSAslws3PI/s600/dotnet10_08_security.png" alt="Security enhancements illustration" class="content-image" />
+
+                <div class="highlight-box">
+                    <p><strong>Security-first approach</strong> with enhanced cryptography, authentication, and protection mechanisms.</p>
+                </div>
+
+                <ul>
+                    <li><strong>Cryptography APIs:</strong> Support for newer algorithms (ChaCha20-Poly1305, EdDSA)</li>
+                    <li><strong>Authentication:</strong> Enhanced OAuth 2.1 support, FIDO2/WebAuthn integration</li>
+                    <li><strong>Data Protection:</strong> Improved key management, Azure Key Vault integration</li>
+                    <li><strong>Secure Defaults:</strong> TLS 1.3 by default, stronger cipher suites</li>
+                    <li><strong>Supply Chain Security:</strong> Package signing verification, SBOM generation</li>
+                </ul>
+
+                <div class="warning-box">
+                    <p><strong>⚠️ Breaking Change:</strong> TLS 1.0/1.1 support removed. Upgrade clients to TLS 1.2+ before migrating to .NET 10.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🔄</span> 9. Migration & Compatibility</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUUwCkPFFiXan0DtUl-uyzAvT6EFRAIrKKj7JoJBbqH5KtfQrxAwP9ZkjcGQCCVCIZD8qLG9NTpSud4o5hsWZip3b6LzEocWtm4i6gWO6pp710gaDbCT1-0eol4gQHQN1XuW18SqT92cGU1Bs0E8WbiHpwNK_6wnAfVUfcoonZb5GSrHvMbxbw7aAHzeI/s600/dotnet10_09_migration.png" alt="Migration and compatibility illustration" class="content-image" />
+
+                <h3>Upgrading from .NET 9</h3>
+                <pre><code>// Update project file
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>
+
+// Run upgrade assistant
+dotnet tool install -g upgrade-assistant
+dotnet upgrade-assistant upgrade MyApp.sln --target-tfm net10.0</code></pre>
+
+                <div class="info-box">
+                    <p><strong>💡 Compatibility:</strong> .NET 10 maintains excellent backward compatibility with .NET 8/9. Most applications can upgrade with minimal changes.</p>
+                </div>
+
+                <h3>Common Migration Tasks</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Area</th>
+                            <th>Action Required</th>
+                            <th>Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NuGet Packages</td>
+                            <td>Update to .NET 10 compatible versions</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>TLS Protocols</td>
+                            <td>Ensure clients support TLS 1.2+</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>APIs</td>
+                            <td>Review deprecated API warnings</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td>Runtime</td>
+                            <td>Test performance and memory usage</td>
+                            <td>Low</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2><span class="emoji">📚</span> 10. Best Practices & Recommendations</h2>
+               <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgLrYBOmalCc15oueJFLXnVCVUAXC1bnFcBInDQrO1mvTpeZwVHUKyo3LIbQjALdNC8QR1oawa1UVkZID4hR4OV7XgCLAmUkGzCViIr1cezOY_kwh5Aeou-1REnKMMrspD-HvOCn23H8giO6mLghv32u3VYzIzoVUOwVdGTtX8B_-CbBTwd5C2DsiTMxi4" alt="Best practices and recommendations infographic" class="content-image" />
+
+                <div class="intro-box">
+                    <p><strong>Maximize .NET 10 Benefits:</strong></p>
+                    <ul>
+                        <li><strong>Enable Native AOT:</strong> For microservices and containerized apps to reduce startup time and memory</li>
+                        <li><strong>Adopt Minimal APIs:</strong> Simpler, faster APIs with built-in OpenAPI documentation</li>
+                        <li><strong>Use Output Caching:</strong> Significantly improve API performance with proper caching strategies</li>
+                        <li><strong>Implement Observability:</strong> Use OpenTelemetry for comprehensive monitoring</li>
+                        <li><strong>Leverage AI Features:</strong> Integrate Semantic Kernel for intelligent application features</li>
+                        <li><strong>Containerize Efficiently:</strong> Use chiseled containers for production deployments</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Performance Optimization Checklist:</strong></p>
+                    <ol>
+                        <li>Enable PGO (Profile-Guided Optimization) in Release builds</li>
+                        <li>Use <code>Span&lt;T&gt;</code> and <code>Memory&lt;T&gt;</code> for high-performance scenarios</li>
+                        <li>Configure GC for your workload (Server vs Workstation)</li>
+                        <li>Implement proper async/await patterns</li>
+                        <li>Use <code>ValueTask&lt;T&gt;</code> for frequently-called async methods</li>
+                        <li>Enable HTTP/3 for better network performance</li>
+                    </ol>
+                </div>
+
+                <div class="tip-box">
+                    <p><strong>💡 Pro Tips:</strong></p>
+                    <ul>
+                        <li>Use <code>dotnet-counters</code> and <code>dotnet-trace</code> for production diagnostics</li>
+                        <li>Leverage source generators for compile-time code generation</li>
+                        <li>Adopt nullable reference types for better null safety</li>
+                        <li>Use record types for immutable data models</li>
+                        <li>Implement health checks for all external dependencies</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🎯</span> Conclusion</h2>
+
+                <div class="intro-box">
+                    <p><strong>Key Takeaways:</strong></p>
+                    <ul>
+                        <li>.NET 10 delivers 15-40% performance improvements across various scenarios</li>
+                        <li>C# 14 introduces powerful language features that enhance productivity</li>
+                        <li>Cloud-native development is simplified with enhanced container support and observability</li>
+                        <li>AI integration through Semantic Kernel opens new possibilities for intelligent applications</li>
+                        <li>Blazor United provides flexible rendering options for web applications</li>
+                        <li>MAUI continues to evolve as a robust cross-platform framework</li>
+                        <li>Developer experience improvements make .NET 10 the most productive release yet</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <p><strong>Getting Started:</strong></p>
+                    <ol>
+                        <li>Download .NET 10 SDK from <a href="https://dot.net" target="_blank">dot.net</a></li>
+                        <li>Update Visual Studio 2026 or VS Code with latest C# Dev Kit</li>
+                        <li>Explore sample projects: <code>dotnet new list</code></li>
+                        <li>Review migration guide for existing applications</li>
+                        <li>Join the .NET community on GitHub and Discord</li>
+                    </ol>
+                </div>
+
+                <p><strong>.NET 10 represents a significant leap forward</strong> in modern application development. Whether you're building cloud-native microservices, cross-platform mobile apps, AI-powered applications, or high-performance web APIs, .NET 10 provides the tools, performance, and features to bring your vision to life.</p>
+
+                <p>Start exploring .NET 10 today and experience the future of .NET development!</p>
+            </section>
+
+            <section>
+                <h2><span class="emoji">🔗</span> References & Further Reading</h2>
+
+                <div class="intro-box">
+                    <p>For deeper, always up-to-date details on .NET 10 and related technologies, refer to the official Microsoft documentation and learning resources below:</p>
+                </div>
+
+                <ul>
+                    <li><strong>.NET 10 Release Notes & Roadmap:</strong> <a href="https://learn.microsoft.com/dotnet/core/whats-new/" target="_blank">https://learn.microsoft.com/dotnet/core/whats-new/</a></li>
+                    <li><strong>C# 14 Language Features:</strong> <a href="https://learn.microsoft.com/dotnet/csharp/whats-new/" target="_blank">https://learn.microsoft.com/dotnet/csharp/whats-new/</a></li>
+                    <li><strong>ASP.NET Core 10 (Minimal APIs, Blazor, Hosting):</strong> <a href="https://learn.microsoft.com/aspnet/core/?view=aspnetcore-8.0" target="_blank">https://learn.microsoft.com/aspnet/core/</a></li>
+                    <li><strong>.NET Microservices & Cloud-Native Guidance:</strong> <a href="https://learn.microsoft.com/dotnet/architecture/microservices/" target="_blank">https://learn.microsoft.com/dotnet/architecture/microservices/</a></li>
+                    <li><strong>OpenTelemetry with .NET:</strong> <a href="https://learn.microsoft.com/dotnet/core/diagnostics/distributed-tracing" target="_blank">https://learn.microsoft.com/dotnet/core/diagnostics/distributed-tracing</a></li>
+                    <li><strong>Semantic Kernel & AI Integration:</strong> <a href="https://learn.microsoft.com/semantic-kernel/" target="_blank">https://learn.microsoft.com/semantic-kernel/</a></li>
+                    <li><strong>.NET MAUI Documentation:</strong> <a href="https://learn.microsoft.com/dotnet/maui/what-is-maui" target="_blank">https://learn.microsoft.com/dotnet/maui/what-is-maui</a></li>
+                    <li><strong>Security, Identity, and Access for .NET Apps:</strong> <a href="https://learn.microsoft.com/azure/active-directory/develop/" target="_blank">https://learn.microsoft.com/azure/active-directory/develop/</a></li>
+                    <li><strong>.NET Upgrade Assistant & Migration Guidance:</strong> <a href="https://learn.microsoft.com/dotnet/core/porting/upgrade-assistant-overview" target="_blank">https://learn.microsoft.com/dotnet/core/porting/upgrade-assistant-overview</a></li>
+                </ul>
+
+                <div class="tip-box">
+                    <p>These links point to the official Microsoft docs portal, which is continuously updated as new .NET 10 features evolve and service releases ship. Readers can bookmark them to stay current with best practices and platform changes.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

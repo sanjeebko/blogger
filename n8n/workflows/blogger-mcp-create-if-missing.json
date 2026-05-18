@@ -1,0 +1,219 @@
+{
+  "name": "Blogger MCP - Create if missing",
+  "nodes": [
+    {
+      "id": "manual",
+      "name": "Manual Trigger",
+      "parameters": {},
+      "position": [240, 300],
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "init",
+      "name": "MCP Init",
+      "parameters": {
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "jsonBody": "{\"jsonrpc\": \"2.0\", \"id\": 1, \"method\": \"initialize\", \"params\": {\"protocolVersion\": \"2024-11-05\", \"clientInfo\": {\"name\": \"n8n\", \"version\": \"2.0.3\"}, \"capabilities\": {}}}",
+        "method": "POST",
+        "options": {
+          "fullResponse": true
+        },
+        "responseFormat": "autodetect",
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://192.168.1.60/mcp-n8n"
+      },
+      "position": [480, 300],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4
+    },
+    {
+      "id": "set_session",
+      "name": "Set Session",
+      "parameters": {
+        "keepOnlySet": true,
+        "options": {},
+        "values": {
+          "string": [
+            {
+              "name": "sessionId",
+              "value": "={{$json.headers[\"mcp-session-id\"]}}"
+            }
+          ]
+        }
+      },
+      "position": [600, 300],
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2
+    },
+    {
+      "id": "list_posts",
+      "name": "List Posts",
+      "parameters": {
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "mcp-session-id",
+              "value": "={{$json.sessionId}}"
+            }
+          ]
+        },
+        "jsonBody": "{\"jsonrpc\": \"2.0\", \"id\": 2, \"method\": \"tools/call\", \"params\": {\"name\": \"blogger_list_posts\", \"arguments\": {\"blogId\": \"BLOG_ID\", \"status\": [\"LIVE\"], \"maxResults\": 500, \"fetchBodies\": false}}}",
+        "method": "POST",
+        "options": {},
+        "responseFormat": "autodetect",
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://192.168.1.60/mcp-n8n"
+      },
+      "position": [720, 300],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4
+    },
+    {
+      "id": "check_exists",
+      "name": "Check Exists",
+      "parameters": {
+        "functionCode": "const rpc = $json;\nconst text = (rpc.result?.content?.[0]?.text) || '[]';\nlet posts = [];\ntry { posts = JSON.parse(text); } catch (e) {}\nconst titleToCheck = 'NEW_TITLE';\nconst exists = posts.some(p => (p.title || '').trim() === titleToCheck.trim());\nreturn [{ json: { exists } }];"
+      },
+      "position": [960, 300],
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2
+    },
+    {
+      "id": "if_missing",
+      "name": "If Missing",
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.exists}}",
+              "value2": false
+            }
+          ]
+        }
+      },
+      "position": [1200, 300],
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2
+    },
+    {
+      "id": "create_post",
+      "name": "Create Post",
+      "parameters": {
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "mcp-session-id",
+              "value": "={{$node[\"Set Session\"].json.sessionId}}"
+            }
+          ]
+        },
+        "jsonBody": "{\"jsonrpc\": \"2.0\", \"id\": 3, \"method\": \"tools/call\", \"params\": {\"name\": \"blogger_create_post\", \"arguments\": {\"blogId\": \"BLOG_ID\", \"title\": \"NEW_TITLE\", \"content\": \"NEW_CONTENT\", \"labels\": [\"n8n\"], \"isDraft\": false}}}",
+        "method": "POST",
+        "options": {},
+        "responseFormat": "autodetect",
+        "sendBody": true,
+        "specifyBody": "json",
+        "url": "http://192.168.1.60/mcp-n8n"
+      },
+      "position": [1440, 300],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4
+    }
+  ],
+  "connections": {
+    "Check Exists": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "If Missing",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "If Missing": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Create Post",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "List Posts": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Check Exists",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "MCP Init": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "Set Session",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "MCP Init",
+            "type": "main"
+          }
+        ]
+      ]
+    },
+    "Set Session": {
+      "main": [
+        [
+          {
+            "index": 0,
+            "node": "List Posts",
+            "type": "main"
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "saveExecutionProgress": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "tags": []
+}

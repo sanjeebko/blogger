@@ -1,0 +1,179 @@
+<style>
+    /* Inline styles for Blogger */
+    .blog-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .blog-header {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        /* Green for Hardware/NVIDIA feel */
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+    }
+
+    .blog-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .blog-content {
+        padding: 2.5rem;
+        line-height: 1.7;
+    }
+
+    .blog-content section {
+        margin-bottom: 3rem;
+    }
+
+    .blog-content h2 {
+        color: #11998e;
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #38ef7d;
+    }
+
+    .blog-content h3 {
+        color: #2193b0;
+        font-size: 1.4rem;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .blog-content p {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .intro-box {
+        background: #f5f5f5;
+        padding: 1.5rem;
+        border-left: 4px solid #11998e;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    .highlight-box {
+        background: #e8f5e9;
+        border-left: 4px solid #4caf50;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="blog-container">
+    <div class="blog-header">
+        <h1>
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="GPU Banner"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEicQMZEtTqMnUrdwky07ElHLN20mj4zMzkJthwfhaWBjc0bxk03UO1v6uFvW8sdE6EpBHPmp0MWbQ28KtfSthOLFxufl5n9avF3vbThwVC5Pxa8TB9YSHHw7RW4uB44AtKaYiFByXxgG9z2k5gz5gWOztd2YzfWWHhNiqgL0tRoEtL4pSaMqjp5nH2wkf0/s1024/gpu_main.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+            </div>
+            What Is a GPU? Understanding Graphics Processing Units
+        </h1>
+        <p>From gaming to AI: The engine powering the modern digital world</p>
+    </div>
+
+    <div class="blog-content">
+        <section>
+            <div class="intro-box">
+                <p>If you play video games, edit videos, or use AI tools like ChatGPT, you rely heavily on a unique
+                    piece of hardware called the <strong>GPU</strong> (Graphics Processing Unit). But what exactly is
+                    it, and how does it differ from the CPU?</p>
+                <p>In this article, we'll strip away the jargon and look at the silicon heart that renders your favorite
+                    worlds and trains the smartest AIs.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>CPU vs. GPU: The Analogy</h2>
+            <p>To understand a GPU, you must first compare it to a CPU (Central Processing Unit).</p>
+            <ul>
+                <li><strong>The CPU</strong> is like a mastermind professor. It can solve incredibly complex math
+                    problems, one or two at a time, very quickly. It handles logic, operating system tasks, and
+                    sequential processing.</li>
+                <li><strong>The GPU</strong> is like an entire school of thousands of elementary students. Individually,
+                    they can only do simple arithmetic, but together, they can solve thousands of tiny problems <em>at
+                        the exact same time</em>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>The Architecture: CUDA Cores and Tensor Cores</h2>
+            <p>Modern GPUs aren't just generic calculators. They have specialized "schools" of cores inside them:</p>
+            <ul>
+                <li><strong>CUDA Cores (or Stream Processors):</strong> The general-purpose grunt workers. They handle
+                    the standard parallel math needed for rendering pixels on a screen.</li>
+                <li><strong>Tensor Cores:</strong> These are the "AI experts." They are specifically designed to
+                    multiply massive 4x4 matrices of numbers instantly—the fundamental math behind Deep Learning.</li>
+                <li><strong>RT Cores (Ray Tracing):</strong> Specialized hardware designed solely to calculate how light
+                    bounces off objects.</li>
+            </ul>
+
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="Ray Tracing Comparison"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg8cg8rRdmOJFfw6iokhZy-IPMtiLa3ZnH_dq0Dv-ND1DszvZDADEIN7gV4C4N_4RW1BdyqzH2ZfAnEymGh95BI4B7k6JTjEQ_dvduK9-9Xiishv4d7k0euok8-d3kseLgzybVYW7DLDbnQg47PmX0S6RdenMHIf9SgZvfgeODJn849zET96n9CFvkowec/s1024/gpu_raytracing.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+                <p><em>Ray Tracing Off vs. On: Simulating real-world light behavior.</em></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>What Does a GPU Do?</h2>
+
+            <h3>1. Ray Tracing in Gaming</h3>
+            <p>Traditional games "faked" lighting using rasterization (painting shadows where they <em>should</em> be).
+                Ray tracing actually simulates individual photons of light bouncing around the virtual world. This
+                creates hyper-realistic reflections, shadows, and global illumination, but it is incredibly
+                computationally expensive.</p>
+
+            <h3>2. Video Encoding (NVENC)</h3>
+            <p>When you stream to Twitch or watch Netflix, the GPU helps encode and decode video streams. NVIDIA's NVENC
+                is a dedicated physical part of the chip that does this, so your framerate doesn't drop while you record
+                gameplay.</p>
+
+            <h3>3. Artificial Intelligence Revolution</h3>
+            <p>This is why NVIDIA is now a trillion-dollar company. Training ChatGPT requires months of calculation on
+                thousands of H100 GPUs.</p>
+
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="AI Tensor Processing"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhZwoRgV0NXhzOCsjZ9_oyF9g8NO2J39MNaoNIxsupGY4F4PxvEv9F60YMdGqX3d1XTaqlwwC33j_dvhjFS_BKLrW63-m-Qb_SXALb2XJcXI-MINOH8ZxKrAs8yxIFy8I-iaPRjvTqN6jpYvLOJe2scoyfXB3GwBl6mi5khRLv76kxLI-dQLbkDzpOiE6k/s1024/gpu_ai_tensor.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin: 20px 0;" />
+                <p><em>Deep Learning: Neural networks running on silicon synapses.</em></p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Integrated vs. Dedicated GIFs</h2>
+            <div class="highlight-box">
+                <p><strong>Integrated Graphics (iGPU):</strong> Built into the CPU itself (like Intel Iris or AMD Radeon
+                    Graphics). It shares your system RAM. Great for office work, 4K video playback, and light e-sports
+                    gaming.</p>
+                <p><strong>Dedicated (Discrete) GPU:</strong> A separate card with its own ultra-fast video memory
+                    (VRAM). Essential for AAA gaming, 3D rendering, and heavy Machine Learning tasks.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>The GPU has evolved from a simple chip for displaying text to a powerhouse driving the AI revolution and
+                photorealistic gaming. It is the king of parallel processing, making it indispensable for the future of
+                computing.</p>
+        </section>
+    </div>
+</div>

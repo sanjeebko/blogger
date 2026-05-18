@@ -1,0 +1,240 @@
+<style>
+    /* Inline styles for Blogger */
+    .blog-container {
+        max-width: 900px;
+        margin: 20px auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .blog-header {
+        background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+        /* Sky Blue for Cloud */
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .blog-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1.2;
+    }
+
+    .blog-header p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+    }
+
+    .blog-content {
+        padding: 2.5rem;
+        line-height: 1.7;
+    }
+
+    .blog-content section {
+        margin-bottom: 3rem;
+    }
+
+    .blog-content h2 {
+        color: #0072ff;
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #00c6ff;
+    }
+
+    .blog-content h3 {
+        color: #0288d1;
+        font-size: 1.4rem;
+        margin: 1.5rem 0 1rem;
+    }
+
+    .blog-content p {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .intro-box {
+        background: #e1f5fe;
+        padding: 1.5rem;
+        border-left: 4px solid #0072ff;
+        border-radius: 4px;
+        margin: 1.5rem 0;
+    }
+
+    .highlight-box {
+        background: #f3e5f5;
+        border-left: 4px solid #ab47bc;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        border-radius: 4px;
+    }
+</style>
+
+<div class="blog-container">
+    <div class="blog-header">
+        <h1>
+            <div class="separator" style="clear: both; text-align: center;">
+                <img alt="Cloud Computing Banner"
+                    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWeHzG6ikdWOQjUrzg4kYt8Gu0Xu21GUSEonvxifFNDlICLiqYj-s3h9dQKiGxVhv4CoQyIc_q_Z5ynqWMjeHCbdcsNGJAvw2GnMTvzvVCHrX8CEVihUWgJCx68Bmo_RPuFwQcnKHGjrakOsuFVKx5BbgbnMQ-r5VNMmADkNl3j3DADz9_cfShOx2Xv6U/s1024/cloud_computing_main.png"
+                    style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px;" />
+            </div>
+            What Is Cloud Computing? Azure, AWS, and The Cloud Explained
+        </h1>
+        <p>Understanding the invisible infrastructure running the internet</p>
+    </div>
+
+    <div class="blog-content">
+        <section>
+            <div class="intro-box">
+                <p>"The Cloud" is one of the most buzzed-about terms in tech, but it's often misunderstood. Is it a
+                    satellite? Is it vapor? No, it's just <strong>someone else's computer</strong>—but on a massive
+                    scale.</p>
+                <p>In this article, we'll demystify cloud computing, explore the major players like Azure and AWS, and
+                    explain why modern businesses refuse to build their own server rooms.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>The Basic Concept</h2>
+            <p>Traditionally, if you wanted to host a website, you had to buy a physical server, put it in a room with
+                air conditioning, install the OS, connect it to the internet, and fix it when it broke.</p>
+            <p><strong>Cloud Computing</strong> allows you to rent these resources over the internet. You want a server?
+                Click a button. You want 1,000 servers for just an hour? Click a button.</p>
+        </section>
+
+        <section>
+            <h2>The Big Three Models</h2>
+            <p>Cloud service are generally categorized into three layers, like a pyramid.</p>
+
+            <h3>1. IaaS (Infrastructure as a Service)</h3>
+            <p><strong>You rent the hardware/VM.</strong> The provider gives you the raw compute power, storage, and
+                networking. You are basically renting a virtual data center.</p>
+            <ul>
+                <li><strong>You manage:</strong> OS, Middleware, Runtime, Data, Applications.</li>
+                <li><strong>They manage:</strong> Virtualization, Servers, Storage, Networking.</li>
+                <li><strong>Examples:</strong> AWS EC2, Azure VMs, Google Compute Engine.</li>
+            </ul>
+
+            <h3>2. PaaS (Platform as a Service)</h3>
+            <p><strong>You rent the platform.</strong> The provider abstracts away the OS and hardware management. You
+                simply bring your code or application, and they handle the rest.</p>
+            <ul>
+                <li><strong>You manage:</strong> Application, Data.</li>
+                <li><strong>They manage:</strong> Everything else (OS patching, scaling, runtime updates).</li>
+                <li><strong>Examples:</strong> Azure App Service, Google App Engine, AWS Elastic Beanstalk.</li>
+            </ul>
+
+            <h3>3. SaaS (Software as a Service)</h3>
+            <p><strong>You rent the software.</strong> The application is fully managed by the provider. You just log in
+                and use it.</p>
+            <ul>
+                <li><strong>Examples:</strong> Gmail, Dropbox, Microsoft 365, Salesforce.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Core Cloud Services Explained</h2>
+            <p>Whether you choose AWS, Azure, or Google Cloud, they all offer these four fundamental building blocks:
+            </p>
+
+            <h3>1. Compute (The Brain)</h3>
+            <p>This is where your code actually runs. It can be a Virtual Machine (IaaS) where you control everything,
+                or a Serverless Function (PaaS) where code runs on-demand.</p>
+
+            <h3>2. Storage (The Hard Drive)</h3>
+            <p>Cloud storage is incredibly cheap and durable. "Object Storage" is the most popular type, allowing you to
+                store massive amounts of unstructured data (images, videos, backups) accessed via HTTP.</p>
+
+            <h3>3. Databases (The Filing Cabinet)</h3>
+            <p><strong>Managed SQL</strong> (Relational) databases handle backups and patching for you.
+                <strong>NoSQL</strong> databases offer infinite scale for modern apps that need speed and flexibility
+                over rigid schemas.</p>
+
+            <h3>4. Networking (The Cables)</h3>
+            <p>Virtual networks (VPC/VNet) isolate your resources from the public internet, acting like a private data
+                center in the cloud.</p>
+        </section>
+
+        <section>
+            <h2>The Cloud Titans: Service Comparison Cheat Sheet</h2>
+            <p>Navigating the naming conventions of the big three can be confusing. Here is a mapping of the most
+                popular services:</p>
+
+            <div style="overflow-x:auto;">
+                <table style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead>
+                        <tr style="background-color: #f2f2f2; text-align: left;">
+                            <th style="padding: 12px; border: 1px solid #ddd;">Category</th>
+                            <th style="padding: 12px; border: 1px solid #ddd;">Amazon AWS</th>
+                            <th style="padding: 12px; border: 1px solid #ddd;">Microsoft Azure</th>
+                            <th style="padding: 12px; border: 1px solid #ddd;">Google Cloud (GCP)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Virtual Machine</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">EC2 (Elastic Compute Cloud)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Azure Virtual Machine</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Compute Engine</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Serverless</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">AWS Lambda</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Azure Functions</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Cloud Functions</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Object Storage</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">S3 (Simple Storage Service)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Azure Blob Storage</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Cloud Storage</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>SQL Database</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">RDS (Relational Database Service)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Azure SQL Database</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Cloud SQL</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>NoSQL Database</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">DynamoDB</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Cosmos DB</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">Firestore / Bigtable</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px; border: 1px solid #ddd;"><strong>Docker/Kubernetes</strong></td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">EKS (Elastic Kubernetes Service)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">AKS (Azure Kubernetes Service)</td>
+                            <td style="padding: 12px; border: 1px solid #ddd;">GKE (Google Kubernetes Engine)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <h2>Which Cloud Should You Choose?</h2>
+            <div class="highlight-box">
+                <p><strong>Amazon Web Services (AWS):</strong> The seasoned veteran. It has the largest market share and
+                    the most rigorous service catalog. It's the default choice for many startups and web-scale
+                    companies.</p>
+                <p><strong>Microsoft Azure:</strong> The enterprise giant. If your company uses Windows, Active
+                    Directory, and .NET, Azure is the natural extension. It offers the best hybrid cloud support.</p>
+                <p><strong>Google Cloud Platform (GCP):</strong> The innovator. Famous for its data analytics, AI/ML
+                    tools, and for inventing Kubernetes. It provides a very clean, developer-friendly experience.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>Cloud computing has democratized technology. It allows a single developer in a garage to access the same
+                supercomputing power as a Fortune 500 company. It is flexible, scalable, and the foundation of the
+                modern internet.</p>
+        </section>
+    </div>
+</div>

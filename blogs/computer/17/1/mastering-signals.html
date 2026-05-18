@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mastering Angular Signals: Reactive State Management Reinvented</title>
+    <style>
+        :root {
+            --primary-color: #dd0031;
+            --secondary-color: #1976d2;
+            --background-color: #f8f9fa;
+            --text-color: #2c3e50;
+            --code-bg: #1e1e1e;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Banner */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .banner-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .banner-image {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .banner-container:hover .banner-image {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(120deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        /* Content Sections */
+        section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 25px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        code {
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .highlight-keyword {
+            color: #569cd6;
+        }
+
+        .highlight-string {
+            color: #ce9178;
+        }
+
+        .highlight-function {
+            color: #dcdcaa;
+        }
+
+        .highlight-class {
+            color: #4ec9b0;
+        }
+
+        /* Interactive Demo Box Styles (Mockup) */
+        .demo-box {
+            border: 2px dashed #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            background: #fafafa;
+            margin: 20px 0;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: #1565c0;
+        }
+
+        .total-display {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="banner-container">
+                <img src="assets/banner.png" alt="Angular Signals Future" class="banner-image">
+            </div>
+            <h1>Mastering Angular Signals</h1>
+            <div class="subtitle">Reactive Harmony: Building a Glitch-Free Shopping Cart</div>
+        </header>
+
+        <section>
+            <h2>The Signal Revolution</h2>
+            <p>
+                Angular Signals are not just a new feature; they are a paradigm shift. They allow us to move away from
+                the "magic" of Zone.js and towards explicit, fine-grained reactivity.
+                Unlike RxJS Observables, which are streams of values over time, Signals are <strong>holders of a
+                    value</strong> that notify interested consumers when that value changes.
+            </p>
+            <p>
+                In this deep dive, we aren't just looking at the syntax. We're going to build a fully reactive
+                <strong>Shopping Cart</strong> to demonstrate the power of <code>computed()</code> signals and
+                structured state management.
+            </p>
+        </section>
+
+        <section>
+            <h2>The Concepts: Writable vs. Computed</h2>
+            <p>Before we code, let's clarify the tools in our belt:</p>
+            <ul>
+                <li><strong>Writable Signals</strong> (<code>signal()</code>): The source of truth. You can set or
+                    update these directly.</li>
+                <li><strong>Computed Signals</strong> (<code>computed()</code>): Derived state. These update
+                    <em>only</em> when their dependencies change. They are read-only and memoized.
+                </li>
+                <li><strong>Effects</strong> (<code>effect()</code>): Side effects that run when signals change (e.g.,
+                    logging, syncing to localStorage).</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Walkthrough: The Reactive Shopping Cart</h2>
+            <p>
+                We want to build a cart where:
+                <br>1. We have a list of products.
+                <br>2. We can add products to a cart.
+                <br>3. The <strong>Total Price</strong>, <strong>Item Count</strong>, and <strong>Tax</strong> are
+                calculated automatically.
+                <br>4. No manual subscription management!
+            </p>
+
+            <h3>Step 1: Defining the Interfaces</h3>
+            <pre><code><span class="highlight-keyword">export interface</span> Product {
+  id: <span class="highlight-keyword">number</span>;
+  name: <span class="highlight-keyword">string</span>;
+  price: <span class="highlight-keyword">number</span>;
+}
+
+<span class="highlight-keyword">export interface</span> CartItem {
+  product: Product;
+  quantity: <span class="highlight-keyword">number</span>;
+}</code></pre>
+
+            <h3>Step 2: The Shopping Cart Service</h3>
+            <p>We'll encapsulate our logic in a service. This is where Signals shine by keeping our state clean.</p>
+            <pre><code><span class="highlight-keyword">import</span> { Injectable, signal, computed } <span class="highlight-keyword">from</span> <span class="highlight-string">'@angular/core'</span>;
+
+<span class="highlight-keyword">@Injectable</span>({ providedIn: <span class="highlight-string">'root'</span> })
+<span class="highlight-keyword">export class</span> CartService {
+  <span class="highlight-class">// 1. The Source of Truth</span>
+  <span class="highlight-keyword">private</span> items = signal&lt;CartItem[]&gt;([]);
+
+  <span class="highlight-class">// 2. Computed Values (Derived State)</span>
+  
+  <span class="highlight-class">// Calculate total number of items</span>
+  totalItems = computed(() => 
+    <span class="highlight-keyword">this</span>.items().reduce((acc, item) => acc + item.quantity, 0)
+  );
+
+  <span class="highlight-class">// Calculate subtotal</span>
+  subTotal = computed(() => 
+    <span class="highlight-keyword">this</span>.items().reduce((acc, item) => 
+      acc + (item.product.price * item.quantity), 0)
+  );
+
+  <span class="highlight-class">// Calculate Tax (e.g., 10%)</span>
+  tax = computed(() => <span class="highlight-keyword">this</span>.subTotal() * 0.1);
+
+  <span class="highlight-class">// Calculate Final Total</span>
+  totalPrice = computed(() => <span class="highlight-keyword">this</span>.subTotal() + <span class="highlight-keyword">this</span>.tax());
+
+  <span class="highlight-class">// 3. Actions (Mutating State)</span>
+  addToCart(product: Product) {
+    <span class="highlight-keyword">this</span>.items.update(currentItems => {
+      <span class="highlight-keyword">const</span> existingItem = currentItems.find(i => i.product.id === product.id);
+      
+      <span class="highlight-keyword">if</span> (existingItem) {
+        <span class="highlight-class">// Immutable update pattern</span>
+        <span class="highlight-keyword">return</span> currentItems.map(i => 
+          i.product.id === product.id 
+            ? { ...i, quantity: i.quantity + 1 } 
+            : i
+        );
+      } else {
+        <span class="highlight-keyword">return</span> [...currentItems, { product, quantity: 1 }];
+      }
+    });
+  }
+
+  removeFromCart(productId: <span class="highlight-keyword">number</span>) {
+    <span class="highlight-keyword">this</span>.items.update(items => 
+      items.filter(i => i.product.id !== productId)
+    );
+  }
+  
+  <span class="highlight-class">// Expose items as ReadOnly for external consumption if needed</span>
+  cartItems = <span class="highlight-keyword">this</span>.items.asReadonly();
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Step 3: The Component (The Consumer)</h2>
+            <p>Now, let's see how simple the component logic becomes. No <code>ngOnChanges</code>, no
+                <code>subscribe()</code>.
+            </p>
+            <pre><code><span class="highlight-keyword">import</span> { Component, inject } <span class="highlight-keyword">from</span> <span class="highlight-string">'@angular/core'</span>;
+<span class="highlight-keyword">import</span> { CartService } <span class="highlight-keyword">from</span> <span class="highlight-string">'./cart.service'</span>;
+<span class="highlight-keyword">import</span> { CurrencyPipe } <span class="highlight-keyword">from</span> <span class="highlight-string">'@angular/common'</span>;
+
+<span class="highlight-keyword">@Component</span>({
+  selector: <span class="highlight-string">'app-shopping-cart'</span>,
+  standalone: <span class="highlight-keyword">true</span>,
+  imports: [CurrencyPipe],
+  template: `
+    &lt;div class="cart-display"&gt;
+      &lt;h2&gt;Your Cart (&lt;span&gt;{{ cart.totalItems() }}&lt;/span&gt;)&lt;/h2&gt;
+      
+      @for (item of cart.cartItems(); track item.product.id) {
+        &lt;div class="item-row"&gt;
+           {{ item.product.name }} x {{ item.quantity }}
+           &lt;button (click)="cart.removeFromCart(item.product.id)"&gt;Remove&lt;/button&gt;
+        &lt;/div&gt;
+      } @empty {
+        &lt;p&gt;Your cart is empty.&lt;/p&gt;
+      }
+
+      &lt;div class="summary"&gt;
+        &lt;p&gt;Subtotal: {{ cart.subTotal() | currency }}&lt;/p&gt;
+        &lt;p&gt;Tax: {{ cart.tax() | currency }}&lt;/p&gt;
+        &lt;h3&gt;Total: {{ cart.totalPrice() | currency }}&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  `
+})
+<span class="highlight-keyword">export class</span> ShoppingCartComponent {
+  <span class="highlight-keyword">protected</span> cart = inject(CartService);
+}</code></pre>
+        </section>
+
+        <section>
+            <h2>Why This is Better</h2>
+            <p>
+                1. <strong>Performance</strong>: Angular knows exactly which text node to update. If
+                <code>cart.tax()</code> changes, ONLY that specific DOM element updates. <br>
+                2. <strong>Readability</strong>: The dependency graph is clear. <code>totalPrice</code> depends on
+                <code>subTotal</code> and <code>tax</code>. You can't accidentally get an "out of sync" total because
+                it's mathematically derived.<br>
+                3. <strong>Less Boilerplate</strong>: We didn't import <code>BehaviorSubject</code>,
+                <code>Observable</code>, <code>scan</code>, or `map`.
+            </p>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>
+                Signals bring a level of developer ergonomics to Angular that rivals React's Hooks or Vue's Composition
+                API, but with Angular's specific flavor of structural discipline.
+                Start moving your local component state to Signals today!
+            </p>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

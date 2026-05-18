@@ -1,0 +1,179 @@
+{
+  "name": "GeminiNanoImageGenerator",
+  "nodes": [
+    {
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "parameters": {
+        "path": "gemini-image-generator",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "position": [-200, 0],
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "webhookId": "gemini-image-gen"
+    },
+    {
+      "id": "execute-workflow-trigger",
+      "name": "Execute Workflow Trigger",
+      "parameters": {},
+      "position": [-200, 120],
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1
+    },
+    {
+      "id": "start-timer",
+      "name": "Start Timer",
+      "parameters": {
+        "jsCode": "return [{\n  json: {\n    ...($input.item.json || {}),\n    startTime: Date.now(),\n    prompt: $input.item.json.prompt || '',\n    filename: $input.item.json.filename || 'image.png',\n    folderName: $input.item.json.folderName || '/files/bloggergenerator/default'\n  }\n}];"
+      },
+      "position": [0, 60],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "gemini-generate-image",
+      "name": "Generate Image with Gemini",
+      "parameters": {
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-001:predict",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googlePalmApi",
+        "method": "POST",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  \"instances\": [\n    {\n      \"prompt\": $json.prompt\n    }\n  ],\n  \"parameters\": {\n    \"sampleCount\": 1,\n    \"aspectRatio\": \"16:9\",\n    \"personGeneration\": \"allow_adult\",\n    \"safetyFilterLevel\": \"block_some\"\n  }\n} }}",
+        "options": {}
+      },
+      "position": [220, 60],
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "12DKPRNOFpK0yTyy",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "notes": "Uses Google Imagen 3.0 API to generate images from text prompts.\n\nNote: Ensure your Google Cloud project has Vertex AI API enabled and Imagen access."
+    },
+    {
+      "id": "extract-image-data",
+      "name": "Extract Image Data",
+      "parameters": {
+        "jsCode": "const response = $input.item.json;\nconst imageData = response.predictions?.[0]?.bytesBase64Encoded || response.images?.[0] || '';\n\nif (!imageData) {\n  throw new Error('No image data received from Gemini API');\n}\n\nreturn [{\n  json: {\n    prompt: $input.item.json.prompt,\n    filename: $input.item.json.filename,\n    folderName: $input.item.json.folderName,\n    startTime: $input.item.json.startTime,\n    imageData: imageData\n  }\n}];"
+      },
+      "position": [440, 60],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "prepare-binary-data",
+      "name": "Prepare Binary Data",
+      "parameters": {
+        "jsCode": "const imageData = $json.imageData;\nconst filename = $json.filename;\n\nif (!imageData) {\n  throw new Error('No image data received from Gemini API');\n}\n\nconst buffer = Buffer.from(imageData, 'base64');\n\nreturn [{\n  json: {\n    filename: filename,\n    folderName: $json.folderName,\n    startTime: $json.startTime,\n    prompt: $json.prompt\n  },\n  binary: {\n    data: {\n      data: buffer.toString('base64'),\n      mimeType: 'image/png',\n      fileName: filename\n    }\n  }\n}];"
+      },
+      "position": [660, 60],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "write-file",
+      "name": "Write Image File",
+      "parameters": {
+        "fileName": "={{ $json.folderName + '/' + $json.filename }}",
+        "options": {}
+      },
+      "position": [880, 60],
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1
+    },
+    {
+      "id": "add-timing",
+      "name": "Add Timing Info",
+      "parameters": {
+        "jsCode": "const endTime = Date.now();\nconst timeTaken = endTime - $json.startTime;\n\nreturn [{\n  json: {\n    success: true,\n    filename: $json.filename,\n    fullPath: $json.folderName + '/' + $json.filename,\n    folderName: $json.folderName,\n    timeTakenMs: timeTaken,\n    timeTakenSeconds: (timeTaken / 1000).toFixed(2),\n    prompt: $json.prompt,\n    generatedAt: new Date().toISOString()\n  }\n}];"
+      },
+      "position": [1100, 60],
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2
+    },
+    {
+      "id": "respond",
+      "name": "Return Response",
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ {\n  ...$json,\n  \"success\": true,\n  \"filename\": $json.filename,\n  \"fullPath\": $json.fullPath,\n  \"folderName\": $json.folderName,\n  \"timeTakenMs\": $json.timeTakenMs,\n  \"timeTakenSeconds\": $json.timeTakenSeconds + \" seconds\",\n  \"generatedAt\": $json.generatedAt\n} }}",
+        "options": {}
+      },
+      "position": [1320, 0],
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1
+    },
+    {
+      "id": "return-to-workflow",
+      "name": "Return to Calling Workflow",
+      "parameters": {},
+      "position": [1320, 120],
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{ "index": 0, "node": "Start Timer", "type": "main" }]]
+    },
+    "Execute Workflow Trigger": {
+      "main": [[{ "index": 0, "node": "Start Timer", "type": "main" }]]
+    },
+    "Start Timer": {
+      "main": [
+        [{ "index": 0, "node": "Generate Image with Gemini", "type": "main" }]
+      ]
+    },
+    "Generate Image with Gemini": {
+      "main": [[{ "index": 0, "node": "Extract Image Data", "type": "main" }]]
+    },
+    "Extract Image Data": {
+      "main": [[{ "index": 0, "node": "Prepare Binary Data", "type": "main" }]]
+    },
+    "Prepare Binary Data": {
+      "main": [[{ "index": 0, "node": "Write Image File", "type": "main" }]]
+    },
+    "Write Image File": {
+      "main": [[{ "index": 0, "node": "Add Timing Info", "type": "main" }]]
+    },
+    "Add Timing Info": {
+      "main": [
+        [
+          { "index": 0, "node": "Return Response", "type": "main" },
+          { "index": 0, "node": "Return to Calling Workflow", "type": "main" }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "tags": [
+    {
+      "name": "image-generation"
+    },
+    {
+      "name": "gemini"
+    },
+    {
+      "name": "utility"
+    }
+  ]
+}

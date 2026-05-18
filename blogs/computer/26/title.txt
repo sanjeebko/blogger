@@ -1,0 +1,14 @@
+topic: "Multi-Cloud Disaster Recovery for Modern Apps"
+keywords: "multi cloud, disaster recovery, high availability, backup strategy, resiliency engineering"
+
+content_headlines:
+1. RTO and RPO targets every team should define
+2. Active-active vs active-passive multi-cloud patterns
+3. Data replication and failover orchestration basics
+4. DR testing with game days and chaos engineering
+5. Cost-aware resiliency planning for production systems
+
+gemini_image_prompts:
+1. "Create a technically correct multi-cloud DR architecture diagram with active-passive topology, cross-region replication, health checks, DNS failover, and controlled failback. Enterprise reliability style, 16:9."
+2. "Generate an informative RTO/RPO planning dashboard visual with recovery objectives per service tier, backup frequency, replication lag, and readiness status. Use realistic resilience engineering concepts, 16:9."
+3. "Design a game-day disaster recovery workflow infographic: fault injection, failover execution, verification tests, post-incident review, and remediation backlog. Keep process steps practical and accurate, 16:9."

@@ -1,0 +1,14 @@
+topic: "Observability 2.0 with OpenTelemetry and eBPF"
+keywords: "observability, opentelemetry, ebpf, distributed tracing, sre"
+
+content_headlines:
+1. Why logs alone are not enough in 2026
+2. Unified metrics, traces, and logs with OpenTelemetry
+3. eBPF for low-overhead deep system visibility
+4. Incident response workflows for faster MTTR
+5. Building actionable dashboards engineers actually use
+
+gemini_image_prompts:
+1. "Create an informative observability architecture diagram combining OpenTelemetry collectors, traces, metrics, logs, and service dependency graph for a microservices app. Ensure pipeline components are technically correct, 16:9."
+2. "Generate a practical SRE incident-response visual with alert trigger, trace drill-down, correlated logs/metrics, root-cause timeline, and mitigation steps. Use realistic operational workflow details, 16:9."
+3. "Design an educational eBPF + OpenTelemetry scene showing kernel-level signal capture feeding user-space observability backends with low overhead. Keep kernel/telemetry concepts accurate and non-fictional, 16:9."
